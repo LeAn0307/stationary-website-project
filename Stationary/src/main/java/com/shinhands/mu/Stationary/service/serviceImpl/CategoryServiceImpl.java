@@ -5,6 +5,7 @@ import com.shinhands.mu.Stationary.entity.Category;
 import com.shinhands.mu.Stationary.repository.CategoryRepository;
 import com.shinhands.mu.Stationary.service.CategoryService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +19,11 @@ public class CategoryServiceImpl implements CategoryService {
     private ModelMapper mapper;
     public List<Category> getAllCategories()
     {
-
-        return categoryRepository.findAll();
+        return mapper.map(categoryRepository.findAll(), new TypeToken<List<CategoryDTO>>(){}.getType());
     }
-    public List<Category> addCategory(CategoryDTO categoryDTO)
+    public CategoryDTO addCategory(CategoryDTO categoryDTO)
     {
-        categoryRepository.save(mapper.map(categoryDTO,Category.class));
-        return categoryRepository.findAll();
+        return mapper.map(categoryRepository.save(mapper.map(categoryDTO,Category.class)), CategoryDTO.class);
     }
 
     public Boolean deleteCategory(long id)
@@ -40,9 +39,9 @@ public class CategoryServiceImpl implements CategoryService {
             return false;
         }
     }
-    public Category getCategoryById(long id)
+    public CategoryDTO getCategoryById(long id)
     {
-        return categoryRepository.findById(id).orElse(null);
+        return mapper.map(categoryRepository.findById(id).orElse(null), CategoryDTO.class);
     }
     public Boolean updateCategory(long id, CategoryDTO categoryDTO)
     {

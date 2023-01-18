@@ -1,12 +1,11 @@
 package com.shinhands.mu.Stationary.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-
-@Getter
 @Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CategoryDTO {
     private Long categoriesId;
     private String CategoriesName;

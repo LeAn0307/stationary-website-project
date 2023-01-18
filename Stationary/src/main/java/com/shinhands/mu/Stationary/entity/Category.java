@@ -1,6 +1,8 @@
 package com.shinhands.mu.Stationary.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Table(name="categories")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
     @Id
     @GeneratedValue

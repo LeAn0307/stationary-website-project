@@ -4,9 +4,13 @@ import com.shinhands.mu.Stationary.dto.CategoryDTO;
 import com.shinhands.mu.Stationary.entity.Category;
 import com.shinhands.mu.Stationary.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController("")
 @RequestMapping(value="/category")
@@ -18,8 +22,8 @@ public class CategoryController {
     {
         return ResponseEntity.ok().body(CategoryService.getAllCategories());
     }
-    @PostMapping("")
-    public ResponseEntity addCategory(@RequestBody CategoryDTO categoryDTO)
+    @PostMapping()
+    public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryDTO categoryDTO)
     {
         return ResponseEntity.ok().body(CategoryService.addCategory(categoryDTO));
     }
