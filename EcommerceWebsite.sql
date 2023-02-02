@@ -228,3 +228,182 @@ ALTER TABLE cart_product
 ALTER TABLE product
     ADD CONSTRAINT fk17 FOREIGN KEY ( categoryid )
         REFERENCES categories ( categoriesid );
+        
+--INSERT DATA
+
+--TABLE ACCOUNT
+CREATE SEQUENCE account_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'darklord0305@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'thelionking0305@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'thanhluan130201@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, '0.199qui@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'nguyenvanan@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'nguyenthiphuong123@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'dinhvanbua125@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'helloworld125@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'nguyenvanhieu123@gmail.com', '123456789');
+INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'buivantinh123@gmail.com', '123456789');
+
+--TABLE CART
+CREATE SEQUENCE cart_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 100000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 200000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 123000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 400000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 1000000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 2000000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 10000000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 10000);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 13548125);
+INSERT INTO CART (ID, TOTAL) VALUES (cart_seq.NEXTVAL, 15489641);
+
+--TABLE USER_WEBSITE
+CREATE SEQUENCE user_website_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+--CHANGE DATATYPE OF COLUMN PHONE
+ALTER TABLE user_website
+    MODIFY PHONE VARCHAR2(15);
+    
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n Vi?t Quý', 'Ch? Puh, Gia Lai', '0134567896', 1, 1);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Ph?m Phúc H?u', 'V?ng Tàu', '0125487898', 2, 2);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'V?ng Tàu', '0125487897', 3, 3);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n A', 'TP.H? Chí Minh', '0125487154', 4, 4);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, '?inh Công L??ng', 'Qu?ng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy M?nh', 'Ngh? An', '0125487487', 6, 6);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n Minh', 'Bình Thu?n', '0125487879', 7, 7);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n Sú', 'Lào Cai', '0125487147', 8, 8);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Aladin', 'Bình D??ng', '0125484587', 9, 9);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n Hi?u', 'Dak Lak', '0125487852', 10, 10);
+
+--TABLE COUPON
+--ADD COLUMN FOR COUPON TABLE
+ALTER TABLE COUPON
+    ADD (MIN_PRICE_APPLY NUMBER(10,0),
+         MAX_PRICE NUMBER(10,0),
+         CODE VARCHAR2(20),
+         AMOUNT NUMBER(10,0));
+         
+ALTER TABLE COUPON
+    MODIFY DISCOUNT NUMBER(3,2);
+    
+CREATE SEQUENCE coupon_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Khuy?n mãi cho khách hàng m?i', 0.1, 0, 50000, 'KMKHM', 50);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 50,000? ??n t?i thi?u 99,000?', 0.1, 99000, 50000, 'HUJUI', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 20,000? ??n t?i thi?u 199,000?', 0, 199000, 20000, 'HUYEJ', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 300,000? ??n t?i thi?u 499,000?', 0.1, 499000, 300000, 'YUITLR', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 50,000? ??n t?i thi?u 0?', 0, 0, 50000, 'QIEHFU', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10,000? ??n t?i thi?u 120,000?', 0, 120000, 10000, 'TEWUYG', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 5% Gi?m t?i ?a 500,000? ??n t?i thi?u 300,000?', 0.05, 300000, 500000, 'OIUYTR', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 150,000? ??n t?i thi?u 1,500,000?', 0, 1500000, 150000, 'RTEGDT', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 60,000? ??n t?i thi?u 400,000?', 0.1, 400000, 60000, 'YEUWGY', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 100,000? ??n t?i thi?u 600,000?', 0.1, 600000, 100000, 'EGYFGE', 30);
+
+--TABLE CART_COUPON
+CREATE SEQUENCE cart_coupon_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 1, 1);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 2, 1);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 3, 3);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 4, 7);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 5, 6);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 6, 9);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 7, 10);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 8, 1);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 9, 1);
+INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 10, 1);
+
+--TABLE ROLE
+CREATE SEQUENCE role_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Admin');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Khách');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Qu?n lý kho');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Nhân viên bán hàng');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Thu ngân');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Qu?n lý nhân s?');
+
+--TABLE ROLE_USER
+CREATE SEQUENCE role_user_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 1, 1);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 2, 2);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 1, 3);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 1, 4);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 2, 5);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 2, 6);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 3, 7);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 4, 8);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 5, 9);
+INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 6, 10);
+
+--TABLE FUNCTION
+CREATE SEQUENCE function_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+--ALTER DATATYPE OF COLUMN DISPLAY_NAME
+ALTER TABLE function
+    MODIFY display_name varchar2(200);
+    
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n lý s?n ph?m', 'Thêm, xóa, s?a s?n ph?m');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n lý khách hàng', 'Tra c?u các thông tin c?a khách hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy?n', 'Gi?i h?n ch?c n?ng cho m?t ng??i dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm s?n ph?m vào gi? và ti?n hành thanh toán');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n lý khuy?n mãi', 'Thêm, xóa, s?a khuy?n mãi');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n lý ??n hàng', 'Xem, tra c?u t?t c? ??n hàng c?a c?a hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra c?u s?n ph?m', 'Tra c?u thông tin s?n ph?m');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n lý kho hàng', 'Thay ??i s? l??ng s?n ph?m ?ang có trong c?a hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Th?ng kê và báo cáo', 'Xem báo cáo kinh doanh c?a c?a hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, '?ánh giá s?n ph?m', '?ánh giá s?n ph?m');
+
+--TABLE ROLE_FUNCTION
+CREATE SEQUENCE role_function_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 1);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 2);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 3);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 5);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 6);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 4);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 7);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 3, 8);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 9);
+INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 2);
+
