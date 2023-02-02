@@ -278,16 +278,17 @@ CREATE SEQUENCE user_website_seq
 ALTER TABLE user_website
     MODIFY PHONE VARCHAR2(15);
     
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n Vi?t Qu�', 'Ch? Puh, Gia Lai', '0134567896', 1, 1);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Ph?m Ph�c H?u', 'V?ng T�u', '0125487898', 2, 2);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'L� Th�nh Lu�n', 'V?ng T�u', '0125487897', 3, 3);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n A', 'TP.H? Ch� Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, '?inh C�ng L??ng', 'Qu?ng B�nh', '0125487458', 5, 5);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy M?nh', 'Ngh? An', '0125487487', 6, 6);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n Minh', 'B�nh Thu?n', '0125487879', 7, 7);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n S�', 'L�o Cai', '0125487147', 8, 8);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Aladin', 'B�nh D??ng', '0125484587', 9, 9);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy?n V?n Hi?u', 'Dak Lak', '0125487852', 10, 10);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý', 'Chư Puh, Gia Lai', '0134567896', 1, 1);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2, 2);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'Vũng Tàu', '0125487897', 3, 3);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn A', 'TP.Hồ Chí Minh', '0125487154', 4, 4);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Đinh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy Mạnh', 'Nghệ An', '0125487487', 6, 6);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Minh', 'Bình Thuận', '0125487879', 7, 7);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Sú', 'Lào Cai', '0125487147', 8, 8);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Aladin', 'Bình Dương', '0125484587', 9, 9);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễnn Văn Hiếu', 'Dak Lak', '0125487852', 10, 10);
+
 
 --TABLE COUPON
 --ADD COLUMN FOR COUPON TABLE
@@ -306,16 +307,16 @@ CREATE SEQUENCE coupon_seq
     INCREMENT BY 1
     CACHE 10;
     
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Khuy?n m�i cho kh�ch h�ng m?i', 0.1, 0, 50000, 'KMKHM', 50);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 50,000? ??n t?i thi?u 99,000?', 0.1, 99000, 50000, 'HUJUI', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 20,000? ??n t?i thi?u 199,000?', 0, 199000, 20000, 'HUYEJ', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 300,000? ??n t?i thi?u 499,000?', 0.1, 499000, 300000, 'YUITLR', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 50,000? ??n t?i thi?u 0?', 0, 0, 50000, 'QIEHFU', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10,000? ??n t?i thi?u 120,000?', 0, 120000, 10000, 'TEWUYG', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 5% Gi?m t?i ?a 500,000? ??n t?i thi?u 300,000?', 0.05, 300000, 500000, 'OIUYTR', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 150,000? ??n t?i thi?u 1,500,000?', 0, 1500000, 150000, 'RTEGDT', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 60,000? ??n t?i thi?u 400,000?', 0.1, 400000, 60000, 'YEUWGY', 30);
-INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Gi?m 10% Gi?m t?i ?a 100,000? ??n t?i thi?u 600,000?', 0.1, 600000, 100000, 'EGYFGE', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Khuyến mãi cho khách hàng mới', 0.1, 0, 50000, 'KMKHM', 50);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 50,000đ đơn tối thiểu 99,000đ', 0.1, 99000, 50000, 'HUJUI', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 20,000đ đơn tối thiểu 199,000đ', 0, 199000, 20000, 'HUYEJ', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 300,000đ đơn tối thiểu 499,000đ', 0.1, 499000, 300000, 'YUITLR', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 50,000đ đơn tối thiểu 0đ', 0, 0, 50000, 'QIEHFU', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10,000đ đơn tối thiểu 120,000đ', 0, 120000, 10000, 'TEWUYG', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 5% Giảm tối đa 500,000đ đơn tối thiếu 300,000đ', 0.05, 300000, 500000, 'OIUYTR', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 150,000đ đơn tối thiểu 1,500,000đ', 0, 1500000, 150000, 'RTEGDT', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 60,000đ đơn tối thiểu 400,000đ', 0.1, 400000, 60000, 'YEUWGY', 30);
+INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 100,000đ đơn tối thiểu 600,000đ', 0.1, 600000, 100000, 'EGYFGE', 30);
 
 --TABLE CART_COUPON
 CREATE SEQUENCE cart_coupon_seq
@@ -343,11 +344,11 @@ CREATE SEQUENCE role_seq
     CACHE 10;
     
 INSERT INTO role VALUES (role_seq.NEXTVAL, 'Admin');
-INSERT INTO role VALUES (role_seq.NEXTVAL, 'Kh�ch');
-INSERT INTO role VALUES (role_seq.NEXTVAL, 'Qu?n l� kho');
-INSERT INTO role VALUES (role_seq.NEXTVAL, 'Nh�n vi�n b�n h�ng');
-INSERT INTO role VALUES (role_seq.NEXTVAL, 'Thu ng�n');
-INSERT INTO role VALUES (role_seq.NEXTVAL, 'Qu?n l� nh�n s?');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Khách');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Quản lý kho');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Nhân viên bán hàng');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Thu ngân');
+INSERT INTO role VALUES (role_seq.NEXTVAL, 'Quản lý nhân sự');
 
 --TABLE ROLE_USER
 CREATE SEQUENCE role_user_seq
@@ -378,16 +379,16 @@ CREATE SEQUENCE function_seq
 ALTER TABLE function
     MODIFY display_name varchar2(200);
     
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n l� s?n ph?m', 'Th�m, x�a, s?a s?n ph?m');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n l� kh�ch h�ng', 'Tra c?u c�c th�ng tin c?a kh�ch h�ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Ph�n quy?n', 'Gi?i h?n ch?c n?ng cho m?t ng??i d�ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua h�ng', 'Xem v� th�m s?n ph?m v�o gi? v� ti?n h�nh thanh to�n');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n l� khuy?n m�i', 'Th�m, x�a, s?a khuy?n m�i');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n l� ??n h�ng', 'Xem, tra c?u t?t c? ??n h�ng c?a c?a h�ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra c?u s?n ph?m', 'Tra c?u th�ng tin s?n ph?m');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu?n l� kho h�ng', 'Thay ??i s? l??ng s?n ph?m ?ang c� trong c?a h�ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Th?ng k� v� b�o c�o', 'Xem b�o c�o kinh doanh c?a c?a h�ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, '?�nh gi� s?n ph?m', '?�nh gi� s?n ph?m');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quyền', 'Giới hạn chức năng cho một người dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào giỏ và tiến hành thanh toán');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khuyến mãi', 'Thêm, xóa, sửa khuy?n mãi');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý đơn hàng', 'Xem, tra cứu tất cả đơn hàng của cửa hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra cứu sản phẩm', 'Tra cứu thông tin sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay đổi số lượng sản phẩm đang có trong cửa hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Đánh giá sản phẩm', 'Đánh giá sản phẩm');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq
