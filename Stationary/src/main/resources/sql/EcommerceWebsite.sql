@@ -188,7 +188,6 @@ CREATE TABLE bill_status (
     CONSTRAINT bill_status_pk PRIMARY KEY ( id )
 );
 
-
 CREATE SEQUENCE bill_status_seq
     MINVALUE 1
     START WITH 1
@@ -589,3 +588,7 @@ INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 3, 8);
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 9);
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 2);
 
+
+--CHANGE NAME COLUMN STATUS IN TABLE BILL STATUS
+ALTER TABLE bill_status
+    RENAME COLUMN cartid TO status;
