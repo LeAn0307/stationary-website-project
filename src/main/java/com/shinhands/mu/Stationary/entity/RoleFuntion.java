@@ -20,4 +20,12 @@ public class RoleFuntion {
     private Long roleId;
     @Column(name = "function_id")
     private Long functionId;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+    private Role role;
+
+    @ManyToOne
+    @JoinColumn(name = "role_function", nullable = false, referencedColumnName = "function_id")
+    private Function function;
 }

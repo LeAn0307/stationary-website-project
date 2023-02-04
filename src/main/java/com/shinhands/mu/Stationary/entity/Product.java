@@ -46,4 +46,8 @@ public class Product {
     private Long amount;
     @Column(name = "color",length = 255)
     private String color;
+
+    @ManyToOne
+    @JoinColumn(name = "cart_product", nullable = false, referencedColumnName = "categoriesid")
+    private Categories categories;
 }

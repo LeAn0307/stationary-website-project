@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -20,4 +21,7 @@ public class Categories {
     private String categoriesName;
     @Column(name = "image",nullable = false,length = 100)
     private String image;
+
+    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    private List<Product> productList;
 }

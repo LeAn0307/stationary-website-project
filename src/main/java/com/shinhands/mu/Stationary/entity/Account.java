@@ -21,4 +21,7 @@ public class Account {
     @Column(name="account_password",length = 255)
     private String accountPassword;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idaccount", referencedColumnName = "id")
+    private UserWebsite userWebsite;
 }

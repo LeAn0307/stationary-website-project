@@ -20,4 +20,12 @@ public class UserRole {
     private Long idRole;
     @Column(name = "iduser")
     private Long idUser;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+    private Role role;
+
+    @ManyToOne
+    @JoinColumn(name = "user_role", nullable = false, referencedColumnName = "iduser")
+    private UserWebsite userWebsite;
 }
