@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "function")
@@ -20,5 +21,8 @@ public class Function {
     private String name;
     @Column(name = "display_name")
     private Long displayName;
+
+    @OneToMany(mappedBy = "function", cascade = CascadeType.ALL)
+    private List<RoleFuntion> roleFuntionList;
 
 }

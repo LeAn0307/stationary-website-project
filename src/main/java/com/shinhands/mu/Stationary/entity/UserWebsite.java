@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user_website")
@@ -27,4 +28,9 @@ public class UserWebsite {
     @Column(name="idaccount")
     private Long idAccount;
 
+    @OneToMany(mappedBy = "userWebsite", cascade = CascadeType.ALL)
+    private List<RoleFuntion> roleFuntionList;
+
+    @OneToOne(mappedBy = "userWebsite")
+    private Account account;
 }
