@@ -19,7 +19,7 @@ public class Category {
     @Column(name="categoriesid",nullable = false)
     private Long categoriesId;
     @Column(name="categories_name",nullable = false,length = 100)
-    private String CategoriesName;
+    private String categoriesName;
     @Column(name = "image",nullable = false,length = 100)
     private String image;
 
