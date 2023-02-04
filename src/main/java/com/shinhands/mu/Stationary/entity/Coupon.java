@@ -16,10 +16,18 @@ import javax.persistence.*;
 public class Coupon {
    @Id
    @GeneratedValue
-   @Column(name = "couponId",nullable = false)
+   @Column(name = "ID",nullable = false)
    private Long couponId;
    @Column(name="name",nullable=false,length=100)
    private String name;
    @Column(name="discount",nullable=false)
    private double discount;
+   @Column(name="MIN_PRICE_APPLY")
+   private double minPrice;
+   @Column(name="MAX_PRICE")
+   private double maxPrice;
+   @Column(name="code",length=20)
+   private String code;
+   @Column(name="amout")
+   private double amout;
 }
