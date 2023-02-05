@@ -22,11 +22,11 @@ public class RoleFuntion {
     private Long functionId;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
     private Role role;
 
     @ManyToOne
-    @JoinColumn(name = "function_id", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "function_id", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
     private Function function;
 
 

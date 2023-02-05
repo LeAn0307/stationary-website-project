@@ -22,10 +22,10 @@ public class UserRole {
     private Long idUser;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
     private Role role;
 
     @ManyToOne
-    @JoinColumn(name = "iduser", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "iduser", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
     private UserWebsite userWebsite;
 }
