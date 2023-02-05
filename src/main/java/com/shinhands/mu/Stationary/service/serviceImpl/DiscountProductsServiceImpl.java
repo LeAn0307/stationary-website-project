@@ -1,0 +1,20 @@
+package com.shinhands.mu.Stationary.service.serviceImpl;
+
+import com.shinhands.mu.Stationary.entity.Product;
+import com.shinhands.mu.Stationary.repository.DiscountProductsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+
+@Service
+public class DiscountProductsServiceImpl {
+    @Autowired
+    DiscountProductsRepository discountProductsRepository;
+
+    public List<Product> getAllDiscountProduct() {
+        return discountProductsRepository.findAll(Sort.by(Sort.Direction.DESC , "discount") );
+    }
+}

@@ -26,6 +26,8 @@ public class RoleFuntion {
     private Role role;
 
     @ManyToOne
-    @JoinColumn(name = "role_function", nullable = false, referencedColumnName = "function_id")
+    @JoinColumn(name = "function_id", nullable = false, referencedColumnName = "id")
     private Function function;
+
+
 }

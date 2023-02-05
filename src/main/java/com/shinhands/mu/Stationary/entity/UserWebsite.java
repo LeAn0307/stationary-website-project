@@ -29,7 +29,7 @@ public class UserWebsite {
     private Long idAccount;
 
     @OneToMany(mappedBy = "userWebsite", cascade = CascadeType.ALL)
-    private List<RoleFuntion> roleFuntionList;
+    private List<UserRole> roleUserList;
 
     @OneToOne(mappedBy = "userWebsite")
     private Account account;
