@@ -1,3 +1,58 @@
+--Có thể dùng lệnh dưới để drop column status trong bảng bill trong trường hợp lỡ tạo db
+--alter table bill
+--    drop column status;
+
+--ADD COLUMN DELETED INTO ALL TABLE
+ALTER TABLE PRODUCT
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE ACCOUNT
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE BILL
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE BILL_DETAIL
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE BILL_STATUS
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CART
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CART_COUPON
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CART_PRODUCT
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CATEGORIES
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE COUPON
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE FUNCTION
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE RATING
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE ROLE
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE ROLE_FUNCTION
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE USER_ROLE
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE USER_WEBSITE
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+
+
+--CREATE TABLE
 CREATE TABLE product (
     id          NUMBER(10, 0) NOT NULL,
     name        VARCHAR2(255),
@@ -15,70 +70,20 @@ CREATE TABLE product (
     madein      VARCHAR2(255),
     amount      NUMBER(10, 0),
     color       VARCHAR2(255),
+    
     CONSTRAINT product_pk PRIMARY KEY ( id )
 );
-
-CREATE SEQUENCE product_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-    
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Asus x202','Asus', 2000,200,'Asus',1,720,1080,2,'decription asus','img.jpg', 'Asus','Chinna',4000,'red');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'red');
-
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell 5005','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'white');
-
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell 4500','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell 302','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
-
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell 4500','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell 302','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
-
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'Tai Nghe gameming','Asus', 2000,200,'Gameming',3,720,1080,2,'decription Tai nghe','img.jpg', 'Asus','Chinna',4000,'black');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'Quần bò','quần', 7000,200,'Dell',4,720,1080,2,'decription quần','img.jpg', 'quần','Chinna',7000,'black');
-
-
 
 ---
 CREATE TABLE categories (
     categoriesid    NUMBER(20) NOT NULL,
     categories_name VARCHAR2(100),
     image           VARCHAR2(100),
+    
     CONSTRAINT categories_pk PRIMARY KEY ( categoriesid )
 );
 
 ---
-
-CREATE SEQUENCE categories_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-    
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Laptop','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'DienThoai','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tai Nghe','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Quan Ao','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giày','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'PC','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tủ Lanh','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bếp','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Phụ Kien','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dich Vu','Anh1.jpg');
-
-
 
 ---
 CREATE TABLE bill (
@@ -93,48 +98,9 @@ CREATE TABLE bill (
     codemomo       VARCHAR2(255),
     created_at     DATE,
     updated_at     DATE,
+    
     CONSTRAINT bill_pk PRIMARY KEY ( bill_id )
 );
-
-
-
-CREATE SEQUENCE bill_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,1,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,2,2,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,1,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3600,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,2,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),8000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,3,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3700,'Note1','Completed','Payment online','ewuewe',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,3,2,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,3,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),7000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,4,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,4,2,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,status,payment,codemomo,created_at, updated_at)
-values(bill_seq.NEXTVAL,4,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),5000,'Note1','Completed','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
-
-
 
 ---
 CREATE TABLE bill_detail (
@@ -146,69 +112,17 @@ CREATE TABLE bill_detail (
     id_bill    NUMBER(10, 0),
     id_rating  NUMBER(10, 0),
     id_product NUMBER(10, 0),
+    
     CONSTRAINT bill_detail_pk PRIMARY KEY ( id )
 );
-
-
-CREATE SEQUENCE bill_detail_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-    
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3500,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,5000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,7000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,8000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,9000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,2,2);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
-
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,3,1);
 
 --- 
 CREATE TABLE bill_status (
     id     NUMBER(10, 0) NOT NULL,
     status VARCHAR(100),
+    
     CONSTRAINT bill_status_pk PRIMARY KEY ( id )
 );
-
-CREATE SEQUENCE bill_status_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Pending');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Complete');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'payment');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Yes');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'No');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Cancel');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Phạt');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Error');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Continues');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Sending');
 
 ---
 CREATE TABLE cart_product (
@@ -216,24 +130,9 @@ CREATE TABLE cart_product (
     cart_id    NUMBER(10, 0),
     product_id NUMBER(10, 0),
     quantity   NUMBER(10, 0),
+    
     CONSTRAINT cart_product_pk PRIMARY KEY ( id )
 );
-
-CREATE SEQUENCE cart_product_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-    
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,1,1,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,1,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,2,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,4,2,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,3,3,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,3,3,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,5,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,3,10);
-insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,4,10);
 
 ------
 CREATE TABLE rating (
@@ -241,26 +140,9 @@ CREATE TABLE rating (
     comment_product VARCHAR2(200),
     ratescore       NUMBER(10, 0),
     iduser          NUMBER(10, 0),
+    
     CONSTRAINT rating_pk PRIMARY KEY ( id )
 );
-
-CREATE SEQUENCE rating_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-
-    
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Đẹp', 4,2);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 2,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment6', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Tuyệt', 2,1);
 
 
 ---
@@ -268,27 +150,34 @@ CREATE TABLE cart_coupon (
     id        NUMBER(10, 0) NOT NULL,
     cart_id   NUMBER(10, 0),
     coupon_id NUMBER(10, 0),
+    
     CONSTRAINT cart_coupon_pk PRIMARY KEY ( id )
 );
 --- 
 CREATE TABLE coupon (
     id       NUMBER(10, 0) NOT NULL,
     name     VARCHAR2(200),
-    discount NUMBER(10, 0),
+    discount NUMBER(3,2),
+    MIN_PRICE_APPLY NUMBER(10,0),
+    MAX_PRICE NUMBER(10,0),
+    CODE VARCHAR2(20),
+    AMOUNT NUMBER(10,0),
+    
     CONSTRAINT coupon_pk PRIMARY KEY ( id )
 );
 ---
 CREATE TABLE cart (
     id    NUMBER(10, 0) NOT NULL,
     total DECIMAL(10, 0),
+    
     CONSTRAINT cart_pk PRIMARY KEY ( id )
 );
 ---
-select * from cart;
 CREATE TABLE account (
     id               NUMBER(10, 0) NOT NULL,
     email            VARCHAR2(255),
     account_password VARCHAR2(255),
+    
     CONSTRAINT account_pk PRIMARY KEY ( id )
 );
 ---
@@ -296,9 +185,10 @@ CREATE TABLE user_website (
     id        NUMBER(10, 0) NOT NULL,
     user_name VARCHAR2(255),
     address   VARCHAR2(255),
-    phone     NUMBER(11, 0),
+    phone     VARCHAR2(15),
     idcart    NUMBER(10, 0),
     idaccount NUMBER(10, 0),
+    
     CONSTRAINT user_website_pk PRIMARY KEY ( id )
 );
 --- 
@@ -306,19 +196,22 @@ CREATE TABLE user_role (
     id      NUMBER(10, 0) NOT NULL,
     id_role NUMBER(10, 0),
     iduser  NUMBER(10, 0),
+    
     CONSTRAINT user_role_pk PRIMARY KEY ( id )
 );
 --
 CREATE TABLE role (
     id        NUMBER(10, 0) NOT NULL,
     name_role VARCHAR2(50),
+    
     CONSTRAINT role_pk PRIMARY KEY ( id )
 );
 --
 CREATE TABLE function (
     id           NUMBER(10, 0) NOT NULL,
     name         VARCHAR2(255),
-    display_name NUMBER(10, 0),
+    display_name VARCHAR2(255),
+    
     CONSTRAINT function_pk PRIMARY KEY ( id )
 );
 --
@@ -326,18 +219,15 @@ CREATE TABLE role_function (
     id          NUMBER(10, 0) NOT NULL,
     role_id     NUMBER(10, 0),
     function_id NUMBER(10, 0),
+    
     CONSTRAINT role_function_pk PRIMARY KEY ( id )
 );
-
-
 
 -- Khoa ngoai -> khoa chinh
 --
 SELECT a.table_name,a.constraint_name
   FROM all_cons_columns a;
 
-                     
-  
 --
 --  Role_Function - Role 
 ALTER TABLE role_function
@@ -465,15 +355,11 @@ CREATE SEQUENCE user_website_seq
     INCREMENT BY 1
     CACHE 10;
     
---CHANGE DATATYPE OF COLUMN PHONE
-ALTER TABLE user_website
-    MODIFY PHONE VARCHAR2(15);
-    
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý', 'Chư Puh, Gia Lai', '0134567896', 1, 1);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2, 2);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'Vũng Tàu', '0125487897', 3, 3);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn A', 'TP.Hồ Chí Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, '�?inh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Đinh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy Mạnh', 'Nghệ An', '0125487487', 6, 6);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Minh', 'Bình Thuận', '0125487879', 7, 7);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Sú', 'Lào Cai', '0125487147', 8, 8);
@@ -481,17 +367,7 @@ INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Aladin', 'Bình Dư�
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễnn Văn Hiếu', 'Dak Lak', '0125487852', 10, 10);
 
 
---TABLE COUPON
---ADD COLUMN FOR COUPON TABLE
-ALTER TABLE COUPON
-    ADD (MIN_PRICE_APPLY NUMBER(10,0),
-         MAX_PRICE NUMBER(10,0),
-         CODE VARCHAR2(20),
-         AMOUNT NUMBER(10,0));
-         
-ALTER TABLE COUPON
-    MODIFY DISCOUNT NUMBER(3,2);
-    
+--TABLE COUPON  
 CREATE SEQUENCE coupon_seq
     MINVALUE 1
     START WITH 1
@@ -566,20 +442,16 @@ CREATE SEQUENCE function_seq
     INCREMENT BY 1
     CACHE 10;
     
---ALTER DATATYPE OF COLUMN DISPLAY_NAME
-ALTER TABLE function
-    MODIFY display_name varchar2(200);
-    
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy�?n', 'Giới hạn chức năng cho một ngư�?i dùng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào gi�? và tiến hành thanh toán');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quyền', 'Giới hạn chức năng cho một người dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào giỏ và tiến hành thanh toán');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khuyến mãi', 'Thêm, xóa, sửa khuy?n mãi');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý đơn hàng', 'Xem, tra cứu tất cả đơn hàng của cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra cứu sản phẩm', 'Tra cứu thông tin sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay đổi số lượng sản phẩm đang có trong cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, '�?ánh giá sản phẩm', '�?ánh giá sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Đánh giá sản phẩm', 'Đánh giá sản phẩm');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq
@@ -600,6 +472,179 @@ INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 9);
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 2);
 
 
---CHANGE NAME COLUMN STATUS IN TABLE BILL STATUS
-ALTER TABLE bill_status
-    RENAME COLUMN cartid TO status;
+--TABLE BILL_STATUS
+CREATE SEQUENCE bill_status_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Pending');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Complete');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'payment');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Yes');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'No');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Cancel');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Phạt');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Error');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Continues');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Sending');
+
+--TABLE BILL
+CREATE SEQUENCE bill_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,1,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,2,2,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,1,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3600,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,2,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),8000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,3,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3700,'Note1','Payment online','ewuewe',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,3,2,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,3,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),7000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,4,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,4,2,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,codemomo,created_at, updated_at)
+values(bill_seq.NEXTVAL,4,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),5000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
+
+--TABLE RATING
+CREATE SEQUENCE rating_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Đẹp', 4,2);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 2,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment6', 1,1);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Tuyệt', 2,1);
+
+--TABLE CATEGORIES
+CREATE SEQUENCE categories_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Laptop','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'DienThoai','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tai Nghe','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Quan Ao','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giày','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'PC','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tủ Lanh','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bếp','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Phụ Kien','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dich Vu','Anh1.jpg');
+
+--TABLE PRODUCT
+CREATE SEQUENCE product_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Asus x202','Asus', 2000,200,'Asus',1,720,1080,2,'decription asus','img.jpg', 'Asus','Chinna',4000,'red');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'red');
+
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell 5005','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'white');
+
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell 4500','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell 302','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
+
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell 4500','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'LapTop Dell 302','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
+
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'Tai Nghe gameming','Asus', 2000,200,'Gameming',3,720,1080,2,'decription Tai nghe','img.jpg', 'Asus','Chinna',4000,'black');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+(product_seq.NEXTVAL,'Quần bò','quần', 7000,200,'Dell',4,720,1080,2,'decription quần','img.jpg', 'quần','Chinna',7000,'black');
+
+--TABLE CART_PRODUCT
+CREATE SEQUENCE cart_product_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,1,1,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,1,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,2,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,4,2,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,3,3,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,3,3,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,5,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,3,10);
+insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,4,10);
+
+--TABLE BILL_DETAIL
+CREATE SEQUENCE bill_detail_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,3500,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,5000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,7000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,8000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,9000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,2,2);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,3,1);
