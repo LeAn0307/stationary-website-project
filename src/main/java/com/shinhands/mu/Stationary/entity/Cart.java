@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import java.math.BigDecimal;
-@Entity
+
 @Table(name="cart")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 public class Cart {
     @Id
     @GeneratedValue
-    @Column(name = "cartId",nullable = false)
+    @Column(name = "id",nullable = false)
     private Long cartId;
     @Column(name = "total")
     private BigDecimal total;

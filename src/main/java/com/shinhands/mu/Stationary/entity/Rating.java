@@ -7,8 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
+
 @Table(name="rating")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,13 +17,12 @@ import javax.persistence.*;
 public class Rating {
     @Id
     @GeneratedValue
-    @Column(name="ratingId",nullable=false)
+    @Column(name="id",nullable=false)
     private Long ratingId;
-    @Column(name="comment",nullable=false,length=500)
+    @Column(name="comment_product",nullable=false,length=500)
     private String comment;
     @Column(name="ratescore",nullable=false)
     private double rateScore;
-    @Column
+    @Column(name="iduser")
     private Long userId;
-
 }
