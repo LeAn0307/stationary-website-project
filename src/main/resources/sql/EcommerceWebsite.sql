@@ -65,8 +65,8 @@ CREATE SEQUENCE categories_seq
     START WITH 1
     INCREMENT BY 1
     CACHE 10;
-    
-inset into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Laptop','Anh1.jpg');
+    select * from categories;
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Laptop','Anh1.jpg');
 inset into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'DienThoai','Anh1.jpg');
 inset into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tai Nghe','Anh1.jpg');
 inset into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Quan Ao','Anh1.jpg');
@@ -246,7 +246,7 @@ insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTV
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1)
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1)
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1)
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Đẹp', 4,2)
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'�?ẹp', 4,2)
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1)
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 1,1)
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 2,1)
@@ -274,6 +274,7 @@ CREATE TABLE cart (
     CONSTRAINT cart_pk PRIMARY KEY ( id )
 );
 ---
+select * from cart;
 CREATE TABLE account (
     id               NUMBER(10, 0) NOT NULL,
     email            VARCHAR2(255),
@@ -462,7 +463,7 @@ INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2, 2);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'Vũng Tàu', '0125487897', 3, 3);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn A', 'TP.Hồ Chí Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Đinh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, '�?inh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy Mạnh', 'Nghệ An', '0125487487', 6, 6);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Minh', 'Bình Thuận', '0125487879', 7, 7);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Sú', 'Lào Cai', '0125487147', 8, 8);
@@ -561,14 +562,14 @@ ALTER TABLE function
     
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quyền', 'Giới hạn chức năng cho một người dùng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào giỏ và tiến hành thanh toán');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy�?n', 'Giới hạn chức năng cho một ngư�?i dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào gi�? và tiến hành thanh toán');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khuyến mãi', 'Thêm, xóa, sửa khuy?n mãi');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý đơn hàng', 'Xem, tra cứu tất cả đơn hàng của cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra cứu sản phẩm', 'Tra cứu thông tin sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay đổi số lượng sản phẩm đang có trong cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Đánh giá sản phẩm', 'Đánh giá sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, '�?ánh giá sản phẩm', '�?ánh giá sản phẩm');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq

@@ -5,8 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+
+@Table(name="cart_product")
 @Entity
-@Table(name="categories")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,17 +15,17 @@ import javax.persistence.*;
 public class CartProduct {
     @Id
     @GeneratedValue
-    @Column(name="CartProduct")
+    @Column(name="id")
     private Long cartProductId;
-    @Column
+    @Column(name="quantity")
     private int quantity;
-    @Column
+    @Column(name="product_id")
     private Long productId;
     //@ManyToOne(fetch = FetchType.LAZY, optional = false)
     //@JoinColumn(name = "productId")
     //@EqualsAndHashCode.Exclude
     //@JsonBackReference
    // private Product product;
-    @Column
+    @Column(name="cart_id")
     private Long cartId;
 }
