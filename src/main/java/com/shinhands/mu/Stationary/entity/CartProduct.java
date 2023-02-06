@@ -28,4 +28,7 @@ public class CartProduct {
    // private Product product;
     @Column(name="cart_id")
     private Long cartId;
+
+    @Column(name = "deleted")
+    private Long deleted;
 }

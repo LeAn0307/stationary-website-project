@@ -21,6 +21,9 @@ public class Cart {
     private Long cartId;
     @Column(name = "total")
     private BigDecimal total;
+
+    @Column(name = "deleted")
+    private Long deleted;
     /*@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

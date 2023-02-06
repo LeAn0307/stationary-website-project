@@ -30,4 +30,6 @@ public class Coupon {
    private String code;
    @Column(name="amount")
    private double amount;
+   @Column(name = "deleted")
+   private Long deleted;
 }

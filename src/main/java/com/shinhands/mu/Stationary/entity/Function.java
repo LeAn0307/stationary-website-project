@@ -21,8 +21,10 @@ public class Function {
     private String name;
     @Column(name = "display_name")
     private Long displayName;
+    @Column(name = "deleted")
+    private Long deleted;
 
-    @OneToMany(mappedBy = "function", cascade = CascadeType.ALL)
-    private List<RoleFuntion> roleFuntionList;
+//    @OneToMany(mappedBy = "function", cascade = CascadeType.ALL)
+//    private List<RoleFuntion> roleFuntionList;
 
 }

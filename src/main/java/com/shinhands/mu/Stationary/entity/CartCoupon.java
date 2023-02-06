@@ -22,4 +22,7 @@ public class CartCoupon {
     private long cartId;
     @Column(name="coupon_id")
     private long couponId;
+
+    @Column(name = "deleted")
+    private Long deleted;
 }

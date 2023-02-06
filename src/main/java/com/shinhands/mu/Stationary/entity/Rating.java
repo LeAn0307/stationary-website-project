@@ -25,4 +25,6 @@ public class Rating {
     private double rateScore;
     @Column(name="iduser")
     private Long userId;
+    @Column(name = "deleted")
+    private Long deleted;
 }

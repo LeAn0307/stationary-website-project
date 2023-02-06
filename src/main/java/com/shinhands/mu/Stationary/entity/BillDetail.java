@@ -61,6 +61,18 @@ public class BillDetail {
     @Column(name = "updateat")
     private Date updatedAt;
 
+    @Column(name = "ID_BILL")
+    private Long idBill;
+
+    @Column(name = "ID_RATING")
+    private Long idRating;
+
+    @Column(name = "ID_PRODUCT")
+    private Long idProduct;
+
+    @Column(name = "deleted")
+    private Long deleted;
+
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_bill", nullable = false, referencedColumnName = "bill_id")
 //    private Bill bill;

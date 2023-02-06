@@ -21,11 +21,13 @@ public class Role {
     private Long id;
     @Column(name="name_role",length = 50)
     private String nameRole;
+    @Column(name = "deleted")
+    private Long deleted;
 
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private List<RoleFuntion> roleFuntionList;
-
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
-    private List<UserRole> userRoleList;
+//    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+//    private List<RoleFuntion> roleFuntionList;
+//
+//    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+//    private List<UserRole> userRoleList;
 }
