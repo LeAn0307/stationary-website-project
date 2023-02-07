@@ -16,9 +16,9 @@ public class Account {
     @GeneratedValue
     @Column(name="id",nullable = false)
     private Long id;
-    @Column(name="email",length = 255)
+    @Column(name="email",length = 255,nullable = false)
     private String email;
-    @Column(name="account_password",length = 255)
+    @Column(name="account_password",length = 255,nullable = false)
     private String accountPassword;
 
     @Column(name = "deleted")

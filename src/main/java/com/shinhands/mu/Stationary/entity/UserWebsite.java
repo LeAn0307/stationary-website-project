@@ -17,11 +17,11 @@ public class UserWebsite {
     @GeneratedValue
     @Column(name="id",nullable = false)
     private Long id;
-    @Column(name="user_name",length = 255)
+    @Column(name="user_name",length = 255,nullable = false)
     private String userName;
-    @Column(name="address",length = 255)
+    @Column(name="address",length = 255,nullable = false)
     private String address;
-    @Column(name="phone")
+    @Column(name="phone",nullable = false)
     private Long phone;
     @Column(name="idcart")
     private Long idCart;
