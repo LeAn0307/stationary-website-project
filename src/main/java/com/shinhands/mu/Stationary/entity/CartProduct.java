@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 
 @Table(name="cart_product")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "CART_PRODUCT_SEQ", allocationSize = 1)
 @Entity
 @Getter
 @Setter
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class CartProduct {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id")
     private Long cartProductId;
     @Column(name="quantity")

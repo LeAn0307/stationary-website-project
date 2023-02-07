@@ -23,7 +23,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDTO addAccount(AccountDTO accountDTO) {
-        return mapper.map(accountRepository.save(mapper.map(accountDTO, Account.class)), AccountDTO.class);
+        Account account = mapper.map(accountDTO, Account.class);
+        account.setDeleted(0L);
+        return mapper.map(accountRepository.save(account), AccountDTO.class);
     }
 
     @Override

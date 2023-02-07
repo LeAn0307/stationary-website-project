@@ -9,12 +9,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "user_website")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "USER_WEBSITE_SEQ", allocationSize = 1)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserWebsite {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name="user_name",length = 255,nullable = false)

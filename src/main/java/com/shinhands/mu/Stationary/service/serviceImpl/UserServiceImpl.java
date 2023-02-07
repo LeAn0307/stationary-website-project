@@ -25,8 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO addUser(UserDTO userDTO) {
-
-        return mapper.map(userRepository.save(mapper.map(userDTO, UserWebsite.class)), UserDTO.class);
+        UserWebsite userWebsite =mapper.map(userDTO, UserWebsite.class);
+        userWebsite.setDeleted(0L);
+        return mapper.map(userRepository.save(userWebsite), UserDTO.class);
     }
 
     @Override

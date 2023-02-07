@@ -9,12 +9,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "function")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "FUNCTION_SEQ", allocationSize = 1)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Function {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "name",length = 255)

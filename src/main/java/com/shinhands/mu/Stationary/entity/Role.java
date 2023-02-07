@@ -10,13 +10,14 @@ import java.util.List;
 
 @Entity
 @Table(name="Role")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "ROLE_SEQ", allocationSize = 1)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Role {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name="name_role",length = 50)

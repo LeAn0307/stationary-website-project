@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Table(name="cart")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "CART_SEQ", allocationSize = 1)
 @Entity
 @Getter
 @Setter
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class Cart {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id",nullable = false)
     private Long cartId;
     @Column(name = "total")
