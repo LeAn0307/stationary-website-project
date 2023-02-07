@@ -20,12 +20,16 @@ public class UserRole {
     private Long idRole;
     @Column(name = "iduser")
     private Long idUser;
+    @Column(name = "deleted")
+    private Long deleted;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
-    private Role role;
 
-    @ManyToOne
-    @JoinColumn(name = "iduser", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
-    private UserWebsite userWebsite;
+//    @ManyToOne
+//    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+//    private Role role;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "user_role", nullable = false, referencedColumnName = "iduser")
+//    private UserWebsite userWebsite;
+
 }

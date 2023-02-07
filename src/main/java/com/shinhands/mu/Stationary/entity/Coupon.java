@@ -28,6 +28,8 @@ public class Coupon {
    private double maxPrice;
    @Column(name="code",length=20)
    private String code;
-   @Column(name="amout")
-   private double amout;
+   @Column(name="amount")
+   private double amount;
+   @Column(name = "deleted")
+   private Long deleted;
 }

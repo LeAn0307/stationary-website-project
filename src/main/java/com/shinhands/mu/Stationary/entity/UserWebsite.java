@@ -27,10 +27,14 @@ public class UserWebsite {
     private Long idCart;
     @Column(name="idaccount")
     private Long idAccount;
+    @Column(name = "deleted")
+    private Long deleted;
 
-    @OneToMany(mappedBy = "userWebsite", cascade = CascadeType.ALL)
-    private List<UserRole> roleUserList;
 
-    @OneToOne(mappedBy = "userWebsite")
-    private Account account;
+//    @OneToMany(mappedBy = "userWebsite", cascade = CascadeType.ALL)
+//    private List<RoleFuntion> roleFuntionList;
+//
+//    @OneToOne(mappedBy = "userWebsite")
+//    private Account account;
+
 }

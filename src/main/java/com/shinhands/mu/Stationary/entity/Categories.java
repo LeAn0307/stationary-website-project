@@ -22,6 +22,9 @@ public class Categories {
     @Column(name = "image",nullable = false,length = 100)
     private String image;
 
-    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
-    private List<Product> productList;
+    @Column(name = "deleted")
+    private Long deleted;
+
+//    @OneToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+//    private List<Product> productList;
 }

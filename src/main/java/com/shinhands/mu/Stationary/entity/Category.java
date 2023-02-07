@@ -23,4 +23,6 @@ public class Category {
     @Column(name = "image",nullable = false,length = 100)
     private String image;
 
+    @Column(name = "deleted")
+    private Long deleted;
 }

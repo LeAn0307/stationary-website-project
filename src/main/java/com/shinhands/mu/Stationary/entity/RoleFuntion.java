@@ -20,14 +20,15 @@ public class RoleFuntion {
     private Long roleId;
     @Column(name = "function_id")
     private Long functionId;
+    @Column(name = "deleted")
+    private Long deleted;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
-    private Role role;
-
-    @ManyToOne
-    @JoinColumn(name = "function_id", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
-    private Function function;
-
+//    @ManyToOne
+//    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+//    private Role role;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "role_function", nullable = false, referencedColumnName = "function_id")
+//    private Function function;
 
 }

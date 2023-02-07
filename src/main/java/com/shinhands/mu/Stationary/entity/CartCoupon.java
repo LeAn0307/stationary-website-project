@@ -16,9 +16,13 @@ import javax.persistence.*;
 public class CartCoupon {
     @Id
     @GeneratedValue
-    private Long cartCouponId;
-    @Column
-    private Long cartId;
-    @Column
-    private Long couponId;
+    @Column(name="id")
+    private long cartCouponId;
+    @Column(name="cart_id")
+    private long cartId;
+    @Column(name="coupon_id")
+    private long couponId;
+
+    @Column(name = "deleted")
+    private Long deleted;
 }

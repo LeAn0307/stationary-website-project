@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import java.math.BigDecimal;
-@Entity
+
 @Table(name="cart")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,10 +17,13 @@ import java.math.BigDecimal;
 public class Cart {
     @Id
     @GeneratedValue
-    @Column(name = "cartId",nullable = false)
+    @Column(name = "id",nullable = false)
     private Long cartId;
     @Column(name = "total")
     private BigDecimal total;
+
+    @Column(name = "deleted")
+    private Long deleted;
     /*@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

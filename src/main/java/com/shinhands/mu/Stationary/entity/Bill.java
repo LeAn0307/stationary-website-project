@@ -45,14 +45,22 @@ public class Bill {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "id_bill_status", nullable = false, referencedColumnName = "id")
-    private BillStatus billStatus;
+    @Column(name = "customer_id")
+    private Long customer_id;
 
+    @Column(name = "id_bill_status")
+    private Long idBillStatus;
+
+    @Column(name = "deleted")
+    private Long deleted;
 //    @ManyToOne
-//    @JoinColumn(name = "customer_id", nullable = false, referencedColumnName = "id")
-//    privare User user;
-
-    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL)
-    private List<BillDetail> billDetails;
+////    @JoinColumn(name = "id_bill_status", nullable = false, referencedColumnName = "id")
+////    private BillStatus billStatus;
+////
+//////    @ManyToOne
+//////    @JoinColumn(name = "customer_id", nullable = false, referencedColumnName = "id")
+//////    privare User user;
+////
+////    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL)
+////    private List<BillDetail> billDetails;
 }

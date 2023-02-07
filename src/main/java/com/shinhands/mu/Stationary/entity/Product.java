@@ -46,8 +46,10 @@ public class Product {
     private Long amount;
     @Column(name = "color",length = 255)
     private String color;
+    @Column(name = "deleted")
+    private Long deleted;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_product", nullable = false, referencedColumnName = "categoriesid")
-    private Categories categories;
+//    @ManyToOne
+//    @JoinColumn(name = "cart_product", nullable = false, referencedColumnName = "categoriesid")
+//    private Categories categories;
 }
