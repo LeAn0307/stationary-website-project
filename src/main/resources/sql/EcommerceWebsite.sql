@@ -1,6 +1,3 @@
---Có thể dùng lệnh dưới để drop column status trong bảng bill trong trư�?ng hợp lỡ tạo db
---alter table bill
---    drop column status;
 -- ADD COLUMN PRICE INTO PRODUCT TABLE
 ALTER TABLE PRODUCT
     MODIFY price decimal(12,6);
@@ -364,7 +361,7 @@ INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2, 2);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'Vũng Tàu', '0125487897', 3, 3);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn A', 'TP.Hồ Chí Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, '�?inh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Đinh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy Mạnh', 'Nghệ An', '0125487487', 6, 6);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Minh', 'Bình Thuận', '0125487879', 7, 7);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Sú', 'Lào Cai', '0125487147', 8, 8);
@@ -449,14 +446,14 @@ CREATE SEQUENCE function_seq
     
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy�?n', 'Giới hạn chức năng cho một ngư�?i dùng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào gi�? và tiến hành thanh toán');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quyền', 'Giới hạn chức năng cho một người dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào giỏ và tiến hành thanh toán');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khuyến mãi', 'Thêm, xóa, sửa khuy?n mãi');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý đơn hàng', 'Xem, tra cứu tất cả đơn hàng của cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra cứu sản phẩm', 'Tra cứu thông tin sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay đổi số lượng sản phẩm đang có trong cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, '�?ánh giá sản phẩm', '�?ánh giá sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Đánh giá sản phẩm', 'Đánh giá sản phẩm');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq
@@ -543,7 +540,7 @@ insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTV
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'�?ẹp', 4,2);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Đẹp', 4,2);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 2,1);
@@ -575,7 +572,7 @@ CREATE SEQUENCE product_seq
     CACHE 10;
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
-(product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 t?','Kanex', 2000,200,'Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
+(product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 tờ','Kanex', 2000,200,'Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
 Kanex là nhà sản xuất uy tín tại Ấn Độ về sản phẩm máy bấm kim, bấm lổ, kim bấm văn phòng
 Sản phẩm Bấm kim chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Kanex tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
@@ -690,12 +687,51 @@ CREATE SEQUENCE rating_seq
     CACHE 10;
     
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt', 1, 1, 1);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh h�?ng', 1, 1, 2);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh hỏng', 1, 1, 2);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'giá tốt', 1, 1, 3);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt trong tầm giá', 1, 1, 4);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment2', 1, 1, 5);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Dùng nhanh h�?ng', 1, 1, 6);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Dùng nhanh hỏng', 1, 1, 6);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Giá tốt', 1, 1, 7);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+
+--FIX TABLE USER_WEBSITE AND CART
+ALTER TABLE USER_WEBSITE
+    DROP CONSTRAINT FK06;
+    
+ALTER TABLE USER_WEBSITE
+    DROP COLUMN IDCART;
+    
+ALTER TABLE CART
+    ADD USER_ID NUMBER(10, 0);
+   
+--UPDATE USER_ID IN CART
+DECLARE
+    TEMP NUMBER(10,0) := 1;
+BEGIN
+    FOR UPDATE_USERID_INTO_CART IN 1..10
+    LOOP
+        UPDATE CART
+        SET USER_ID = TEMP
+        WHERE ID = TEMP;
+        TEMP := TEMP + 1;
+    END LOOP;
+END;
+
+--CREATE FOREIGN KEY FROM CART TO USER_WEBSITE
+ALTER TABLE CART
+    ADD CONSTRAINT FK06 FOREIGN KEY (USER_ID) REFERENCES USER_WEBSITE(ID);
+
+--CREATE TRIGGER FOR CREATE CART AFTER INSERT USER_WEBSITE
+CREATE OR REPLACE TRIGGER CREATE_CART
+AFTER INSERT
+    ON USER_WEBSITE
+    FOR EACH ROW
+BEGIN
+
+    INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (CART_SEQ.NEXTVAL, 0, :NEW.ID);
+    
+END;
+
