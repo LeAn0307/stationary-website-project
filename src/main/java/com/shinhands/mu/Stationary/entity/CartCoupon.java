@@ -17,7 +17,7 @@ public class CartCoupon {
     @Id
     @GeneratedValue
     @Column(name="id")
-    private long cartCouponId;
+    private long id;
     @Column(name="cart_id")
     private long cartId;
     @Column(name="coupon_id")

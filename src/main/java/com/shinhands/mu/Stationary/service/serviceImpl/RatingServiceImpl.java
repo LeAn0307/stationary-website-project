@@ -1,4 +1,5 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
+
 import com.shinhands.mu.Stationary.dto.RatingDTO;
 import com.shinhands.mu.Stationary.entity.Rating;
 import com.shinhands.mu.Stationary.repository.RatingRepository;
@@ -9,50 +10,53 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class RatingServiceImpl implements RatingService {
     @Autowired
     private RatingRepository ratingRepository;
     @Autowired
     private ModelMapper mapper;
-    public List<Rating> getAllRatings()
-    {
-        System.out.println(ratingRepository.findAll());
-        return mapper.map(ratingRepository.findAll(), new TypeToken<List<RatingDTO>>(){}.getType());
 
-    }
-    public RatingDTO addRating(RatingDTO ratingDTO)
-    {
-        return mapper.map(ratingRepository.save(mapper.map(ratingDTO,Rating.class)), RatingDTO.class);
+    @Override
+    public List<RatingDTO> getAllRatings() {
+        return mapper.map(ratingRepository.findAllByDeletedEquals(0L), new TypeToken<List<RatingDTO>>() {
+        }.getType());
     }
 
-    public Boolean deleteRating(long id)
-    {
-        try{
-            ratingRepository.deleteById(id);
+    @Override public
+    RatingDTO addRating(RatingDTO ratingDTO) {
+        Rating rating = mapper.map(ratingDTO, Rating.class);
+        rating.setDeleted(0L);
+        Rating rating1 = ratingRepository.save(rating);
+        return mapper.map(rating1, RatingDTO.class);
+    }
+
+    @Override
+    public
+    Boolean deleteRating(long id) {
+        Rating oldRating = ratingRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldRating != null) {
+            oldRating.setDeleted(1L);
+            ratingRepository.save(oldRating);
             return true;
-        }
-        catch (Exception e)
-        {
+        } else return false;
+    }
 
-            System.out.println(e.getMessage());
-            return false;
-        }
+    @Override
+    public RatingDTO getRatingById(long id) {
+        Rating oldRating = ratingRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldRating != null) return mapper.map(oldRating, RatingDTO.class);
+        else return null;
     }
-    public RatingDTO getRatingById(long id)
-    {
-        return mapper.map(ratingRepository.findById(id).orElse(null), RatingDTO.class);
-    }
-    public Boolean updateRating(long id, RatingDTO ratingDTO)
-    {
-        Rating oldRating=ratingRepository.findById(id).orElse(null);
-        if(oldRating==null)
-        {
+
+    @Override
+    public Boolean updateRating(long id, RatingDTO ratingDTO) {
+        Rating oldRating = ratingRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldRating == null) {
             return false;
-        }
-        else
-        {
-            ratingRepository.save(mapper.map(ratingDTO,Rating.class));
+        } else {
+            ratingRepository.save(mapper.map(ratingDTO, Rating.class));
         }
         return true;
     }

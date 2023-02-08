@@ -38,8 +38,8 @@ public class CategoryController {
         return ResponseEntity.ok().body(CategoryService.updateCategory(id,categoryDTO));
     }
     @DeleteMapping(value="/{id}")
-    public ResponseEntity deleteCategory(@PathVariable(name="id") long id,@RequestBody CategoryDTO categoryDTO)
+    public ResponseEntity deleteCategory(@PathVariable(name="id") long id)
     {
-        return ResponseEntity.ok().body(CategoryService.updateCategory(id,categoryDTO));
+        return ResponseEntity.ok().body(CategoryService.deleteCategory(id));
     }
 }
