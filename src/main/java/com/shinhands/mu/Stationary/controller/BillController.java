@@ -3,6 +3,7 @@ package com.shinhands.mu.Stationary.controller;
 import com.shinhands.mu.Stationary.dto.BillDTO;
 import com.shinhands.mu.Stationary.service.BillDetailService;
 import com.shinhands.mu.Stationary.service.BillService;
+import com.shinhands.mu.Stationary.service.BillStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/v1/bill")
@@ -21,6 +23,9 @@ public class BillController {
 
     @Autowired
     private BillDetailService billDetailService;
+
+    @Autowired
+    private BillStatusService billStatusService;
 
     @GetMapping("")
     public ResponseEntity<List<BillDTO>> getAllBills() {
@@ -43,6 +48,7 @@ public class BillController {
             if(billDTO == null) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             } else {
+                billDTO.setStatus(billStatusService.getStatus(billDTO.getIdBillStatus()));
                 return new ResponseEntity<>(billDTO ,HttpStatus.OK);
             }
         } catch (Exception e) {
@@ -58,6 +64,7 @@ public class BillController {
             if(billDTO.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             } else {
+                billDTO.stream().forEach(i -> i.setStatus(billStatusService.getStatus(i.getIdBillStatus())));
                 return new ResponseEntity<>(billDTO ,HttpStatus.OK);
             }
         } catch (Exception e) {
@@ -68,11 +75,10 @@ public class BillController {
     @PostMapping("")
     public ResponseEntity createBill(@RequestBody BillDTO billDTO) {
         try {
-            long billId = billService.addBill(billDTO);
-            if(billDetailService.addBillDetail(billId ,billDTO.getBillDetailDTOList())){
+            if(billDetailService.addBillDetail(billService.addBill(billDTO) ,billDTO.getBillDetailDTOList())){
                 return new ResponseEntity<>(HttpStatus.CREATED);
             } else {
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

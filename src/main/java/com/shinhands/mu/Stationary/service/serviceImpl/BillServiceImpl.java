@@ -23,17 +23,26 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public List<BillDTO> getAllBills() {
-        return modelMapper.map(billRepository.findByDeleted((long)0), new TypeToken<List<BillDTO>>(){}.getType());
+        return modelMapper.map(billRepository.findByDeleted(0L), new TypeToken<List<BillDTO>>(){}.getType());
     }
 
     @Override
     public BillDTO getBillsByBillId(long billId) {
-        return modelMapper.map(billRepository.findAllByDeletedAndId((long)0, billId), BillDTO.class);
+        Bill bill = billRepository.findAllByDeletedAndId(0L, billId);
+        if(bill != null) {
+            return modelMapper.map(bill, BillDTO.class);
+        }
+        return null;
     }
 
     @Override
     public List<BillDTO> getBillsByOrderDate(Date dateOrder) {
-        return modelMapper.map(billRepository.findAllByDateOrderAndDeleted(dateOrder, (long)0), new TypeToken<List<BillDTO>>(){}.getType());
+        List<Bill> billList = billRepository.findAllByDateOrderAndDeleted(dateOrder, 0L);
+        if(billList.isEmpty()) {
+            return null;
+        } else {
+            return modelMapper.map(billList, new TypeToken<List<BillDTO>>(){}.getType());
+        }
     }
 
     @Override
@@ -44,15 +53,18 @@ public class BillServiceImpl implements BillService {
     @Override
     public BillDTO updateBill(long id, BillDTO billDTO)
     {
-        Bill bill = billRepository.findAllByDeletedAndId((long)0, id);
-        billDTO.setId(bill.getId());
-        return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class);
+        Bill bill = billRepository.findAllByDeletedAndId(0L, id);
+        if(bill == null) {
+            return null;
+        } else {
+            return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class);
+        }
     }
 
     @Override
     public long deleteBill(long id) {
-        Bill deleteBill = billRepository.findAllByDeletedAndId((long)0,id);
-        deleteBill.setDeleted((long)1);
+        Bill deleteBill = billRepository.findAllByDeletedAndId(0L,id);
+        deleteBill.setDeleted(1L);
         billRepository.save(deleteBill);
         return deleteBill.getId();
     }
