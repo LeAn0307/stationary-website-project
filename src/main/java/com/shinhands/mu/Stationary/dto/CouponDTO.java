@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CouponDTO {
-    private Long couponId;
+    private Long id;
     private String name;
     private double discount;
     private double minPrice;

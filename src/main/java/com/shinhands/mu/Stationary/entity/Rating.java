@@ -18,13 +18,15 @@ public class Rating {
     @Id
     @GeneratedValue
     @Column(name="id",nullable=false)
-    private Long ratingId;
+    private Long id;
     @Column(name="comment_product",nullable=false,length=500)
     private String comment;
     @Column(name="ratescore",nullable=false)
     private double rateScore;
     @Column(name="iduser")
     private Long userId;
+    @Column(name = "product_id")
+    private Long productId;
     @Column(name = "deleted")
     private Long deleted;
 }

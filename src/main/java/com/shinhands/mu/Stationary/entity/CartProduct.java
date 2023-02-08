@@ -16,7 +16,7 @@ public class CartProduct {
     @Id
     @GeneratedValue
     @Column(name="id")
-    private Long cartProductId;
+    private Long id;
     @Column(name="quantity")
     private int quantity;
     @Column(name="product_id")

@@ -18,7 +18,7 @@ public class Cart {
     @Id
     @GeneratedValue
     @Column(name = "id",nullable = false)
-    private Long cartId;
+    private Long id;
     @Column(name = "total")
     private BigDecimal total;
 
