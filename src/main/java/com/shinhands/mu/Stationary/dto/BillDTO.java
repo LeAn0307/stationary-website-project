@@ -32,5 +32,7 @@ public class BillDTO {
 
     private Long customerId;
 
+    private String status;
+
     private List<BillDetailDTO> billDetailDTOList;
 }

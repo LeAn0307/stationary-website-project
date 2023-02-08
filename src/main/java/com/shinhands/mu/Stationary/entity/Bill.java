@@ -31,9 +31,6 @@ public class Bill {
     @Column(name = "note")
     private String note;
 
-    @Column(name = "status")
-    private String status;
-
     @Column(name = "payment")
     private String payment;
 
