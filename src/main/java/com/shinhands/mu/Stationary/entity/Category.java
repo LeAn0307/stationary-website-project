@@ -9,16 +9,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="categories")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "CATEGORIES_SEQ", allocationSize = 1)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@SequenceGenerator(name= "CATEGORIES_SEQ", sequenceName = "CATEGORIES_SEQ", initialValue=1, allocationSize = 1)
 public class Category {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CATEGORIES_SEQ")
     @Column(name="categoriesid",nullable = false)
-    private Long categoriesId;
+    private Long id;
     @Column(name="categories_name",nullable = false,length = 100)
     private String categoriesName;
     @Column(name = "image",nullable = false,length = 100)

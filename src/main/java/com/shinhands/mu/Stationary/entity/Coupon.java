@@ -18,7 +18,7 @@ public class Coupon {
    @Id
    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
    @Column(name = "ID",nullable = false)
-   private Long couponId;
+   private Long id;
    @Column(name="name",nullable=false,length=100)
    private String name;
    @Column(name="discount",nullable=false)

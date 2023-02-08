@@ -16,43 +16,45 @@ public class CartProductServiceImpl implements CartProductService {
     private CartProductRepository cartProductRepository;
     @Autowired
     private ModelMapper mapper;
-    public List<CartProduct> getAllCartProducts()
-    {
-        return mapper.map(cartProductRepository.findAll(), new TypeToken<List<CartProductDTO>>(){}.getType());
-
-    }
-    public CartProductDTO addCartProduct(CartProductDTO cartDTO)
-    {
-        return mapper.map(cartProductRepository.save(mapper.map(cartDTO,CartProduct.class)), CartProductDTO.class);
+    @Override
+    public List<CartProductDTO> getAllCartProducts() {
+        return mapper.map(cartProductRepository.findAllByDeletedEquals(0L), new TypeToken<List<CartProductDTO>>() {
+        }.getType());
     }
 
-    public Boolean deleteCartProduct(long id)
-    {
-        try{
-            cartProductRepository.deleteById(id);
+    @Override public
+    CartProductDTO addCartProduct(CartProductDTO CartProductDTO) {
+        CartProduct CartProduct = mapper.map(CartProductDTO, CartProduct.class);
+        CartProduct.setDeleted(0L);
+        CartProduct CartProduct1 = cartProductRepository.save(CartProduct);
+        return mapper.map(CartProduct1, CartProductDTO.class);
+    }
+
+    @Override
+    public
+    Boolean deleteCartProduct(long id) {
+        CartProduct oldCartProduct = cartProductRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCartProduct != null) {
+            oldCartProduct.setDeleted(1L);
+            cartProductRepository.save(oldCartProduct);
             return true;
-        }
-        catch (Exception e)
-        {
+        } else return false;
+    }
 
-            System.out.println(e.getMessage());
-            return false;
-        }
+    @Override
+    public CartProductDTO getCartProductById(long id) {
+        CartProduct oldCartProduct = cartProductRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCartProduct != null) return mapper.map(oldCartProduct, CartProductDTO.class);
+        else return null;
     }
-    public CartProductDTO getCartProductById(long id)
-    {
-        return mapper.map(cartProductRepository.findById(id).orElse(null), CartProductDTO.class);
-    }
-    public Boolean updateCartProduct(long id, CartProductDTO cartDTO)
-    {
-        CartProduct oldCartProduct=cartProductRepository.findById(id).orElse(null);
-        if(oldCartProduct==null)
-        {
+
+    @Override
+    public Boolean updateCartProduct(long id, CartProductDTO CartProductDTO) {
+        CartProduct oldCartProduct = cartProductRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCartProduct == null) {
             return false;
-        }
-        else
-        {
-            cartProductRepository.save(mapper.map(cartDTO,CartProduct.class));
+        } else {
+            cartProductRepository.save(mapper.map(CartProductDTO, CartProduct.class));
         }
         return true;
     }

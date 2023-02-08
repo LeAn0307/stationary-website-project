@@ -6,9 +6,9 @@ import com.shinhands.mu.Stationary.entity.Coupon;
 
 import java.util.List;
 public interface CouponService {
-    public List<Coupon> getAllCoupons();
-    public CouponDTO addCoupon(CouponDTO category);
+    public List<CouponDTO> getAllCoupons();
+    public CouponDTO addCoupon(CouponDTO couponDTO);
     public Boolean deleteCoupon(long id);
     public CouponDTO getCouponById(long id);
-    public Boolean updateCoupon(long id, CouponDTO category);
+    public Boolean updateCoupon(long id, CouponDTO couponDTO);
 }

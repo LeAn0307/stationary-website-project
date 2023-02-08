@@ -18,7 +18,7 @@ public class CartCoupon {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id")
-    private long cartCouponId;
+    private long id;
     @Column(name="cart_id")
     private long cartId;
     @Column(name="coupon_id")

@@ -16,43 +16,45 @@ public class CartCouponServiceImpl implements CartCouponService {
     private CartCouponRepository cartCouponRepository;
     @Autowired
     private ModelMapper mapper;
-    public List<CartCoupon> getAllCartCoupons()
-    {
-        return mapper.map(cartCouponRepository.findAll(), new TypeToken<List<CartCouponDTO>>(){}.getType());
-
-    }
-    public CartCouponDTO addCartCoupon(CartCouponDTO cartDTO)
-    {
-        return mapper.map(cartCouponRepository.save(mapper.map(cartDTO,CartCoupon.class)), CartCouponDTO.class);
+    @Override
+    public List<CartCouponDTO> getAllCartCoupons() {
+        return mapper.map(cartCouponRepository.findAllByDeletedEquals(0L), new TypeToken<List<CartCouponDTO>>() {
+        }.getType());
     }
 
-    public Boolean deleteCartCoupon(long id)
-    {
-        try{
-            cartCouponRepository.deleteById(id);
+    @Override public
+    CartCouponDTO addCartCoupon(CartCouponDTO CartCouponDTO) {
+        CartCoupon CartCoupon = mapper.map(CartCouponDTO, CartCoupon.class);
+        CartCoupon.setDeleted(0L);
+        CartCoupon CartCoupon1 = cartCouponRepository.save(CartCoupon);
+        return mapper.map(CartCoupon1, CartCouponDTO.class);
+    }
+
+    @Override
+    public
+    Boolean deleteCartCoupon(long id) {
+        CartCoupon oldCartCoupon = cartCouponRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCartCoupon != null) {
+            oldCartCoupon.setDeleted(1L);
+            cartCouponRepository.save(oldCartCoupon);
             return true;
-        }
-        catch (Exception e)
-        {
+        } else return false;
+    }
 
-            System.out.println(e.getMessage());
-            return false;
-        }
+    @Override
+    public CartCouponDTO getCartCouponById(long id) {
+        CartCoupon oldCartCoupon = cartCouponRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCartCoupon != null) return mapper.map(oldCartCoupon, CartCouponDTO.class);
+        else return null;
     }
-    public CartCouponDTO getCartCouponById(long id)
-    {
-        return mapper.map(cartCouponRepository.findById(id).orElse(null), CartCouponDTO.class);
-    }
-    public Boolean updateCartCoupon(long id, CartCouponDTO cartDTO)
-    {
-        CartCoupon oldCartCoupon=cartCouponRepository.findById(id).orElse(null);
-        if(oldCartCoupon==null)
-        {
+
+    @Override
+    public Boolean updateCartCoupon(long id, CartCouponDTO CartCouponDTO) {
+        CartCoupon oldCartCoupon = cartCouponRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCartCoupon == null) {
             return false;
-        }
-        else
-        {
-            cartCouponRepository.save(mapper.map(cartDTO,CartCoupon.class));
+        } else {
+            cartCouponRepository.save(mapper.map(CartCouponDTO, CartCoupon.class));
         }
         return true;
     }

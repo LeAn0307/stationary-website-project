@@ -19,7 +19,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id",nullable = false)
-    private Long cartId;
+    private Long id;
     @Column(name = "total")
     private BigDecimal total;
 

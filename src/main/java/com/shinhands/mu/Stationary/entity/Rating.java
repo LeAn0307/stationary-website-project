@@ -19,13 +19,15 @@ public class Rating {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id",nullable=false)
-    private Long ratingId;
+    private Long id;
     @Column(name="comment_product",nullable=false,length=500)
     private String comment;
     @Column(name="ratescore",nullable=false)
     private double rateScore;
     @Column(name="iduser")
     private Long userId;
+    @Column(name = "product_id")
+    private Long productId;
     @Column(name = "deleted")
     private Long deleted;
 //    @Column(name="product_id")

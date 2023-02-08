@@ -16,43 +16,45 @@ public class CouponServiceImpl implements CouponService {
     private CouponRepository couponRepository;
     @Autowired
     private ModelMapper mapper;
-    public List<Coupon> getAllCoupons()
-    {
-        return mapper.map(couponRepository.findAll(), new TypeToken<List<CouponDTO>>(){}.getType());
-
-    }
-    public CouponDTO addCoupon(CouponDTO couponDTO)
-    {
-        return mapper.map(couponRepository.save(mapper.map(couponDTO,Coupon.class)), CouponDTO.class);
+    @Override
+    public List<CouponDTO> getAllCoupons() {
+        return mapper.map(couponRepository.findAllByDeletedEquals(0L), new TypeToken<List<CouponDTO>>() {
+        }.getType());
     }
 
-    public Boolean deleteCoupon(long id)
-    {
-        try{
-            couponRepository.deleteById(id);
+    @Override public
+    CouponDTO addCoupon(CouponDTO CouponDTO) {
+        Coupon Coupon = mapper.map(CouponDTO, Coupon.class);
+        Coupon.setDeleted(0L);
+        Coupon Coupon1 = couponRepository.save(Coupon);
+        return mapper.map(Coupon1, CouponDTO.class);
+    }
+
+    @Override
+    public
+    Boolean deleteCoupon(long id) {
+        Coupon oldCoupon = couponRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCoupon != null) {
+            oldCoupon.setDeleted(1L);
+            couponRepository.save(oldCoupon);
             return true;
-        }
-        catch (Exception e)
-        {
+        } else return false;
+    }
 
-            System.out.println(e.getMessage());
-            return false;
-        }
+    @Override
+    public CouponDTO getCouponById(long id) {
+        Coupon oldCoupon = couponRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCoupon != null) return mapper.map(oldCoupon, CouponDTO.class);
+        else return null;
     }
-    public CouponDTO getCouponById(long id)
-    {
-        return mapper.map(couponRepository.findById(id).orElse(null), CouponDTO.class);
-    }
-    public Boolean updateCoupon(long id, CouponDTO couponDTO)
-    {
-        Coupon oldCoupon=couponRepository.findById(id).orElse(null);
-        if(oldCoupon==null)
-        {
+
+    @Override
+    public Boolean updateCoupon(long id, CouponDTO CouponDTO) {
+        Coupon oldCoupon = couponRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCoupon == null) {
             return false;
-        }
-        else
-        {
-            couponRepository.save(mapper.map(couponDTO,Coupon.class));
+        } else {
+            couponRepository.save(mapper.map(CouponDTO, Coupon.class));
         }
         return true;
     }
