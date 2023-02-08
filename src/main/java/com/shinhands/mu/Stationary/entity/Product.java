@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product")
@@ -47,6 +48,8 @@ public class Product {
     private Long amount;
     @Column(name = "color",length = 255)
     private String color;
+    @Column(name="price")
+    private BigDecimal price;
     @Column(name = "deleted")
     private Long deleted;
 

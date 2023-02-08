@@ -1,10 +1,15 @@
---C√≥ th·ªÉ d√πng l·ªánh d∆∞·ªõi ƒë·ªÉ drop column status trong b·∫£ng bill trong tr∆∞·ªùng h·ª£p l·ª° t·∫°o db
+--C√≥ th·ªÉ d√πng l·ªánh d∆∞·ªõi ƒë·ªÉ drop column status trong b·∫£ng bill trong tr∆∞·ª?ng h·ª£p l·ª° t·∫°o db
 --alter table bill
 --    drop column status;
-
+-- ADD COLUMN PRICE INTO PRODUCT TABLE
+ALTER TABLE PRODUCT
+    MODIFY price decimal(12,6);
+ALTER TABLE PRODUCT 
+ MODIFY DESCRIPTION NVARCHAR2(2000);
 --ADD COLUMN DELETED INTO ALL TABLE
 ALTER TABLE PRODUCT
     ADD deleted NUMBER(1,0) DEFAULT 0;
+    
     
 ALTER TABLE ACCOUNT
     ADD deleted NUMBER(1,0) DEFAULT 0;
@@ -70,7 +75,7 @@ CREATE TABLE product (
     madein      VARCHAR2(255),
     amount      NUMBER(10, 0),
     color       VARCHAR2(255),
-    
+    price       decimal(12,6),
     CONSTRAINT product_pk PRIMARY KEY ( id )
 );
 
@@ -359,7 +364,7 @@ INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy·ªÖn Vi·∫øt Qu√Ω
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Ph·∫°m Ph√∫c H·∫≠u', 'V≈©ng T√†u', '0125487898', 2, 2);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'L√™ Th√†nh Lu√¢n', 'V≈©ng T√†u', '0125487897', 3, 3);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy·ªÖn VƒÉn A', 'TP.H·ªì Ch√≠ Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, 'ƒêinh C√¥ng L∆∞∆°ng', 'Qu·∫£ng B√¨nh', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'ƒ?inh C√¥ng L∆∞∆°ng', 'Qu·∫£ng B√¨nh', '0125487458', 5, 5);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy M·∫°nh', 'Ngh·ªá An', '0125487487', 6, 6);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy·ªÖn VƒÉn Minh', 'B√¨nh Thu·∫≠n', '0125487879', 7, 7);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguy·ªÖn VƒÉn S√∫', 'L√†o Cai', '0125487147', 8, 8);
@@ -444,14 +449,14 @@ CREATE SEQUENCE function_seq
     
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu·∫£n l√Ω s·∫£n ph·∫©m', 'Th√™m, x√≥a, s·ª≠a s·∫£n ph·∫©m');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu·∫£n l√Ω kh√°ch h√†ng', 'Tra c·ª©u c√°c th√¥ng tin c·ªßa kh√°ch h√†ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Ph√¢n quy·ªÅn', 'Gi·ªõi h·∫°n ch·ª©c nƒÉng cho m·ªôt ng∆∞·ªùi d√πng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua h√†ng', 'Xem v√† th√™m s·∫£n ph·∫©m v√†o gi·ªè v√† ti·∫øn h√†nh thanh to√°n');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Ph√¢n quy·ª?n', 'Gi·ªõi h·∫°n ch·ª©c nƒÉng cho m·ªôt ng∆∞·ª?i d√πng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua h√†ng', 'Xem v√† th√™m s·∫£n ph·∫©m v√†o gi·ª? v√† ti·∫øn h√†nh thanh to√°n');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu·∫£n l√Ω khuy·∫øn m√£i', 'Th√™m, x√≥a, s·ª≠a khuy?n m√£i');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu·∫£n l√Ω ƒë∆°n h√†ng', 'Xem, tra c·ª©u t·∫•t c·∫£ ƒë∆°n h√†ng c·ªßa c·ª≠a h√†ng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra c·ª©u s·∫£n ph·∫©m', 'Tra c·ª©u th√¥ng tin s·∫£n ph·∫©m');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Qu·∫£n l√Ω kho h√†ng', 'Thay ƒë·ªïi s·ªë l∆∞·ª£ng s·∫£n ph·∫©m ƒëang c√≥ trong c·ª≠a h√†ng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Th·ªëng k√™ v√† b√°o c√°o', 'Xem b√°o c√°o kinh doanh c·ª≠a c·ª≠a h√†ng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'ƒê√°nh gi√° s·∫£n ph·∫©m', 'ƒê√°nh gi√° s·∫£n ph·∫©m');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'ƒ?√°nh gi√° s·∫£n ph·∫©m', 'ƒ?√°nh gi√° s·∫£n ph·∫©m');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq
@@ -538,7 +543,7 @@ insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTV
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'ƒê·∫πp', 4,2);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'ƒ?·∫πp', 4,2);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 2,1);
@@ -570,10 +575,20 @@ CREATE SEQUENCE product_seq
     INCREMENT BY 1
     CACHE 10;
 
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Asus x202','Asus', 2000,200,'Asus',1,720,1080,2,'decription asus','img.jpg', 'Asus','Chinna',4000,'red');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'red');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
+(product_seq.NEXTVAL,'B?m kim Kanex HD10 - 10 t?','Kanex', 2000,200,'Nh?a',1,720,1080,2,'B?m kim Kanex HD10 - 10 t? (B-11.6) v?i th‚n m·y b?ng nh?a, d?ng b?m, l?c b?m 10 t?, s? d?ng kim b?m no.10 liÍn k?t v‡ ph‚n nhÛm t‡i li?u b?ng l?c b?m ho?c ?Ûng nhi?u t? gi?y th‡nh x?p ho?c cu?n ph˘ h?p v?i nghi?p v? photocopy v‡ l?u tr? ch?ng t? liÍn k?t v‡ ph‚n nhÛm t‡i li?u b?ng l?c b?m ho?c ?Ûng nhi?u t? gi?y th‡nh x?p ho?c cu?n ph˘ h?p v?i nghi?p v? photocopy v‡ l?u tr? ch?ng t? ?Ti?t ki?m t? 10% - 30%
+Kanex l‡ nh‡ s?n xu?t uy tÌn t?i ?n ?? v? s?n ph?m m·y b?m kim, b?m l?, kim b?m v?n phÚng
+S?n ph?m B?m kim chÌnh h„ng ?·p ?ng tiÍu chu?n b?o v? s?c kh?e ng??i d˘ng v‡ n‚ng cao t?i ?a hi?u qu? cÙng vi?c v?n phÚng m?i ng‡y.
+B?n cÛ th? ??t mua nhi?u dÚng v?n phÚng ph?m Kanex t?i Officexinh.com v?i m?c gi· th?t ?u ?„i v‡ nh?n ???c chÌnh s·ch v?n chuy?n mi?n phÌ n?u cÛ d?a trÍn t?ng gi· tr? ??n h‡ng v‡ t˘y theo khu v?c nh?n h‡ng.
+B?m kim Kanex HD10 - 10 t? cÚn g?i l‡ b?m ghim, b?m kim s? 10 cÛ ??n v? tÌnh l‡ C·i v‡ ???c ?Ûng gÛi theo quy c·ch: 10 c·i / l?c
+M?u m„ v‡ thÙng tin s?n ph?m cÛ th? thay ??i theo chÌnh s·ch nh‡ s?n xu?t.','bam-kim-kanex-hd10-10-to.jpg', 'Kanex','Inda',4000,'white and blue','20000');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
+(product_seq.NEXTVAL,'Gi?y Double A A4 80','Gi?y in ?n', 2000,200,'Gi?y',1,720,1080,2,'Gi?y Double A A4 80 (G-61) v?i kÌch th??c: A4 (210 mm x 297 mm), ??nh l??ng: 80gms, n?n gi?y tr?ng in ?n ch?ng t?, t‡i li?u, h?p ??ng d?a trÍn kh? gi?y chu?n ph˘ h?p v?i c·c nghi?p v? v?n phÚng in ?n ch?ng t?, t‡i li?u, h?p ??ng d?a trÍn kh? gi?y chu?n ph˘ h?p v?i c·c nghi?p v? v?n phÚng ?Ti?t ki?m t? 10% - 30%
+Double A l‡ h„ng s?n xu?t uy tÌn t?i Th·i Lan v? s?n ph?m gi?y photocopy, gi?y in, gi?y bÏa m‡u
+S?n ph?m Gi?y in ?n chÌnh h„ng ?·p ?ng tiÍu chu?n b?o v? s?c kh?e ng??i d˘ng v‡ n‚ng cao t?i ?a hi?u qu? cÙng vi?c v?n phÚng m?i ng‡y.
+B?n cÛ th? ??t mua nhi?u dÚng v?n phÚng ph?m Double A t?i Officexinh.com v?i m?c gi· th?t ?u ?„i v‡ nh?n ???c chÌnh s·ch v?n chuy?n mi?n phÌ n?u cÛ d?a trÍn t?ng gi· tr? ??n h‡ng v‡ t˘y theo khu v?c nh?n h‡ng.
+Gi?y Double A A4 80 cÚn g?i l‡ gi?y photocopy, gi?y in, gi?y v?n phÚng cÛ ??n v? tÌnh l‡ Ream v‡ ???c ?Ûng gÛi theo quy c·ch: 5 reams / th˘ng
+M?u m„ v‡ thÙng tin s?n ph?m cÛ th? thay ??i theo chÌnh s·ch nh‡ s?n xu?t.','giay-double-a-a4-80.jpg', 'Double A','Th·i Lan',4000,'red','93000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
 (product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
@@ -676,50 +691,11 @@ CREATE SEQUENCE rating_seq
     CACHE 10;
     
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m t·ªët', 1, 1, 1);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m nhanh h·ªèng', 1, 1, 2);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m nhanh h·ª?ng', 1, 1, 2);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'gi√° t·ªët', 1, 1, 3);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m t·ªët trong t·∫ßm gi√°', 1, 1, 4);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment2', 1, 1, 5);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'D√πng nhanh h·ªèng', 1, 1, 6);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Gi√° t·ªët', 1, 1, 7);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
-
-
-
-
---DROP KHOA NGOAI GIUA RATING VA BILL_DETAIL
-ALTER TABLE BILL_DETAIL
-DROP CONSTRAINT FK14;
-
---DROP COLUMN ID_RATING TRONG BILL_DETAIL
-ALTER TABLE BILL_DETAIL
-DROP COLUMN ID_RATING;
-
---SUA B·∫¢NG RATING
-ALTER TABLE RATING
-    ADD PRODUCT_ID NUMBER(10, 0);
-
-DELETE FROM RATING;
-
-ALTER TABLE RATING
-    ADD CONSTRAINT FK14 FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID);
-
-DROP SEQUENCE RATING_SEQ;
-
-CREATE SEQUENCE rating_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
-
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m t·ªët', 1, 1, 1);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m nhanh h·ªèng', 1, 1, 2);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'gi√° t·ªët', 1, 1, 3);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 's·∫£n ph·∫©m t·ªët trong t·∫ßm gi√°', 1, 1, 4);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment2', 1, 1, 5);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'D√πng nhanh h·ªèng', 1, 1, 6);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'D√πng nhanh h·ª?ng', 1, 1, 6);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Gi√° t·ªët', 1, 1, 7);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
