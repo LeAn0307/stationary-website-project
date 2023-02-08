@@ -1,12 +1,12 @@
 package com.shinhands.mu.Stationary.controller;
 
 import com.shinhands.mu.Stationary.dto.CategoryDTO;
-import com.shinhands.mu.Stationary.entity.Category;
+
 import com.shinhands.mu.Stationary.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,8 +38,8 @@ public class CategoryController {
         return ResponseEntity.ok().body(CategoryService.updateCategory(id,categoryDTO));
     }
     @DeleteMapping(value="/{id}")
-    public ResponseEntity deleteCategory(@PathVariable(name="id") long id,@RequestBody CategoryDTO categoryDTO)
+    public ResponseEntity deleteCategory(@PathVariable(name="id") long id)
     {
-        return ResponseEntity.ok().body(CategoryService.updateCategory(id,categoryDTO));
+        return ResponseEntity.ok().body(CategoryService.deleteCategory(id));
     }
 }

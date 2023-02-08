@@ -22,3 +22,4 @@ public class HistoryOrderServiceImpl implements HistoryOrderService {
         return historyOrderRepository.findAllByCustomer(customerId);
     }
 }
+    

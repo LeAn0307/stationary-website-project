@@ -39,13 +39,14 @@ import java.util.Date;
                 }
         )
 )
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "BILL_DETAIL_SEQ", allocationSize = 1)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class BillDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id")
     private long id;
 
@@ -63,9 +64,6 @@ public class BillDetail {
 
     @Column(name = "ID_BILL")
     private Long idBill;
-
-    @Column(name = "ID_RATING")
-    private Long idRating;
 
     @Column(name = "ID_PRODUCT")
     private Long idProduct;

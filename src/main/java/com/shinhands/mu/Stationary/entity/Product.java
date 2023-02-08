@@ -8,12 +8,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "product")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name = "name",length = 255)
