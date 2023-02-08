@@ -1,5 +1,6 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
+import com.shinhands.mu.Stationary.config.SecurityConfig;
 import com.shinhands.mu.Stationary.dto.AccountDTO;
 import com.shinhands.mu.Stationary.entity.Account;
 import com.shinhands.mu.Stationary.repository.AccountRepository;
@@ -7,6 +8,7 @@ import com.shinhands.mu.Stationary.service.AccountService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,8 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountRepository accountRepository;
+    @Autowired
+    private SecurityConfig _securityConfig;
     @Autowired
     private ModelMapper mapper;
     @Override
@@ -23,6 +27,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDTO addAccount(AccountDTO accountDTO) {
+        String encodedPassword = _securityConfig.encode(accountDTO.getAccountPassword());
+        accountDTO.setAccountPassword(encodedPassword);
         Account account = mapper.map(accountDTO, Account.class);
         account.setDeleted(0L);
         return mapper.map(accountRepository.save(account), AccountDTO.class);
