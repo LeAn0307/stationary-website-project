@@ -24,8 +24,8 @@ public class UserWebsite {
     private String address;
     @Column(name="phone",nullable = false)
     private Long phone;
-    @Column(name="idcart")
-    private Long idCart;
+//    @Column(name="idcart")
+//    private Long idCart;
     @Column(name="idaccount")
     private Long idAccount;
     @Column(name = "deleted")
