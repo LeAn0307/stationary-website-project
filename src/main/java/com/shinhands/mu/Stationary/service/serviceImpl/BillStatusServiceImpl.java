@@ -10,7 +10,7 @@ public class BillStatusServiceImpl implements BillStatusService {
     private BillStatusRepository billStatusRepository;
 
     @Override
-    public String getStatus(long deleted) {
-        return billStatusRepository.getBillStatusByIdAndDeleted(deleted);
+    public String getStatus(long id) {
+        return billStatusRepository.getBillStatusByIdAndDeleted(id, 0L);
     }
 }

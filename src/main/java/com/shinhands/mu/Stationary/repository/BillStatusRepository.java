@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BillStatusRepository extends JpaRepository<BillStatus, Long> {
-    public String getBillStatusByIdAndDeleted(Long deleted);
+    public String getBillStatusByIdAndDeleted(Long id, Long deleted);
 }

@@ -685,3 +685,42 @@ INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(ra
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+
+
+
+
+--DROP KHOA NGOAI GIUA RATING VA BILL_DETAIL
+ALTER TABLE BILL_DETAIL
+DROP CONSTRAINT FK14;
+
+--DROP COLUMN ID_RATING TRONG BILL_DETAIL
+ALTER TABLE BILL_DETAIL
+DROP COLUMN ID_RATING;
+
+--SUA BẢNG RATING
+ALTER TABLE RATING
+    ADD PRODUCT_ID NUMBER(10, 0);
+
+DELETE FROM RATING;
+
+ALTER TABLE RATING
+    ADD CONSTRAINT FK14 FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID);
+
+DROP SEQUENCE RATING_SEQ;
+
+CREATE SEQUENCE rating_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt', 1, 1, 1);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh hỏng', 1, 1, 2);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'giá tốt', 1, 1, 3);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt trong tầm giá', 1, 1, 4);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment2', 1, 1, 5);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Dùng nhanh hỏng', 1, 1, 6);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Giá tốt', 1, 1, 7);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
