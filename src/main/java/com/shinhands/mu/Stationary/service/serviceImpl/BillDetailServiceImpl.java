@@ -45,8 +45,11 @@ public class BillDetailServiceImpl implements BillDetailService {
 
     @Override
     public BillDetailDTO updateBillDetail(long id, BillDetailDTO billDetailDTO) {
-        BillDetail billDetail = billDetailRepository.findBillDetailByIdAndDeleted(id, 0);
-        billDetailDTO.setId(billDetail.getId());
-        return modelMapper.map(billDetailRepository.save(modelMapper.map(billDetailDTO, BillDetail.class)), BillDetailDTO.class);
+        BillDetail billDetail = billDetailRepository.findBillDetailByIdAndDeleted(id, 0L);
+        if(billDetail == null) {
+            return null;
+        } else {
+            return modelMapper.map(billDetailRepository.save(modelMapper.map(billDetailDTO, BillDetail.class)), BillDetailDTO.class);
+        }
     }
 }
