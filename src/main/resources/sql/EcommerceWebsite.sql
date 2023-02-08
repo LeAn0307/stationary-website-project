@@ -1,4 +1,4 @@
---Có thể dùng lệnh dưới để drop column status trong bảng bill trong trư�?ng hợp lỡ tạo db
+--Có thể dùng lệnh dưới để drop column status trong bảng bill trong trư�?ng hợp lỡ tạo db
 --alter table bill
 --    drop column status;
 -- ADD COLUMN PRICE INTO PRODUCT TABLE
@@ -364,7 +364,7 @@ INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2, 2);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'Vũng Tàu', '0125487897', 3, 3);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn A', 'TP.Hồ Chí Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, '�?inh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, '�?inh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy Mạnh', 'Nghệ An', '0125487487', 6, 6);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Minh', 'Bình Thuận', '0125487879', 7, 7);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Sú', 'Lào Cai', '0125487147', 8, 8);
@@ -449,14 +449,14 @@ CREATE SEQUENCE function_seq
     
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy�?n', 'Giới hạn chức năng cho một ngư�?i dùng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào gi�? và tiến hành thanh toán');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy�?n', 'Giới hạn chức năng cho một ngư�?i dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào gi�? và tiến hành thanh toán');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khuyến mãi', 'Thêm, xóa, sửa khuy?n mãi');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý đơn hàng', 'Xem, tra cứu tất cả đơn hàng của cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra cứu sản phẩm', 'Tra cứu thông tin sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay đổi số lượng sản phẩm đang có trong cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, '�?ánh giá sản phẩm', '�?ánh giá sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, '�?ánh giá sản phẩm', '�?ánh giá sản phẩm');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq
@@ -543,7 +543,7 @@ insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTV
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
-insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'�?ẹp', 4,2);
+insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'�?ẹp', 4,2);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 1,1);
 insert into rating(id, comment_product,ratescore,iduser) values(rating_seq.NEXTVAL,'Comment4', 2,1);
@@ -557,16 +557,15 @@ CREATE SEQUENCE categories_seq
     INCREMENT BY 1
     CACHE 10;
     
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Laptop','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'DienThoai','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tai Nghe','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Quan Ao','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giày','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'PC','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tủ Lanh','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bếp','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Phụ Kien','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dich Vu','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dụng cụ văn phòng','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giấy','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bìa hồ sơ','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bút viết','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tập sổ','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Lưu trữ','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Thiết bị','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Gia dụng vệ sinh','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Mực in - Ruban','Anh1.jpg');
 
 --TABLE PRODUCT
 CREATE SEQUENCE product_seq
@@ -576,19 +575,19 @@ CREATE SEQUENCE product_seq
     CACHE 10;
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
-(product_seq.NEXTVAL,'B?m kim Kanex HD10 - 10 t?','Kanex', 2000,200,'Nh?a',1,720,1080,2,'B?m kim Kanex HD10 - 10 t? (B-11.6) v?i th�n m�y b?ng nh?a, d?ng b?m, l?c b?m 10 t?, s? d?ng kim b?m no.10 li�n k?t v� ph�n nh�m t�i li?u b?ng l?c b?m ho?c ?�ng nhi?u t? gi?y th�nh x?p ho?c cu?n ph� h?p v?i nghi?p v? photocopy v� l?u tr? ch?ng t? li�n k?t v� ph�n nh�m t�i li?u b?ng l?c b?m ho?c ?�ng nhi?u t? gi?y th�nh x?p ho?c cu?n ph� h?p v?i nghi?p v? photocopy v� l?u tr? ch?ng t? ?Ti?t ki?m t? 10% - 30%
-Kanex l� nh� s?n xu?t uy t�n t?i ?n ?? v? s?n ph?m m�y b?m kim, b?m l?, kim b?m v?n ph�ng
-S?n ph?m B?m kim ch�nh h�ng ?�p ?ng ti�u chu?n b?o v? s?c kh?e ng??i d�ng v� n�ng cao t?i ?a hi?u qu? c�ng vi?c v?n ph�ng m?i ng�y.
-B?n c� th? ??t mua nhi?u d�ng v?n ph�ng ph?m Kanex t?i Officexinh.com v?i m?c gi� th?t ?u ?�i v� nh?n ???c ch�nh s�ch v?n chuy?n mi?n ph� n?u c� d?a tr�n t?ng gi� tr? ??n h�ng v� t�y theo khu v?c nh?n h�ng.
-B?m kim Kanex HD10 - 10 t? c�n g?i l� b?m ghim, b?m kim s? 10 c� ??n v? t�nh l� C�i v� ???c ?�ng g�i theo quy c�ch: 10 c�i / l?c
-M?u m� v� th�ng tin s?n ph?m c� th? thay ??i theo ch�nh s�ch nh� s?n xu?t.','bam-kim-kanex-hd10-10-to.jpg', 'Kanex','Inda',4000,'white and blue','20000');
+(product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 t?','Kanex', 2000,200,'Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
+Kanex là nhà sản xuất uy tín tại Ấn Độ về sản phẩm máy bấm kim, bấm lổ, kim bấm văn phòng
+Sản phẩm Bấm kim chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
+Bạn có thể đặt mua nhiều dòng văn phòng phẩm Kanex tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
+Bấm kim Kanex HD10 - 10 tờ còn gọi là bấm ghim, bấm kim số 10 có đơn vị tính là Cái và được đóng gói theo quy cách: 10 cái / lốc
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','bam-kim-kanex-hd10-10-to.jpg', 'Kanex','Inda',4000,'white and blue','20000');
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
-(product_seq.NEXTVAL,'Gi?y Double A A4 80','Gi?y in ?n', 2000,200,'Gi?y',1,720,1080,2,'Gi?y Double A A4 80 (G-61) v?i k�ch th??c: A4 (210 mm x 297 mm), ??nh l??ng: 80gms, n?n gi?y tr?ng in ?n ch?ng t?, t�i li?u, h?p ??ng d?a tr�n kh? gi?y chu?n ph� h?p v?i c�c nghi?p v? v?n ph�ng in ?n ch?ng t?, t�i li?u, h?p ??ng d?a tr�n kh? gi?y chu?n ph� h?p v?i c�c nghi?p v? v?n ph�ng ?Ti?t ki?m t? 10% - 30%
-Double A l� h�ng s?n xu?t uy t�n t?i Th�i Lan v? s?n ph?m gi?y photocopy, gi?y in, gi?y b�a m�u
-S?n ph?m Gi?y in ?n ch�nh h�ng ?�p ?ng ti�u chu?n b?o v? s?c kh?e ng??i d�ng v� n�ng cao t?i ?a hi?u qu? c�ng vi?c v?n ph�ng m?i ng�y.
-B?n c� th? ??t mua nhi?u d�ng v?n ph�ng ph?m Double A t?i Officexinh.com v?i m?c gi� th?t ?u ?�i v� nh?n ???c ch�nh s�ch v?n chuy?n mi?n ph� n?u c� d?a tr�n t?ng gi� tr? ??n h�ng v� t�y theo khu v?c nh?n h�ng.
-Gi?y Double A A4 80 c�n g?i l� gi?y photocopy, gi?y in, gi?y v?n ph�ng c� ??n v? t�nh l� Ream v� ???c ?�ng g�i theo quy c�ch: 5 reams / th�ng
-M?u m� v� th�ng tin s?n ph?m c� th? thay ??i theo ch�nh s�ch nh� s?n xu?t.','giay-double-a-a4-80.jpg', 'Double A','Th�i Lan',4000,'red','93000');
+(product_seq.NEXTVAL,'Giấy Double A A4 80','Giấy in', 2000,200,'Giấy',1,720,1080,2,'Giấy Double A A4 80 (G-61) với kích thước: A4 (210 mm x 297 mm), định lượng: 80gms, nền giấy trắng in ấn chứng từ, tài liệu, hợp đồng dựa trên khổ giấy chuẩn phù hợp với các nghiệp vụ văn phòng in ấn chứng từ, tài liệu, hợp đồng dựa trên khổ giấy chuẩn phù hợp với các nghiệp vụ văn phòng ✓Tiết kiệm từ 10% - 30%
+Double A là hãng sản xuất uy tín tại Thái Lan về sản phẩm giấy photocopy, giấy in, giấy bìa màu
+Sản phẩm Giấy in ấn chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
+Bạn có thể đặt mua nhiều dòng văn phòng phẩm Double A tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
+Giấy Double A A4 80 còn gọi là giấy photocopy, giấy in, giấy văn phòng có đơn vị tính là Ream và được đóng gói theo quy cách: 5 reams / thùng
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','giay-double-a-a4-80.jpg', 'Double A','Thái Lan',4000,'red','93000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
 (product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
@@ -691,11 +690,11 @@ CREATE SEQUENCE rating_seq
     CACHE 10;
     
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt', 1, 1, 1);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh h�?ng', 1, 1, 2);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh h�?ng', 1, 1, 2);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'giá tốt', 1, 1, 3);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt trong tầm giá', 1, 1, 4);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment2', 1, 1, 5);
-INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Dùng nhanh h�?ng', 1, 1, 6);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Dùng nhanh h�?ng', 1, 1, 6);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Giá tốt', 1, 1, 7);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
