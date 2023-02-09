@@ -1,4 +1,4 @@
-package com.farhan.staradmin.configuration;
+package com.shinhands.mu.Stationary.config;
 
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.springframework.context.annotation.Bean;
