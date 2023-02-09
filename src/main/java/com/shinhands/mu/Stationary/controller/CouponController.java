@@ -35,9 +35,9 @@ public class CouponController {
         return ResponseEntity.ok().body(CouponService.updateCoupon(id,categoryDTO));
     }
     @DeleteMapping(value="/{id}")
-    public ResponseEntity deleteCoupon(@PathVariable(name="id") long id,@RequestBody CouponDTO categoryDTO)
+    public ResponseEntity deleteCoupon(@PathVariable(name="id") long id)
     {
-        return ResponseEntity.ok().body(CouponService.updateCoupon(id,categoryDTO));
+        return ResponseEntity.ok().body(CouponService.deleteCoupon(id));
     }
 }
 

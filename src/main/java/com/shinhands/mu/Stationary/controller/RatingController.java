@@ -38,8 +38,8 @@ public class RatingController {
         return ResponseEntity.ok().body(RatingService.updateRating(id,categoryDTO));
     }
     @DeleteMapping(value="/{id}")
-    public ResponseEntity deleteRating(@PathVariable(name="id") long id,@RequestBody RatingDTO categoryDTO)
+    public ResponseEntity deleteRating(@PathVariable(name="id") long id)
     {
-        return ResponseEntity.ok().body(RatingService.updateRating(id,categoryDTO));
+        return ResponseEntity.ok().body(RatingService.deleteRating(id));
     }
 }

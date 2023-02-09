@@ -63,13 +63,6 @@ public class BillDetail {
 
     @Column(name = "ID_BILL")
     private Long idBill;
-
-    @Column(name = "ID_RATING")
-    private Long idRating;
-
-    @Column(name = "ID_PRODUCT")
-    private Long idProduct;
-
     @Column(name = "deleted")
     private Long deleted;
 

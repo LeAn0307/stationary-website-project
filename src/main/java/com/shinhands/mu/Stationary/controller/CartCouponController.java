@@ -38,8 +38,8 @@ public class CartCouponController {
         return ResponseEntity.ok().body(cartCouponService.updateCartCoupon(id,categoryDTO));
     }
     @DeleteMapping(value="/{id}")
-    public ResponseEntity deleteCartCoupon(@PathVariable(name="id") long id,@RequestBody CartCouponDTO categoryDTO)
+    public ResponseEntity deleteCartCoupon(@PathVariable(name="id") long id)
     {
-        return ResponseEntity.ok().body(cartCouponService.updateCartCoupon(id,categoryDTO));
+        return ResponseEntity.ok().body(cartCouponService.deleteCartCoupon(id));
     }
 }

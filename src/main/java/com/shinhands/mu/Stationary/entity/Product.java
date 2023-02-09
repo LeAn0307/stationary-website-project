@@ -5,15 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "product")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name = "name",length = 255)
@@ -46,6 +48,8 @@ public class Product {
     private Long amount;
     @Column(name = "color",length = 255)
     private String color;
+    @Column(name="price")
+    private BigDecimal price;
     @Column(name = "deleted")
     private Long deleted;
 

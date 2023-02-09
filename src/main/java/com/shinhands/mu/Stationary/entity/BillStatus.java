@@ -9,12 +9,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "bill_status")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "BILL_STATUS_SE", allocationSize = 1)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BillStatus {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id")
     private long id;
 

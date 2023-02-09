@@ -4,9 +4,10 @@ import com.shinhands.mu.Stationary.dto.CartCouponDTO;
 import com.shinhands.mu.Stationary.entity.CartCoupon;
 import java.util.List;
 public interface CartCouponService {
-    public List<CartCoupon> getAllCartCoupons();
-    public CartCouponDTO addCartCoupon(CartCouponDTO category);
+    public List<CartCouponDTO> getAllCartCoupons();
+
+    public CartCouponDTO addCartCoupon(CartCouponDTO cartCouponDTO);
     public Boolean deleteCartCoupon(long id);
     public CartCouponDTO getCartCouponById(long id);
-    public Boolean updateCartCoupon(long id, CartCouponDTO category);
+    public Boolean updateCartCoupon(long id, CartCouponDTO cartCouponDTO);
 }

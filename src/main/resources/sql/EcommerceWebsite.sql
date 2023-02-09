@@ -1,10 +1,12 @@
---Có thể dùng lệnh dưới để drop column status trong bảng bill trong trường hợp lỡ tạo db
---alter table bill
---    drop column status;
-
+-- ADD COLUMN PRICE INTO PRODUCT TABLE
+ALTER TABLE PRODUCT
+    MODIFY price decimal(12,6);
+ALTER TABLE PRODUCT 
+ MODIFY DESCRIPTION NVARCHAR2(2000);
 --ADD COLUMN DELETED INTO ALL TABLE
 ALTER TABLE PRODUCT
     ADD deleted NUMBER(1,0) DEFAULT 0;
+    
     
 ALTER TABLE ACCOUNT
     ADD deleted NUMBER(1,0) DEFAULT 0;
@@ -70,7 +72,7 @@ CREATE TABLE product (
     madein      VARCHAR2(255),
     amount      NUMBER(10, 0),
     color       VARCHAR2(255),
-    
+    price       decimal(12,6),
     CONSTRAINT product_pk PRIMARY KEY ( id )
 );
 
@@ -552,16 +554,15 @@ CREATE SEQUENCE categories_seq
     INCREMENT BY 1
     CACHE 10;
     
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Laptop','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'DienThoai','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tai Nghe','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Quan Ao','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giày','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'PC','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tủ Lanh','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bếp','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Phụ Kien','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dich Vu','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dụng cụ văn phòng','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giấy','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bìa hồ sơ','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bút viết','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tập sổ','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Lưu trữ','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Thiết bị','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Gia dụng vệ sinh','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Mực in - Ruban','Anh1.jpg');
 
 --TABLE PRODUCT
 CREATE SEQUENCE product_seq
@@ -570,10 +571,20 @@ CREATE SEQUENCE product_seq
     INCREMENT BY 1
     CACHE 10;
 
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Asus x202','Asus', 2000,200,'Asus',1,720,1080,2,'decription asus','img.jpg', 'Asus','Chinna',4000,'red');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'red');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
+(product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 tờ','Kanex', 2000,200,'Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
+Kanex là nhà sản xuất uy tín tại Ấn Độ về sản phẩm máy bấm kim, bấm lổ, kim bấm văn phòng
+Sản phẩm Bấm kim chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
+Bạn có thể đặt mua nhiều dòng văn phòng phẩm Kanex tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
+Bấm kim Kanex HD10 - 10 tờ còn gọi là bấm ghim, bấm kim số 10 có đơn vị tính là Cái và được đóng gói theo quy cách: 10 cái / lốc
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','bam-kim-kanex-hd10-10-to.jpg', 'Kanex','Inda',4000,'white and blue','20000');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
+(product_seq.NEXTVAL,'Giấy Double A A4 80','Giấy in', 2000,200,'Giấy',1,720,1080,2,'Giấy Double A A4 80 (G-61) với kích thước: A4 (210 mm x 297 mm), định lượng: 80gms, nền giấy trắng in ấn chứng từ, tài liệu, hợp đồng dựa trên khổ giấy chuẩn phù hợp với các nghiệp vụ văn phòng in ấn chứng từ, tài liệu, hợp đồng dựa trên khổ giấy chuẩn phù hợp với các nghiệp vụ văn phòng ✓Tiết kiệm từ 10% - 30%
+Double A là hãng sản xuất uy tín tại Thái Lan về sản phẩm giấy photocopy, giấy in, giấy bìa màu
+Sản phẩm Giấy in ấn chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
+Bạn có thể đặt mua nhiều dòng văn phòng phẩm Double A tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
+Giấy Double A A4 80 còn gọi là giấy photocopy, giấy in, giấy văn phòng có đơn vị tính là Ream và được đóng gói theo quy cách: 5 reams / thùng
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','giay-double-a-a4-80.jpg', 'Double A','Thái Lan',4000,'red','93000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
 (product_seq.NEXTVAL,'LapTop Dell x202','Asus', 2000,200,'Dell',1,720,1080,2,'decription Dell','img.jpg', 'Asus','Chinna',4000,'black');
@@ -648,3 +659,79 @@ values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_
 
 insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
 values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,3,1);
+
+
+--DROP KHOA NGOAI GIUA RATING VA BILL_DETAIL
+ALTER TABLE BILL_DETAIL
+    DROP CONSTRAINT FK14;
+    
+--DROP COLUMN ID_RATING TRONG BILL_DETAIL
+ALTER TABLE BILL_DETAIL
+    DROP COLUMN ID_RATING;
+    
+--SUA BẢNG RATING
+ALTER TABLE RATING
+    ADD PRODUCT_ID NUMBER(10, 0);
+    
+DELETE FROM RATING;
+
+ALTER TABLE RATING
+    ADD CONSTRAINT FK14 FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID);
+
+DROP SEQUENCE RATING_SEQ;
+
+CREATE SEQUENCE rating_seq
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 10;
+    
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt', 1, 1, 1);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh hỏng', 1, 1, 2);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'giá tốt', 1, 1, 3);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt trong tầm giá', 1, 1, 4);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment2', 1, 1, 5);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Dùng nhanh hỏng', 1, 1, 6);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Giá tốt', 1, 1, 7);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+INSERT INTO rating(id, comment_product, ratescore, iduser, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
+
+--FIX TABLE USER_WEBSITE AND CART
+ALTER TABLE USER_WEBSITE
+    DROP CONSTRAINT FK06;
+    
+ALTER TABLE USER_WEBSITE
+    DROP COLUMN IDCART;
+    
+ALTER TABLE CART
+    ADD USER_ID NUMBER(10, 0);
+   
+--UPDATE USER_ID IN CART
+DECLARE
+    TEMP NUMBER(10,0) := 1;
+BEGIN
+    FOR UPDATE_USERID_INTO_CART IN 1..10
+    LOOP
+        UPDATE CART
+        SET USER_ID = TEMP
+        WHERE ID = TEMP;
+        TEMP := TEMP + 1;
+    END LOOP;
+END;
+
+--CREATE FOREIGN KEY FROM CART TO USER_WEBSITE
+ALTER TABLE CART
+    ADD CONSTRAINT FK06 FOREIGN KEY (USER_ID) REFERENCES USER_WEBSITE(ID);
+
+--CREATE TRIGGER FOR CREATE CART AFTER INSERT USER_WEBSITE
+CREATE OR REPLACE TRIGGER CREATE_CART
+AFTER INSERT
+    ON USER_WEBSITE
+    FOR EACH ROW
+BEGIN
+
+    INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (CART_SEQ.NEXTVAL, 0, :NEW.ID);
+    
+END;
+
