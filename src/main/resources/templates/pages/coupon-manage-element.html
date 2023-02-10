@@ -3,24 +3,33 @@
       layout:decorate="~{layout}">
 <head>
     <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#create").click(function(){
+                $(this).hide();
+            })
+        });
+    </script>
+    <style>
+        #max-width-200{
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
-<style>
-    .table td {
-        max-width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-</style>
-<section layout:fragment="content" class = "mt-2" >
 
-    <button type="button" class="btn btn-success ">Thêm</button>
+<section layout:fragment="content" class = "mt-2 mx-2 " >
+
+    <button type="button" class="btn btn-success " id="create">Thêm</button>
     <button type="button" class="btn btn-danger ">Xóa</button>
     <button type="button" class="btn btn-warning ">Sửa</button>
 
 
-    <table class="table bg-white  mt-2  ">
+    <table class="table bg-white  mt-4  ">
         <thead  class="thead-light">
         <tr>
             <th scope="col ">#</th>
@@ -38,12 +47,8 @@
             <td class="col-sm">
                 <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
-
             <td class="col-sm" th:utext="${state.id}"></td>
-            <td class="col-sm " style="  max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;" th:utext="${state.name}"></td>
+            <td class="col-sm " id ="max-width-200" th:utext="${state.name}"></td>
             <td class="col-sm" th:utext="${state.discount}"></td>
             <td class="col-sm" th:utext="${state.minPrice}"></td>
             <td class="col-sm" th:utext="${state.maxPrice}"></td>
@@ -53,5 +58,7 @@
         </tbody>
     </table>
 </section>
+
+
 </body>
 </html>
