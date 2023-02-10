@@ -1,64 +1,3 @@
---Có thể dùng lệnh dưới để drop column status trong bảng bill trong trư�?ng hợp lỡ tạo db
---alter table bill
---    drop column status;
--- ADD COLUMN PRICE INTO PRODUCT TABLE
-ALTER TABLE PRODUCT
-    ADD PRICE NUMBER(10,0);
-
-ALTER TABLE PRODUCT
-    MODIFY price decimal(12,6);
-ALTER TABLE PRODUCT 
- MODIFY DESCRIPTION NVARCHAR2(2000);
---ADD COLUMN DELETED INTO ALL TABLE
-ALTER TABLE PRODUCT
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-    
-ALTER TABLE ACCOUNT
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE BILL
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE BILL_DETAIL
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE BILL_STATUS
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE CART
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE CART_COUPON
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE CART_PRODUCT
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE CATEGORIES
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE COUPON
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE FUNCTION
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE RATING
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE ROLE
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE ROLE_FUNCTION
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE USER_ROLE
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-    
-ALTER TABLE USER_WEBSITE
-    ADD deleted NUMBER(1,0) DEFAULT 0;
-
 
 --CREATE TABLE
 CREATE TABLE product (
@@ -72,7 +11,7 @@ CREATE TABLE product (
     height      NUMBER(10, 0),
     width       NUMBER(10, 0),
     weight      NUMBER(10, 0),
-    description VARCHAR2(255),
+    description VARCHAR2(2000),
     image       VARCHAR2(255),
     brand       VARCHAR2(255),
     madein      VARCHAR2(255),
@@ -86,7 +25,7 @@ CREATE TABLE product (
 CREATE TABLE categories (
     categoriesid    NUMBER(20) NOT NULL,
     categories_name VARCHAR2(100),
-    image           VARCHAR2(100),
+    image           VARCHAR2(200),
     
     CONSTRAINT categories_pk PRIMARY KEY ( categoriesid )
 );
@@ -118,9 +57,7 @@ CREATE TABLE bill_detail (
     createdat  TIMESTAMP,
     updatedat  TIMESTAMP,
     id_bill    NUMBER(10, 0),
-    id_rating  NUMBER(10, 0),
     id_product NUMBER(10, 0),
-    
     CONSTRAINT bill_detail_pk PRIMARY KEY ( id )
 );
 
@@ -298,11 +235,6 @@ ALTER TABLE bill_detail
     ADD CONSTRAINT fk13 FOREIGN KEY ( id_bill )
         REFERENCES bill ( bill_id );
 
--- BILL_DETAIL - RATING
-ALTER TABLE bill_detail
-    ADD CONSTRAINT fk14 FOREIGN KEY ( id_rating )
-        REFERENCES rating ( id );
-
 --BILL_DETAIL - PRODUCT
 ALTER TABLE bill_detail
     ADD CONSTRAINT fk15 FOREIGN KEY ( id_product )
@@ -367,7 +299,7 @@ INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2, 2);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Lê Thành Luân', 'Vũng Tàu', '0125487897', 3, 3);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn A', 'TP.Hồ Chí Minh', '0125487154', 4, 4);
-INSERT INTO user_website values (user_website_seq.NEXTVAL, '�?inh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
+INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Đinh Công Lương', 'Quảng Bình', '0125487458', 5, 5);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Duy Mạnh', 'Nghệ An', '0125487487', 6, 6);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Minh', 'Bình Thuận', '0125487879', 7, 7);
 INSERT INTO user_website values (user_website_seq.NEXTVAL, 'Nguyễn Văn Sú', 'Lào Cai', '0125487147', 8, 8);
@@ -452,14 +384,14 @@ CREATE SEQUENCE function_seq
     
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quy�?n', 'Giới hạn chức năng cho một ngư�?i dùng');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Phân quyền', 'Giới hạn chức năng cho một ngư�?i dùng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Mua hàng', 'Xem và thêm sản phẩm vào gi�? và tiến hành thanh toán');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khuyến mãi', 'Thêm, xóa, sửa khuy?n mãi');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý đơn hàng', 'Xem, tra cứu tất cả đơn hàng của cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Tra cứu sản phẩm', 'Tra cứu thông tin sản phẩm');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay đổi số lượng sản phẩm đang có trong cửa hàng');
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng');
-INSERT INTO function VALUES (function_seq.NEXTVAL, '�?ánh giá sản phẩm', '�?ánh giá sản phẩm');
+INSERT INTO function VALUES (function_seq.NEXTVAL, 'Đánh giá sản phẩm', '�?ánh giá sản phẩm');
 
 --TABLE ROLE_FUNCTION
 CREATE SEQUENCE role_function_seq
@@ -560,15 +492,15 @@ CREATE SEQUENCE categories_seq
     INCREMENT BY 1
     CACHE 10;
     
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dụng cụ văn phòng','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giấy','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bìa hồ sơ','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bút viết','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tập sổ','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Lưu trữ','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Thiết bị','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Gia dụng vệ sinh','Anh1.jpg');
-insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Mực in - Ruban','Anh1.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Dụng cụ văn phòng','dungcuvanphong.png');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Giấy','giay.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bìa hồ sơ','biahoso.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Bút viết','but.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Tập sổ','tapso.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Lưu trữ','luutru.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Thiết bị','thietbi.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Gia dụng vệ sinh','giadungvesinh.jpg');
+insert into categories(categoriesid,categories_name,image) values(categories_seq.NEXTVAL,'Mực in - Ruban','mucinruban.jpg');
 
 --TABLE PRODUCT
 CREATE SEQUENCE product_seq
@@ -592,50 +524,46 @@ Bạn có thể đặt mua nhiều dòng văn phòng phẩm Double A tại Offic
 Giấy Double A A4 80 còn gọi là giấy photocopy, giấy in, giấy văn phòng có đơn vị tính là Ream và được đóng gói theo quy cách: 5 reams / thùng
 Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','giay-double-a-a4-80.jpg', 'Double A','Thái Lan',4000,'red','93000');
 
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Bìa còng F4 5cm',' Bìa hồ sơ', 2000,'','Nhựa',3,'','',2,'Bìa còng F4 5cm (loại 1) với độ dày 5 cm, thân bọc simili, dạng còng bật 2 lổ, lưu trữ 300 tờ giấy A4 lưu trữ, phân loại và bảo vệ bề mặt chứng từ giấy có kích thước A4, A5 đã được tạo khoen lổ dọc thân lưu trữ, phân loại và bảo vệ bề mặt chứng từ giấy có kích thước A4, A5 đã được tạo khoen lổ dọc thân ✓Tiết kiệm từ 10% - 30%
 Sản phẩm được sản xuất bởi các doanh nghiệp văn phòng phẩm uy tín tại Việt Nam
 Sản phẩm Bìa còng chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Việt Nam tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
 Bìa còng F4 5cm (loại 1) còn gọi là bìa 2 còng có đơn vị tính là Cái và được đóng gói theo quy cách: 50 cái / thùng
-Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','bia-cong-f4-5cm.jpg', 'F4','Việt Nam',4000,'black');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','bia-cong-f4-5cm.jpg', 'F4','Việt Nam',4000,'black','7000');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Bút bi cắm bàn TL','Bút Bi', 2000,'','Nhựa',1,'','',4,'Bút bi cắm bàn TL (B-10.8) với thân nhựa, dạng để bàn, ngòi bi, nét mực êm, cở ngòi 0.5 mm, có dây nối với đế, có lớp keo trống trượt mm, màu mực xanh ghi chú nội dung ,ký kết hợp đồng ghi chú nội dung ,ký kết hợp đồng ✓Tiết kiệm từ 10% - 30%
 Thiên Long là thương hiệu hàng đầu tại Việt Nam về sản phẩm bút viết, đồ dùng văn phòng
 Sản phẩm Bút bi chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Thiên Long tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Bút bi cắm bàn TL còn gọi là viết bi, bút mực, viết mực, bút bi bấm có đơn vị tính là Cây Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','but-bi-cam-ban-tl.jpg', 'Thiên Long','Việt Nam',4000,'Trắng và xanh');
+Bút bi cắm bàn TL còn gọi là viết bi, bút mực, viết mực, bút bi bấm có đơn vị tính là Cây Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','but-bi-cam-ban-tl.jpg', 'Thiên Long','Việt Nam',4000,'Trắng và xanh','50000');
 
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Sổ bìa da Vivaone S804','Sổ bìa',5000,'', 'Da',5,17,28,2,'Sổ bìa da Vivaone S804 với kích thước: 17 x 24 cm, bìa bọc simili, có nút gài, nền giấy trắng kẻ ngang, 240 trang ghi chú nội dung chuyên dụng ghi chú nội dung chuyên dụng ✓Tiết kiệm từ 10% - 30%
 Sản phẩm được sản xuất bởi các doanh nghiệp văn phòng phẩm uy tín tại Việt Nam
 Sản phẩm Sổ tập chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Việt Nam tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Sổ bìa da Vivaone S804 có đơn vị tính là Cuốn Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','so-bia-da-vivaone-s804.jpg', 'Vivaone ','Việt Nam',75000,'Nâu');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+Sổ bìa da Vivaone S804 có đơn vị tính là Cuốn Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','so-bia-da-vivaone-s804.jpg', 'Vivaone ','Việt Nam',4000,'Nâu','85000');
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Khay đứng 4 ngăn Xukiva 212','Khay', 2000,'','Nhựa',6,'','',2,'Khay đứng 4 ngăn Xukiva 212 (K-32) với dạng xéo, thân vỏ nhựa, 3 ngăn, khả năng lưu trữ 1800 tờ lưu trữ và phân loại tài liệu F4, A4 lưu trữ và phân loại tài liệu F4, A4 ✓Tiết kiệm từ 10% - 30%
 Xukiva là nhà sản xuất uy tín tại Việt Nam về sản phẩm đồ dùng văn phòng
 Sản phẩm Khay kệ chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Xukiva tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Khay đứng 4 ngăn Xukiva 212 còn gọi là kệ rỗ, kệ xéo, kệ liên hoàn có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','khay-dung-4-ngan-xukiva-212.jpg', 'Xukiva','Việt Nam',55000,'Xanh');
+Khay đứng 4 ngăn Xukiva 212 còn gọi là kệ rỗ, kệ xéo, kệ liên hoàn có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','khay-dung-4-ngan-xukiva-212.jpg', 'Xukiva','Việt Nam',4000,'Xanh','55000');
 
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'Casio AX-120B','Máy tính', 2000,'','Nhựa',7,175,5,110,2,'Casio AX-120B (G-336) với màn hình 12 số, kích thước: 25(Dày) × 110(Rộng) × 175,5(Dài) mm, phím tính cơ bản, sử dụng năng lượng mặt trời và pin tính toán chuyên dụng đa năng ✓Tiết kiệm từ 10% - 30%
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
+(product_seq.NEXTVAL,'Casio AX-120B','Máy tính', 2000,'','Nhựa',7,175,5,2,'Casio AX-120B (G-336) với màn hình 12 số, kích thước: 25(Dày) × 110(Rộng) × 175,5(Dài) mm, phím tính cơ bản, sử dụng năng lượng mặt trời và pin tính toán chuyên dụng đa năng ✓Tiết kiệm từ 10% - 30%
 Casio là hãng sản xuất uy tín tại Nhật Bản về sản phẩm máy tính học sinh, máy tính văn phòng
 Sản phẩm Máy tính chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Casio tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Casio AX-120B còn gọi là máy tính bàn, máy tính văn phòng có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','casio-ax-120b.jpg', 'Casio ','Nhật Bản',290000,'Đen xám');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
+Casio AX-120B còn gọi là máy tính bàn, máy tính văn phòng có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','casio-ax-120b.jpg', 'Casio','Nhật Bản',3000,'Đen xám','290000');
+
+insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Nước rửa tay Lifebuoy 493ml','Nước rửa tay', 2000,'','Nước rửa tay',8,'','','','Nước rửa tay Lifebuoy 493ml với dạng lỏng, dung tích 493ml, có vòi xịt, sát khuẩn mạnh, bảo vệ da, hương thơm tự nhiên vệ sinh cơ thể vệ sinh cơ thể ✓Tiết kiệm từ 10% - 30%
 Lifebuoy là nhà sản xuất nổi tiếng tại Việt Nam về sản phẩm xà phòng, nước rửa tay, dung dịch tẩy rửa
 Sản phẩm Chất tẩy rửa - xịt phòng chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Lifebuoy tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Nước rửa tay Lifebuoy 493ml còn gọi là xà phòng rửa tay có đơn vị tính là Chai Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','nuoc-rua-tay-lifebuoy-493ml.jpg', 'Lifebuoy','Việt Nam',75000,'Trắng xanh');
-
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'Tai Nghe gameming','Asus', 2000,200,'Gameming',3,720,1080,2,'decription Tai nghe','img.jpg', 'Asus','Chinna',4000,'black');
-insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color) values
-(product_seq.NEXTVAL,'Quần bò','quần', 7000,200,'Dell',4,720,1080,2,'decription quần','img.jpg', 'quần','Chinna',7000,'black');
+Nước rửa tay Lifebuoy 493ml còn gọi là xà phòng rửa tay có đơn vị tính là Chai Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','nuoc-rua-tay-lifebuoy-493ml.jpg', 'Lifebuoy','Việt Nam',5000,'Trắng xanh','75000');
 
 --TABLE CART_PRODUCT
 CREATE SEQUENCE cart_product_seq
@@ -661,53 +589,37 @@ CREATE SEQUENCE bill_detail_seq
     INCREMENT BY 1
     CACHE 10;
     
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3500,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,3500,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,5000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,5000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,7000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,7000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
 values(bill_detail_seq.NEXTVAL,8000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,9000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,2,2);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,9000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),2,2);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,1);
 
-insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_rating,id_product) 
-values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),1,3,1);
+insert into bill_detail(id,quantity,price,createdat,updatedat,id_bill,id_product) 
+values(bill_detail_seq.NEXTVAL,3000,3000,TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'),3,1);
 
 
---DROP KHOA NGOAI GIUA RATING VA BILL_DETAIL
-ALTER TABLE BILL_DETAIL
-    DROP CONSTRAINT FK14;
-    
---DROP COLUMN ID_RATING TRONG BILL_DETAIL
-ALTER TABLE BILL_DETAIL
-    DROP COLUMN ID_RATING;
-    
---SUA BẢNG RATING
-ALTER TABLE RATING
-    ADD PRODUCT_ID NUMBER(10, 0);
-    
-DELETE FROM RATING;
-
-ALTER TABLE RATING
-    ADD CONSTRAINT FK14 FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID);
 
 DROP SEQUENCE RATING_SEQ;
 
@@ -766,3 +678,63 @@ BEGIN
 
 END;
 
+--Có thể dùng lệnh dưới để drop column status trong bảng bill trong trư�?ng hợp lỡ tạo db
+--alter table bill
+--    drop column status;
+-- ADD COLUMN PRICE INTO PRODUCT TABLE
+ALTER TABLE PRODUCT
+    ADD PRICE NUMBER(10,0);
+
+ALTER TABLE PRODUCT
+    MODIFY price decimal(12,6);
+ALTER TABLE PRODUCT 
+ MODIFY DESCRIPTION NVARCHAR2(2000);
+--ADD COLUMN DELETED INTO ALL TABLE
+ALTER TABLE PRODUCT
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+    
+ALTER TABLE ACCOUNT
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE BILL
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE BILL_DETAIL
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE BILL_STATUS
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CART
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CART_COUPON
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CART_PRODUCT
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE CATEGORIES
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE COUPON
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE FUNCTION
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE RATING
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE ROLE
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE ROLE_FUNCTION
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE USER_ROLE
+    ADD deleted NUMBER(1,0) DEFAULT 0;
+    
+ALTER TABLE USER_WEBSITE
+    ADD deleted NUMBER(1,0) DEFAULT 0;
