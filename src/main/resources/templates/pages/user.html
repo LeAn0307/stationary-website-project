@@ -9,42 +9,42 @@
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h1 class="h1 text-center">Quản lý người dùng</h1>
+        <h2 class="card-title categoryheader">Danh mục sản phẩm</h2>
+        <button class="btn btn-success btn-block">Thêm mới danh mục
+          <i class="mdi mdi-plus"></i>
+        </button>
         <div class="table-responsive">
           <table class="table table-bordered">
-            <thead class="thead-light">
+            <thead>
             <tr>
-              <th class="col text-center">
-                ID
+              <th>
+                Id
               </th>
               <th>
-                Tên người dùng
+                Name
               </th>
-              <th class="col text-center">
-                Địa chỉ
+              <th>
+                Image
               </th>
-              <th class="col text-center">
-                Số điện thoại
+              <th>
+                Tùy chọn
               </th>
-              <th>Tùy chọn</th>
             </thead>
             <tbody>
-            <tr th:each="state:${users}">
+            <tr th:each="state:${categories}">
               <td th:utext="${state.id}"></td>
-              <td th:utext="${state.userName}"></td>
-              <td th:utext="${state.address}"></td>
-              <td th:utext="${state.phone}"></td>
+              <td th:utext="${state.CategoriesName}"></td>
+              <td th:utext="${state.image}"></td>
               <td> <div class="ticket-actions col-md-2">
                 <div class="btn-group dropdown">
                   <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Tùy chọn
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" th:href="@{/pages/user/{id}(id=${state.id})}">
+                    <a class="dropdown-item" href="#">
                       <i class="fa fa-reply fa-fw"></i>Sửa</a>
-<!--                    <a class="dropdown-item" href="#">-->
-<!--                      <i class="fa fa-history fa-fw"></i>Xóa</a>-->
-
+                    <a class="dropdown-item" href="#">
+                      <i class="fa fa-history fa-fw"></i>Xóa</a>
                   </div>
                 </div>
               </div></td>
