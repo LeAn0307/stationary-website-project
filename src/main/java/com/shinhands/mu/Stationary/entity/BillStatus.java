@@ -23,7 +23,7 @@ public class BillStatus {
     private String status;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 //
 //    @OneToMany(mappedBy = "billStatus", cascade = CascadeType.ALL)
 //    private List<Bill> bill;

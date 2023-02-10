@@ -64,7 +64,7 @@ public class BillDetail {
     @Column(name = "ID_BILL")
     private Long idBill;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id_bill", nullable = false, referencedColumnName = "bill_id")

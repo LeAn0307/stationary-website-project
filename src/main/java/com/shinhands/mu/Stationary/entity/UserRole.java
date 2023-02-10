@@ -22,7 +22,7 @@ public class UserRole {
     @Column(name = "iduser")
     private Long idUser;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 
 
 //    @ManyToOne

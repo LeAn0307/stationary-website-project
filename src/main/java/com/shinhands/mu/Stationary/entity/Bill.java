@@ -50,7 +50,7 @@ public class Bill {
     private Long idBillStatus;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 //    @ManyToOne
 ////    @JoinColumn(name = "id_bill_status", nullable = false, referencedColumnName = "id")
 ////    private BillStatus billStatus;
