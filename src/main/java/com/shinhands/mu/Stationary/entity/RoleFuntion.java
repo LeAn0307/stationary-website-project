@@ -22,7 +22,7 @@ public class RoleFuntion {
     @Column(name = "function_id")
     private Long functionId;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 
 //    @ManyToOne
 //    @JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")

@@ -23,7 +23,7 @@ public class Account {
     private String accountPassword;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "idaccount", referencedColumnName = "id")
 //    private UserWebsite userWebsite;

@@ -24,7 +24,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDTO> getAllProducts() {
-        return mapper.map(productRepository.findAllByDeletedEquals(0L), new TypeToken<List<ProductDTO>>(){}.getType());
+//        return mapper.map(productRepository.findAllByDeletedEquals(0L), new TypeToken<List<ProductDTO>>(){}.getType());
+        return productRepository.findAllProducts();
     }
 
     @Override
@@ -48,9 +49,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDTO getProductById(long id) {
 
-        Product oldProduct=productRepository.findByIdEqualsAndDeletedEquals(id,0L);
+        ProductDTO oldProduct = productRepository.findProductById(id);
         if (oldProduct!=null)
-            return mapper.map(oldProduct, ProductDTO.class);
+            return oldProduct;
         else return null;
     }
 
