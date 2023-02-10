@@ -26,7 +26,7 @@ public class AccountController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AccountDTO accountDTO) throws Exception {
-        if (accountService.authentication(accountDTO.getEmail(), accountDTO.getAccountPassword())) {
+        if (accountService.authentication(accountDTO)) {
             final UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
             final String jwt = jwtTokenUtil.generateToken(userDetails);
             return ResponseEntity.ok().body(jwt);

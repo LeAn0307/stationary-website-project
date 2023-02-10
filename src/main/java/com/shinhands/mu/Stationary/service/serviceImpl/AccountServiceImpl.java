@@ -21,12 +21,12 @@ public class AccountServiceImpl implements AccountService {
     private HashPasswordConfig _hashPasswordConfig;
 
     @Override
-    public boolean authentication(String username, String password) {
-        Account account = accountRepository.findByEmail(username);
+    public boolean authentication(AccountDTO accountDTO) {
+        Account account = accountRepository.findByEmail(accountDTO.getEmail());
         if (account == null) {
             return false;
         }
-        if (_hashPasswordConfig.isMatch(password, account.getAccountPassword())) {
+        if (_hashPasswordConfig.isMatch(accountDTO.getAccountPassword(), account.getAccountPassword())) {
             return true;
         }
         return false;
