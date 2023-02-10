@@ -28,4 +28,5 @@ public class ProductDTO {
     private Long amount;
     private String color;
     private BigDecimal price;
+    private String categoriesName;
 }
