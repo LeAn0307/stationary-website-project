@@ -39,8 +39,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDTO addAccount(AccountDTO accountDTO) {
-//        String encodedPassword = _securityConfig.encode(accountDTO.getAccountPassword());
-//        accountDTO.setAccountPassword(encodedPassword);
+        String encodedPassword = _hashPasswordConfig.encode(accountDTO.getAccountPassword());
+        accountDTO.setAccountPassword(encodedPassword);
         Account account = mapper.map(accountDTO, Account.class);
         account.setDeleted(0L);
         return mapper.map(accountRepository.save(account), AccountDTO.class);
