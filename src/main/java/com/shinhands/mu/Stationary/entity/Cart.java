@@ -20,8 +20,12 @@ public class Cart {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id",nullable = false)
     private Long id;
+    
     @Column(name = "total")
     private BigDecimal total;
+
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(name = "deleted")
     private Long deleted;
