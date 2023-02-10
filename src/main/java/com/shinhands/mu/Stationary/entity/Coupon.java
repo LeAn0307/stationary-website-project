@@ -32,5 +32,5 @@ public class Coupon {
    @Column(name="amount")
    private double amount;
    @Column(name = "deleted")
-   private Long deleted;
+   private Long deleted = 0L;
 }

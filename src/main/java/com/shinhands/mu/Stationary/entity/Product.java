@@ -95,8 +95,9 @@ public class Product {
     private String color;
     @Column(name="price")
     private BigDecimal price;
-    @Column(name = "deleted", columnDefinition = "NUMBER(1,0) default '0'")
-    private Long deleted;
+    @Column(name = "deleted")
+    private Long deleted = 0L;
+
 
 //    @ManyToOne
 //    @JoinColumn(name = "cart_product", nullable = false, referencedColumnName = "categoriesid")
