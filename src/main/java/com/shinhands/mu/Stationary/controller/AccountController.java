@@ -26,14 +26,12 @@ public class AccountController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AccountDTO accountDTO) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(accountDTO.getEmail(), accountDTO.getAccountPassword()));
-        } catch (BadCredentialsException e) {
-            throw new Exception(e);
+        if (accountService.authentication(accountDTO.getEmail(), accountDTO.getAccountPassword())) {
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
+            final String jwt = jwtTokenUtil.generateToken(userDetails);
+            return ResponseEntity.ok().body(jwt);
         }
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
-        final String jwt = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok().body(jwt);
+        return ResponseEntity.badRequest().build();
     }
     @RequestMapping(value="",method= RequestMethod.GET)
     public ResponseEntity getAllAccounts()
