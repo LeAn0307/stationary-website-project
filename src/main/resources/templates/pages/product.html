@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Product</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Danh sách sản phẩm</h2>
+                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#addModal" >Thêm mới sản phẩm
+                    <i class="mdi mdi-plus"></i>
+                </button>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Hình</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Tùy chọn</th>
+                        </thead>
+                        <tbody>
+                        <tr th:each="state:${productList}">
+                            <td><img class="img" th:src="@{/images/anh_demo_product.jpg}" alt="" width="100%" height="auto" style="height:100px;width: 100px"></td>
+                            <td th:utext="${state.name}"></td>
+                            <td th:utext="${state.type}"></td>
+                            <td th:utext="${state.categoriesName}"></td>
+                            <td th:utext="${state.amount}"></td>
+                            <td>
+                                <div class="ticket-actions col-md-2">
+                                    <div class="btn-group dropdown">
+                                        <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Tùy chọn
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" th:href="@{/pages/product_detail(id=${state.id})}">
+                                                <i class="fa fa-reply fa-fw"></i>Xem</a>
+                                            <a class="dropdown-item" th:href="@{/pages/product/delete(id=${state.id})}">
+                                                <i class="fa fa-history fa-fw"></i>Xóa</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade col-lg-12" id="addModal" tabindex="-1" role="dialog" >
+        <form th:action="@{/pages/product/add}" th:object="${productDTO}" method="post" enctype="multipart/form-data">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Thêm sản phẩm mới</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-form-label">Tên sản phẩm</label>
+                            <input type="text" class="form-control" th:field="*{name}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Thể loại</label>
+                            <input type="text" class="form-control" th:field="*{type}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Chiết khấu</label>
+                            <input type="number" class="form-control" th:field="*{discount}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Rating</label>
+                            <input type="number" class="form-control" th:field="*{avgrating}" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Chất liệu</label>
+                            <input type="text" class="form-control" th:field="*{material}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Loại sản phẩm</label>
+                            <select th:field="*{categoryid}" class="form-control">
+                                <option th:each="i : ${categoryList}" th:value="${i.id}" th:text="${i.categoriesName}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Chiều dài</label>
+                            <input type="number" class="form-control" th:field="*{height}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Chiều rộng</label>
+                            <input type="number" class="form-control" th:field="*{width}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Cân nặng (kg)</label>
+                            <input type="number" class="form-control" th:field="*{weight}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Mô tả sản phẩm</label>
+                            <textarea class="form-control" th:field="*{description}" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" th:field="*{image}">
+                            <input type="hidden" th:field="*{id}">
+                            <input type="hidden" th:field="*{categoriesName}">
+                            <label class="col-form-label">Hình ảnh</label>
+                            <input type="file" class="form-control-file" id="photo" name="photo" multiple="multiple">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Thương hiệu</label>
+                            <input type="text" class="form-control" th:field="*{brand}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Xuất xứ</label>
+                            <input type="text" class="form-control" th:field="*{madein}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Số lượng</label>
+                            <input type="number" class="form-control" th:field="*{amount}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Màu sắc</label>
+                            <input type="text" class="form-control" th:field="*{color}">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Giá bán</label>
+                            <input type="number" class="form-control" th:field="*{price}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>
