@@ -6,6 +6,7 @@ import com.shinhands.mu.Stationary.dto.UserDTO;
 import java.util.List;
 
 public interface AccountService {
+    public boolean authentication(String username, String password);
     public List<AccountDTO> getAllAccounts();
     public AccountDTO addAccount(AccountDTO accountDTO);
     public Boolean deleteAccount(long id);
