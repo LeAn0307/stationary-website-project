@@ -25,5 +25,5 @@ public class CartCoupon {
     private long couponId;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 }

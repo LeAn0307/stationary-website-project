@@ -29,7 +29,7 @@ public class UserWebsite {
     @Column(name="idaccount")
     private Long idAccount;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 
 
 //    @OneToMany(mappedBy = "userWebsite", cascade = CascadeType.ALL)

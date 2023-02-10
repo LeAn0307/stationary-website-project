@@ -25,5 +25,5 @@ public class Category {
     private String image;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 }
