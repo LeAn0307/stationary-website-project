@@ -5,16 +5,25 @@
     <title>Home</title>
 </head>
 <body>
-<section layout:fragment="content" class ="row">
+<style>
+    .table td {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<section layout:fragment="content" class = "mt-2" >
+
     <button type="button" class="btn btn-success ">Thêm</button>
     <button type="button" class="btn btn-danger ">Xóa</button>
     <button type="button" class="btn btn-warning ">Sửa</button>
 
 
-    <table class="table bg-white mt-4 ">
+    <table class="table bg-white  mt-2  ">
         <thead  class="thead-light">
         <tr>
-            <th scope="col">#</th>
+            <th scope="col ">#</th>
             <th scope="col">id</th>
             <th scope="col">Tên coupon</th>
             <th scope="col">Giá trị</th>
@@ -26,17 +35,20 @@
         </thead>
         <tbody>
         <tr th:each="state:${coupon}">
-            <td >
+            <td class="col-sm">
                 <input type="checkbox" aria-label="Checkbox for following text input">
             </td>
 
-            <td th:utext="${state.id}"></td>
-            <td th:utext="${state.name}"></td>
-            <td th:utext="${state.discount}"></td>
-            <td th:utext="${state.minPrice}"></td>
-            <td th:utext="${state.maxPrice}"></td>
-            <td th:utext="${state.code}"></td>
-            <td th:utext="${state.amount}"></td>
+            <td class="col-sm" th:utext="${state.id}"></td>
+            <td class="col-sm " style="  max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;" th:utext="${state.name}"></td>
+            <td class="col-sm" th:utext="${state.discount}"></td>
+            <td class="col-sm" th:utext="${state.minPrice}"></td>
+            <td class="col-sm" th:utext="${state.maxPrice}"></td>
+            <td class="col-sm" th:utext="${state.code}"></td>
+            <td class="col-sm" th:utext="${state.amount}"></td>
         </tr>
         </tbody>
     </table>
