@@ -30,7 +30,8 @@ public class JwtConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers(
-                        "/login"
+                        "/login",
+                        "/accounts"
                 ).permitAll().
                 anyRequest().authenticated().and().
                 exceptionHandling().and().sessionManagement()
