@@ -2,9 +2,7 @@ package com.shinhands.mu.Stationary.controller;
 
 import com.shinhands.mu.Stationary.config.security.JwtUtil;
 import com.shinhands.mu.Stationary.dto.AccountDTO;
-import com.shinhands.mu.Stationary.form.RegisterForm;
 import com.shinhands.mu.Stationary.service.AccountService;
-import com.shinhands.mu.Stationary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,16 +18,12 @@ public class AccountController {
     @Autowired
     AccountService accountService;
     @Autowired
-    private UserService _userService;
+    private AuthenticationManager authenticationManager;
     @Autowired
     private JwtUtil jwtTokenUtil;
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterForm body) {
-        return null;
-    }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AccountDTO accountDTO) throws Exception {
         if (accountService.authentication(accountDTO)) {
