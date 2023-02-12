@@ -33,6 +33,16 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public AccountDTO getAccountByEmail(String email) {
+        Account account = accountRepository.findByEmailEqualsAndDeletedEquals(email, 0L);
+        if (account != null) {
+            return mapper.map(account, AccountDTO.class);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public List<AccountDTO> getAllAccounts() {
         return mapper.map(accountRepository.findAllByDeletedEquals(0L), new TypeToken<List<AccountDTO>>(){}.getType());
     }

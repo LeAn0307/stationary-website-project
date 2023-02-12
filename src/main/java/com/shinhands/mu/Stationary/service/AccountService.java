@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface AccountService {
     public boolean authentication(AccountDTO accountDTO);
+    public AccountDTO getAccountByEmail(String email);
     public List<AccountDTO> getAllAccounts();
     public AccountDTO addAccount(AccountDTO accountDTO);
     public Boolean deleteAccount(long id);
