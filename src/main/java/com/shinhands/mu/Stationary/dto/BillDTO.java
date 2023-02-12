@@ -1,6 +1,7 @@
 package com.shinhands.mu.Stationary.dto;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -34,5 +35,6 @@ public class BillDTO {
 
     private String status;
 
-    private List<BillDetailDTO> billDetailDTOList;
+    private String customerName;
+
 }
