@@ -29,7 +29,7 @@ public class Rating {
     @Column(name = "product_id")
     private Long productId;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 //    @Column(name="product_id")
 //    private Long productId;
 }

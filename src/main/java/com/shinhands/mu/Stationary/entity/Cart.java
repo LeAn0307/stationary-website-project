@@ -28,7 +28,7 @@ public class Cart {
     private Long userId;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
     /*@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

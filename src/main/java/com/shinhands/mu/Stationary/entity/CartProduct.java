@@ -31,5 +31,5 @@ public class CartProduct {
     private Long cartId;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 }

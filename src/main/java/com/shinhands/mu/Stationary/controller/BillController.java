@@ -28,7 +28,7 @@ public class BillController {
     private BillStatusService billStatusService;
 
     @GetMapping("")
-    public ResponseEntity<List<BillDTO>> getAllBills() {
+    public ResponseEntity getAllBills() {
         try {
             List<BillDTO> billDTO = billService.getAllBills();
             if(billDTO.isEmpty()) {
@@ -72,18 +72,18 @@ public class BillController {
         }
     }
 
-    @PostMapping("")
-    public ResponseEntity createBill(@RequestBody BillDTO billDTO) {
-        try {
-            if(billDetailService.addBillDetail(billService.addBill(billDTO) ,billDTO.getBillDetailDTOList())){
-                return new ResponseEntity<>(HttpStatus.CREATED);
-            } else {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @PostMapping("")
+//    public ResponseEntity createBill(@RequestBody BillDTO billDTO) {
+//        try {
+//            if(billDetailService.addBillDetail(billService.addBill(billDTO) ,billDTO.getBillDetailDTOList())){
+//                return new ResponseEntity<>(HttpStatus.CREATED);
+//            } else {
+//                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//            }
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<BillDTO> updateBill(@PathVariable long id, @RequestBody BillDTO billDTO) {

@@ -55,7 +55,7 @@
     </nav>
 
     <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper" >
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
@@ -78,10 +78,44 @@
                         </button>
                     </div>
                 </li>
+<!--                .............................NAV    ------------------------->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{dashboard}">
+                    <a class="nav-link" th:href="@{statistic}">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Thống kê</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{coupon-manage-element}">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Quản lý coupon</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{bill}">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Quản lý đơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{category}">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Quản lý danh mục </span>
+                    </a>
+                </li>
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{pages/dashboard}">
                         <i class="menu-icon mdi mdi-television"></i>
                         <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{product}">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title"> Product - Quý </span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -120,9 +154,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{product}">
+                        <i class="menu-icon mdi mdi-table"></i>
+                        <span class="menu-title">Product</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{statistic}">
                         <i class="menu-icon mdi mdi-sticker"></i>
-                        <span class="menu-title">Icons</span>
+                        <span class="menu-title">Statistic</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -151,27 +191,21 @@
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/pages/category}">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Category</span>
+                    </a>
+                </li>
             </ul>
         </nav>
 
         <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper" layout:fragment="content">
+        <div class="main-panel" style="background-color: #f2f8f9">
+            <div class="content-wrapper container m-2" layout:fragment="content">
                 Content is Here!
             </div>
-            <!-- content-wrapper ends -->
 
-            <!-- partial:partials/_footer.html -->
-            <footer class="footer">
-                <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
-              <i class="mdi mdi-heart text-danger"></i>
-            </span>
-                </div>
-            </footer>
-            <!-- partial -->
         </div>
         <!-- main-panel ends -->
 

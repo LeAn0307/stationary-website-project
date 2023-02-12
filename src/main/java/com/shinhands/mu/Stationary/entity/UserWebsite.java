@@ -23,13 +23,13 @@ public class UserWebsite {
     @Column(name="address",length = 255,nullable = false)
     private String address;
     @Column(name="phone",nullable = false)
-    private Long phone;
+    private String phone;
 //    @Column(name="idcart")
 //    private Long idCart;
     @Column(name="idaccount")
     private Long idAccount;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 
 
 //    @OneToMany(mappedBy = "userWebsite", cascade = CascadeType.ALL)

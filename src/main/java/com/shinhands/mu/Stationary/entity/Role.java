@@ -23,7 +23,7 @@ public class Role {
     @Column(name="name_role",length = 50)
     private String nameRole;
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 
 
 //    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)

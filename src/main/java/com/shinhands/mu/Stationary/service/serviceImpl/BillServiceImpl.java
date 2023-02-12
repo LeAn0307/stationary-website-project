@@ -23,12 +23,12 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public List<BillDTO> getAllBills() {
-        return modelMapper.map(billRepository.findByDeleted(0L), new TypeToken<List<BillDTO>>(){}.getType());
+        return billRepository.findAllBills();
     }
 
     @Override
     public BillDTO getBillsByBillId(long billId) {
-        Bill bill = billRepository.findAllByDeletedAndId(0L, billId);
+        Bill bill = billRepository.findByIdEqualsAndDeletedEquals(billId, 0L);
         if(bill != null) {
             return modelMapper.map(bill, BillDTO.class);
         }
@@ -46,14 +46,14 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public Long addBill(BillDTO billDTO) {
-        return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class).getId();
+    public BillDTO addBill(BillDTO billDTO) {
+        return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class);
     }
 
     @Override
     public BillDTO updateBill(long id, BillDTO billDTO)
     {
-        Bill bill = billRepository.findAllByDeletedAndId(0L, id);
+        Bill bill = billRepository.findByIdEqualsAndDeletedEquals(id, 0L);
         if(bill == null) {
             return null;
         } else {
@@ -63,9 +63,17 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public long deleteBill(long id) {
-        Bill deleteBill = billRepository.findAllByDeletedAndId(0L,id);
+        Bill deleteBill = billRepository.findByIdEqualsAndDeletedEquals(id, 0L);
         deleteBill.setDeleted(1L);
         billRepository.save(deleteBill);
         return deleteBill.getId();
+    }
+
+    @Override
+    public boolean updateStatusBill(long id, long statusId) {
+        Bill bill = billRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        bill.setIdBillStatus(statusId);
+        billRepository.save(bill);
+        return true;
     }
 }

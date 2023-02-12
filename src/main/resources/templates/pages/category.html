@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+  <title>Home</title>
+  <style>
+    .max-width-200 {
+      max-width: 200px!important;
+      overflow: hidden!important;
+      text-overflow: ellipsis!important;
+      white-space: nowrap!important;
+    }
+
+  </style>
+</head>
+<body>
+<section layout:fragment="content" class="container-fluid!important">
+
+  <div class="p-2" style="background-color: white">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="py-2">Quản lý danh mục</h4>
+          <a  class = "btn btn-success text-white btn-sm mb-3" data-toggle="modal" data-target="#addModal"> Thêm mới danh mục</a>
+          <div class="table-responsive ">
+            <table class="table table-bordered">
+              <thead class="thead-light">
+              <tr>
+                <th class="col text-center " style="width: 200px">
+                  Id
+                </th>
+                <th class="col text-center">
+                  Name
+                </th>
+                <th class="col text-center">
+                  Image
+                </th>
+                <th class="col text-center">
+                  Tùy chọn
+                </th>
+              </thead>
+              <tbody>
+              <tr th:each="state:${categories}">
+
+                <td th:utext="${state.id}"></td>
+                <td th:utext="${state.categoriesName}"></td>
+                <td th:utext="${state.image}"></td>
+                <td> <div class="ticket-actions col-md-2">
+                  <div class="btn-group dropdown">
+                    <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Tùy chọn
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" th:href = "@{/pages/category/{id}(id=${state.id})}">
+                        <i class="fa fa-reply fa-fw"></i>Sửa</a>
+                      <a id="delete" class="dropdown-item" onclick="DeleteFunction"  th:href = "@{/pages/delete-category/{id}(id=${state.id})}" >
+                        <i class="fa fa-history fa-fw"></i>Xóa</a>
+                    </div>
+                  </div>
+                </div></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade col-lg-12" id="addModal" tabindex="-1" role="dialog"  style="background-color: white">
+      <form th:action="@{/pages/category/add}" th:object="${categoryDTO}" method="post" enctype="multipart/form-data">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Thêm Danh mục sản phẩm mới</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="col-form-label">Tên danh mục sản phẩm</label>
+                <input type="text" class="form-control" th:field="*{categoriesName}">
+              </div>
+
+              <div class="form-group">
+                <label class="col-form-label">Hình ảnh</label>
+                <input type="file" class="form-control-file" id="photo" name="photo" multiple="multiple">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+              <button type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+</section>
+</body>
+</html>
+<script>
+</script>
