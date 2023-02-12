@@ -2,7 +2,6 @@ package com.shinhands.mu.Stationary.controller;
 
 import com.shinhands.mu.Stationary.config.security.JwtUtil;
 import com.shinhands.mu.Stationary.dto.AccountDTO;
-import com.shinhands.mu.Stationary.dto.UserDTO;
 import com.shinhands.mu.Stationary.form.RegisterForm;
 import com.shinhands.mu.Stationary.service.AccountService;
 import com.shinhands.mu.Stationary.service.UserService;
@@ -29,31 +28,13 @@ public class AccountController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterForm body) {
-        AccountDTO accountDTO = new AccountDTO();
-        if (accountService.getAccountByEmail(body.getEmail()) == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        accountDTO.setAccountPassword(body.getAccountPassword());
-        accountDTO.setEmail(body.getEmail());
-        accountDTO = accountService.addAccount(accountDTO);
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUserName(body.getUserName());
-        userDTO.setPhone(body.getPhone());
-        userDTO.setAddress(body.getAddress());
-        userDTO.setIdAccount(accountDTO.getId());
-        _userService.addUser(userDTO);
-        if (accountService.authentication(accountDTO)) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
-            String jwt = jwtTokenUtil.generateToken(userDetails);
-            return ResponseEntity.ok().body(jwt);
-        }
-        return ResponseEntity.badRequest().build();
+        return null;
     }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AccountDTO accountDTO) throws Exception {
         if (accountService.authentication(accountDTO)) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
-            String jwt = jwtTokenUtil.generateToken(userDetails);
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
+            final String jwt = jwtTokenUtil.generateToken(userDetails);
             return ResponseEntity.ok().body(jwt);
         }
         return ResponseEntity.badRequest().build();

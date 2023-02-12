@@ -30,11 +30,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO getUserByUsername() {
-        userRepository.findByUserName
-    }
-
-    @Override
     public UserDTO addUser(UserDTO userDTO) {
         UserWebsite userWebsite =mapper.map(userDTO, UserWebsite.class);
         userWebsite.setDeleted(0L);
