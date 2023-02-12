@@ -3,6 +3,7 @@ package com.shinhands.mu.Stationary.service.serviceImpl;
 
 import com.shinhands.mu.Stationary.dto.UserDTO;
 import com.shinhands.mu.Stationary.entity.UserWebsite;
+import com.shinhands.mu.Stationary.repository.UserLoginRepository;
 import com.shinhands.mu.Stationary.repository.UserRepository;
 import com.shinhands.mu.Stationary.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -10,6 +11,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
@@ -18,6 +20,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ModelMapper mapper;
+
+    @Resource
+    private UserLoginRepository userLoginRepository;
+
     @Override
     public List<UserDTO> getAllUsers() {
         return mapper.map(userRepository.findAllByDeletedEquals(0L), new TypeToken<List<UserDTO>>(){}.getType());
@@ -58,5 +64,14 @@ public class UserServiceImpl implements UserService {
             userRepository.save(mapper.map(userDTO,UserWebsite.class));
         }
         return true;
+    }
+
+    @Override
+    public Boolean checkAdmin(String email, String password) {
+        if(userLoginRepository.checkAdmin(email, password) != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
