@@ -10,6 +10,21 @@
       text-overflow: ellipsis!important;
       white-space: nowrap!important;
     }
+    .table-container {
+      overflow-y: auto;
+      height: 500px;
+    }
+    .fixed-header {
+      position: sticky;
+      top: 0;
+    }
+    .fixed-header th {
+      position: relative;
+      background-color: white;
+    }
+    table {
+      width: 100%;
+    }
 
   </style>
 </head>
@@ -22,9 +37,9 @@
         <div class="card-body">
           <h4 class="py-2">Quản lý danh mục</h4>
           <a  class = "btn btn-success text-white btn-sm mb-3" data-toggle="modal" data-target="#addModal"> Thêm mới danh mục</a>
-          <div class="table-responsive ">
-            <table class="table table-bordered">
-              <thead class="thead-light">
+          <div class="table-responsive " style="max-height: 713px!important;overflow-y: auto!important;">
+            <table class="table table-bordered"  style="">
+              <thead class="thead-light fixed-header!important">
               <tr>
                 <th class="col text-center " style="width: 200px">
                   Id
@@ -39,9 +54,9 @@
                   Tùy chọn
                 </th>
               </thead>
-              <tbody>
-              <tr th:each="state:${categories}">
+              <tbody style="">
 
+              <tr th:each="state:${categories}">
                 <td th:utext="${state.id}"></td>
                 <td th:utext="${state.categoriesName}"></td>
                 <td th:utext="${state.image}"></td>
