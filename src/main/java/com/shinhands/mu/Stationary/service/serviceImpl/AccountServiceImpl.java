@@ -1,5 +1,6 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
+import com.shinhands.mu.Stationary.config.security.HashPasswordConfig;
 import com.shinhands.mu.Stationary.dto.AccountDTO;
 import com.shinhands.mu.Stationary.entity.Account;
 import com.shinhands.mu.Stationary.repository.AccountRepository;
@@ -16,6 +17,21 @@ public class AccountServiceImpl implements AccountService {
     AccountRepository accountRepository;
     @Autowired
     private ModelMapper mapper;
+    @Autowired
+    private HashPasswordConfig _hashPasswordConfig;
+
+    @Override
+    public boolean authentication(AccountDTO accountDTO) {
+        Account account = accountRepository.findByEmail(accountDTO.getEmail());
+        if (account == null) {
+            return false;
+        }
+        if (_hashPasswordConfig.isMatch(accountDTO.getAccountPassword(), account.getAccountPassword())) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public List<AccountDTO> getAllAccounts() {
         return mapper.map(accountRepository.findAllByDeletedEquals(0L), new TypeToken<List<AccountDTO>>(){}.getType());
@@ -23,6 +39,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDTO addAccount(AccountDTO accountDTO) {
+        String encodedPassword = _hashPasswordConfig.encode(accountDTO.getAccountPassword());
+        accountDTO.setAccountPassword(encodedPassword);
         Account account = mapper.map(accountDTO, Account.class);
         account.setDeleted(0L);
         return mapper.map(accountRepository.save(account), AccountDTO.class);

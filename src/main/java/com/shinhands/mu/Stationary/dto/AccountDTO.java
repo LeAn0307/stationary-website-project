@@ -9,7 +9,6 @@ import javax.persistence.Column;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountDTO {
-
     private Long id;
     private String email;
     private String accountPassword;
