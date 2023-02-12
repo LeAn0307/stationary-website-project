@@ -6,7 +6,7 @@ import com.shinhands.mu.Stationary.dto.BillDetailDTO;
 import java.util.List;
 
 public interface BillDetailService {
-    public Boolean addBillDetail(long billId ,List<BillDetailDTO> billDetailDTO);
+    public BillDetailDTO addBillDetail(BillDetailDTO billDetailDTO);
 
     public BillDetailDTO updateBillDetail(long id, BillDetailDTO billDetailDTO);
 }
