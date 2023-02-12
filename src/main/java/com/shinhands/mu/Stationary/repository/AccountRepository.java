@@ -11,4 +11,5 @@ public interface AccountRepository extends JpaRepository<Account,Long> {
     List<Account> findAllByDeletedEquals(Long deleted);
 
     Account findByIdEqualsAndDeletedEquals(Long id, Long deleted);
+    Account findByEmail(String email);
 }

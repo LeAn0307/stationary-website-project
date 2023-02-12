@@ -21,6 +21,21 @@
         .table td, .table th {
             width: 100px !important;
         }
+        .table-container {
+            overflow-y: auto!important;
+            height: 500px!important;
+        }
+        .fixed-header {
+            position: sticky;
+            top: 0;
+        }
+        .fixed-header th {
+            position: relative;
+            background-color: white;
+        }
+        table {
+            width: 100%;
+        }
     </style>
     <script>
         document.getElementById("show-form").addEventListener("click", function(){
@@ -35,46 +50,49 @@
     <div class="m-2 p-4" style="background-color: white">
         <h4 class="py-2">Quản lý coupon</h4>
         <button class="btn btn-success text-right" data-target="#addModal" data-toggle="modal" id="create" type="button">Thêm</button>
-        <table class="table bg-white  mt-4  ">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col "></th>
-                <th scope="col">id</th>
-                <th scope="col">Tên coupon</th>
-                <th scope="col">Giá trị</th>
-                <th scope="col">Giá thấp nhất</th>
-                <th scope="col">Giá cao nhất</th>
-                <th scope="col">Mã</th>
-                <th scope="col">Số lượng</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="state:${coupon}">
-                <td class="col-sm ">
-                    <a class = "text-screen mr-2" id="show-form"  >
-                        <svg style="fill: #3cc73f;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square text-blue" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                        </svg>
-                    </a>
-                    <!--                th:href="@{|/pages/coupon-manage-element/delete/${state.id}|}"   -->
-                    <!--                <a class = "text-red" data-target="#editModal" data-toggle="modal" id="edit" >-->
-                    <a class = "text-red" th:href="@{|/pages/coupon-manage-element/delete/${state.id}|}"  >
-                        <svg style="fill: #dc6868;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                        </svg>
-                    </a>
-                </td>
-                <td class="col-sm " th:utext="${state.id}"></td>
-                <td class="col-sm max-width-200 " th:utext="${state.name}"></td>
-                <td class="col-sm" th:utext="${state.discount}"></td>
-                <td class="col-sm" th:utext="${state.minPrice}"></td>
-                <td class="col-sm" th:utext="${state.maxPrice}"></td>
-                <td class="col-sm" th:utext="${state.code}"></td>
-                <td class="col-sm" th:utext="${state.amount}"></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="table-container!important" style="max-height: 713px!important;overflow-y: auto!important;">
+            <table class="table bg-white  mt-4  ">
+                <thead class="thead-light fixed-header!important">
+                <tr>
+                    <th scope="col "></th>
+                    <th scope="col">id</th>
+                    <th scope="col">Tên coupon</th>
+                    <th scope="col">Giá trị</th>
+                    <th scope="col">Giá thấp nhất</th>
+                    <th scope="col">Giá cao nhất</th>
+                    <th scope="col">Mã</th>
+                    <th scope="col">Số lượng</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="state:${coupon}">
+                    <td class="col-sm ">
+                        <a class = "text-screen mr-2" id="show-form"  >
+                            <svg style="fill: #3cc73f;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square text-blue" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            </svg>
+                        </a>
+                        <!--                th:href="@{|/pages/coupon-manage-element/delete/${state.id}|}"   -->
+                        <!--                <a class = "text-red" data-target="#editModal" data-toggle="modal" id="edit" >-->
+                        <a class = "text-red" th:href="@{|/pages/coupon-manage-element/delete/${state.id}|}"  >
+                            <svg style="fill: #dc6868;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                            </svg>
+                        </a>
+                    </td>
+                    <td class="col-sm " th:utext="${state.id}"></td>
+                    <td class="col-sm max-width-200 " th:utext="${state.name}"></td>
+                    <td class="col-sm" th:utext="${state.discount}"></td>
+                    <td class="col-sm" th:utext="${state.minPrice}"></td>
+                    <td class="col-sm" th:utext="${state.maxPrice}"></td>
+                    <td class="col-sm" th:utext="${state.code}"></td>
+                    <td class="col-sm" th:utext="${state.amount}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
         <!--    //create-->
         <div class="modal fade col-lg-12 " id="addModal" tabindex="-1" role="dialog" >
             <form th:action="@{coupon-manage-element/post}" th:object="${couponDTO}" th:method="post"  >
