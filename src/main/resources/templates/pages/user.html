@@ -12,18 +12,18 @@
         <h1 class="h1 text-center">Quản lý người dùng</h1>
         <div class="table-responsive">
           <table class="table table-bordered">
-            <thead>
+            <thead class="thead-light">
             <tr>
-              <th>
+              <th class="col text-center">
                 ID
               </th>
               <th>
                 Tên người dùng
               </th>
-              <th>
+              <th class="col text-center">
                 Địa chỉ
               </th>
-              <th>
+              <th class="col text-center">
                 Số điện thoại
               </th>
               <th>Tùy chọn</th>
@@ -42,8 +42,10 @@
                   <div class="dropdown-menu">
                     <a class="dropdown-item" th:href="@{/pages/user/{id}(id=${state.id})}">
                       <i class="fa fa-reply fa-fw"></i>Sửa</a>
+
 <!--                    <a class="dropdown-item" href="#">-->
 <!--                      <i class="fa fa-history fa-fw"></i>Xóa</a>-->
+
 
                   </div>
                 </div>
