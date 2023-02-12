@@ -10,4 +10,6 @@ public interface UserService {
     public Boolean deleteUser(long id);
     public UserDTO getUserById(long id);
     public Boolean updateUser(long id, UserDTO userDTO);
+
+    public Boolean checkAdmin(String email, String password);
 }
