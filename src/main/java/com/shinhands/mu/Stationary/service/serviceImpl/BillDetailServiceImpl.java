@@ -2,6 +2,7 @@ package com.shinhands.mu.Stationary.service.serviceImpl;
 
 import com.shinhands.mu.Stationary.dto.BillDTO;
 import com.shinhands.mu.Stationary.dto.BillDetailDTO;
+import com.shinhands.mu.Stationary.dto.ProductDTO;
 import com.shinhands.mu.Stationary.entity.BillDetail;
 import com.shinhands.mu.Stationary.repository.BillDetailRepository;
 import com.shinhands.mu.Stationary.service.BillDetailService;
@@ -28,19 +29,8 @@ public class BillDetailServiceImpl implements BillDetailService {
     private ModelMapper modelMapper;
 
     @Override
-    public Boolean addBillDetail(long billId ,List<BillDetailDTO> billDetailDTOList) {
-        try {
-            List<BillDetailDTO> newBillDetailListDTO = new ArrayList<>();
-            for(final BillDetailDTO billDetailDTO : billDetailDTOList) {
-                billDetailDTO.setIdBill(billId);
-                billDetailDTO.setCreatedAt(Date.valueOf(LocalDate.now()));
-                billDetailDTO.setUpdatedAt(Date.valueOf(LocalDate.now()));
-                billDetailRepository.save(modelMapper.map(billDetailDTO, BillDetail.class));
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public BillDetailDTO addBillDetail(BillDetailDTO billDetailDTO) {
+        return modelMapper.map(billDetailRepository.save(modelMapper.map(billDetailDTO, BillDetail.class)), BillDetailDTO.class);
     }
 
     @Override

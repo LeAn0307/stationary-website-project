@@ -18,4 +18,8 @@ public interface BillService {
     public BillDTO updateBill(long id ,BillDTO billDTO);
 
     public long deleteBill(long id);
+
+    public boolean updateStatusBill(long id, long statusId);
+
+
 }
