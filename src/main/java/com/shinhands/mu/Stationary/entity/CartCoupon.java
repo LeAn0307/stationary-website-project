@@ -9,20 +9,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="cart_coupon")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "CART_COUPON_SEQ", allocationSize = 1)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartCoupon {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id")
-    private long cartCouponId;
+    private long id;
     @Column(name="cart_id")
     private long cartId;
     @Column(name="coupon_id")
     private long couponId;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 }

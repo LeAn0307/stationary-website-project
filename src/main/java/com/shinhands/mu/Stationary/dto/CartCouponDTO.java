@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartCouponDTO {
-    private long cartCouponId;
+    private long id;
     private long cartId;
     private long couponId;
 }

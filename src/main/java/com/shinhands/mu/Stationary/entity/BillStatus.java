@@ -9,12 +9,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "bill_status")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "BILL_STATUS_SE", allocationSize = 1)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BillStatus {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id")
     private long id;
 
@@ -22,7 +23,7 @@ public class BillStatus {
     private String status;
 
     @Column(name = "deleted")
-    private Long deleted;
+    private Long deleted = 0L;
 //
 //    @OneToMany(mappedBy = "billStatus", cascade = CascadeType.ALL)
 //    private List<Bill> bill;

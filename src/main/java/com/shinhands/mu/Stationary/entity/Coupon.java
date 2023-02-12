@@ -9,15 +9,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="coupon")
+@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "COUPON_SEQ", allocationSize = 1)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Coupon {
    @Id
-   @GeneratedValue
+   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
    @Column(name = "ID",nullable = false)
-   private Long couponId;
+   private Long id;
    @Column(name="name",nullable=false,length=100)
    private String name;
    @Column(name="discount",nullable=false)
@@ -31,5 +32,5 @@ public class Coupon {
    @Column(name="amount")
    private double amount;
    @Column(name = "deleted")
-   private Long deleted;
+   private Long deleted = 0L;
 }

@@ -38,8 +38,8 @@ public class CartController {
         return ResponseEntity.ok().body(cartService.updateCart(id,categoryDTO));
     }
     @DeleteMapping(value="/{id}")
-    public ResponseEntity deleteCart(@PathVariable(name="id") long id,@RequestBody CartDTO categoryDTO)
+    public ResponseEntity deleteCart(@PathVariable(name="id") long id)
     {
-        return ResponseEntity.ok().body(cartService.updateCart(id,categoryDTO));
+        return ResponseEntity.ok().body(cartService.deleteCart(id));
     }
 }

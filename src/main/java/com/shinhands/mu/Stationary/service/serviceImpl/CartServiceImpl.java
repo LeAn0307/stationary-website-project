@@ -16,43 +16,45 @@ public class CartServiceImpl implements CartService {
     private CartRepository cartRepository;
     @Autowired
     private ModelMapper mapper;
-    public List<Cart> getAllCarts()
-    {
-        return mapper.map(cartRepository.findAll(), new TypeToken<List<CartDTO>>(){}.getType());
-
-    }
-    public CartDTO addCart(CartDTO cartDTO)
-    {
-        return mapper.map(cartRepository.save(mapper.map(cartDTO,Cart.class)), CartDTO.class);
+    @Override
+    public List<CartDTO> getAllCarts() {
+        return mapper.map(cartRepository.findAllByDeletedEquals(0L), new TypeToken<List<CartDTO>>() {
+        }.getType());
     }
 
-    public Boolean deleteCart(long id)
-    {
-        try{
-            cartRepository.deleteById(id);
+    @Override public
+    CartDTO addCart(CartDTO CartDTO) {
+        Cart Cart = mapper.map(CartDTO, Cart.class);
+        Cart.setDeleted(0L);
+        Cart Cart1 = cartRepository.save(Cart);
+        return mapper.map(Cart1, CartDTO.class);
+    }
+
+    @Override
+    public
+    Boolean deleteCart(long id) {
+        Cart oldCart = cartRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCart != null) {
+            oldCart.setDeleted(1L);
+            cartRepository.save(oldCart);
             return true;
-        }
-        catch (Exception e)
-        {
+        } else return false;
+    }
 
-            System.out.println(e.getMessage());
-            return false;
-        }
+    @Override
+    public CartDTO getCartById(long id) {
+        Cart oldCart = cartRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCart != null) return mapper.map(oldCart, CartDTO.class);
+        else return null;
     }
-    public CartDTO getCartById(long id)
-    {
-        return mapper.map(cartRepository.findById(id).orElse(null), CartDTO.class);
-    }
-    public Boolean updateCart(long id, CartDTO cartDTO)
-    {
-        Cart oldCart=cartRepository.findById(id).orElse(null);
-        if(oldCart==null)
-        {
+
+    @Override
+    public Boolean updateCart(long id, CartDTO CartDTO) {
+        Cart oldCart = cartRepository.findByIdEqualsAndDeletedEquals(id, 0L);
+        if (oldCart == null) {
             return false;
-        }
-        else
-        {
-            cartRepository.save(mapper.map(cartDTO,Cart.class));
+        } else {
+            cartRepository.save(mapper.map(CartDTO, Cart.class));
         }
         return true;
     }
