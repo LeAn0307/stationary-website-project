@@ -11,4 +11,7 @@ public class CartProductApiDTO {
     private String name;
     private Long quantity;
     private Long price;
+    private String image;
+    private Long avgrating;
+    private Long discount;
 }

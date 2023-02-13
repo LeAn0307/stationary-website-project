@@ -15,4 +15,6 @@ public interface ProductService {
     public ProductDTO getProductById(long id);
     public Boolean updateProduct(long id, ProductDTO productDTO);
     public List<CartProductApiDTO> getApiCartProduct(long id);
+    public List<CartProductApiDTO> getProductFetch(long offset);
+    public int countProduct();
 }
