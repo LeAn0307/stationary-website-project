@@ -1,4 +1,33 @@
-
+--
+--drop table ACCOUNT;
+--drop table BILL;
+--drop table BILL_DETAIL;
+--drop table BILL_STATUS;
+--drop table CART;
+--drop table CART_COUPON;
+--drop table CART_PRODUCT;
+--drop table CATEGORIES;
+--drop table COUPON;
+--drop table FUNCTION;
+--drop table PRODUCT;
+--drop table RATING;
+--drop table ROLE;
+--drop table ROLE_FUNCTION;
+--drop table USER_ROLE;
+--drop table USER_WEBSITE;
+--
+--drop sequence "ECOMMERCEWEBSITE"."ACCOUNT_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."BILL_DETAIL_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."BILL_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."BILL_STATUS_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."CART_COUPON_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."CART_PRODUCT_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."CART_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."CATEGORIES_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."COUPON_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."FUNCTION_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."PRODUCT_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."RATING_SEQ";
 --CREATE TABLE
 CREATE TABLE product (
     id          NUMBER(10, 0) NOT NULL,
@@ -515,14 +544,14 @@ Kanex là nhà sản xuất uy tín tại Ấn Độ về sản phẩm máy bấ
 Sản phẩm Bấm kim chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Kanex tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
 Bấm kim Kanex HD10 - 10 tờ còn gọi là bấm ghim, bấm kim số 10 có đơn vị tính là Cái và được đóng gói theo quy cách: 10 cái / lốc
-Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','bam-kim-kanex-hd10-10-to.jpg', 'Kanex','Inda',4000,'Trắng xanh','20000');
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-1.jpg', 'Kanex','Inda',4000,'Trắng xanh','20000');
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Giấy Double A A4 80','Giấy in', 2000,'','Giấy',2,720,1080,2,'Giấy Double A A4 80 (G-61) với kích thước: A4 (210 mm x 297 mm), định lượng: 80gms, nền giấy trắng in ấn chứng từ, tài liệu, hợp đồng dựa trên khổ giấy chuẩn phù hợp với các nghiệp vụ văn phòng in ấn chứng từ, tài liệu, hợp đồng dựa trên khổ giấy chuẩn phù hợp với các nghiệp vụ văn phòng ✓Tiết kiệm từ 10% - 30%
 Double A là hãng sản xuất uy tín tại Thái Lan về sản phẩm giấy photocopy, giấy in, giấy bìa màu
 Sản phẩm Giấy in ấn chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Double A tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
 Giấy Double A A4 80 còn gọi là giấy photocopy, giấy in, giấy văn phòng có đơn vị tính là Ream và được đóng gói theo quy cách: 5 reams / thùng
-Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','giay-double-a-a4-80.jpg', 'Double A','Thái Lan',4000,'red','93000');
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-2.jpg', 'Double A','Thái Lan',4000,'red','93000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Bìa còng F4 5cm',' Bìa hồ sơ', 2000,'','Nhựa',3,'','',2,'Bìa còng F4 5cm (loại 1) với độ dày 5 cm, thân bọc simili, dạng còng bật 2 lổ, lưu trữ 300 tờ giấy A4 lưu trữ, phân loại và bảo vệ bề mặt chứng từ giấy có kích thước A4, A5 đã được tạo khoen lổ dọc thân lưu trữ, phân loại và bảo vệ bề mặt chứng từ giấy có kích thước A4, A5 đã được tạo khoen lổ dọc thân ✓Tiết kiệm từ 10% - 30%
@@ -530,40 +559,40 @@ Sản phẩm được sản xuất bởi các doanh nghiệp văn phòng phẩm 
 Sản phẩm Bìa còng chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Việt Nam tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
 Bìa còng F4 5cm (loại 1) còn gọi là bìa 2 còng có đơn vị tính là Cái và được đóng gói theo quy cách: 50 cái / thùng
-Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','bia-cong-f4-5cm.jpg', 'F4','Việt Nam',4000,'black','7000');
+Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-3.jpg', 'F4','Việt Nam',4000,'black','7000');
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Bút bi cắm bàn TL','Bút Bi', 2000,'','Nhựa',1,'','',4,'Bút bi cắm bàn TL (B-10.8) với thân nhựa, dạng để bàn, ngòi bi, nét mực êm, cở ngòi 0.5 mm, có dây nối với đế, có lớp keo trống trượt mm, màu mực xanh ghi chú nội dung ,ký kết hợp đồng ghi chú nội dung ,ký kết hợp đồng ✓Tiết kiệm từ 10% - 30%
 Thiên Long là thương hiệu hàng đầu tại Việt Nam về sản phẩm bút viết, đồ dùng văn phòng
 Sản phẩm Bút bi chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Thiên Long tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Bút bi cắm bàn TL còn gọi là viết bi, bút mực, viết mực, bút bi bấm có đơn vị tính là Cây Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','but-bi-cam-ban-tl.jpg', 'Thiên Long','Việt Nam',4000,'Trắng và xanh','50000');
+Bút bi cắm bàn TL còn gọi là viết bi, bút mực, viết mực, bút bi bấm có đơn vị tính là Cây Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-3.jpg', 'Thiên Long','Việt Nam',4000,'Trắng và xanh','50000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Sổ bìa da Vivaone S804','Sổ bìa',5000,'', 'Da',5,17,28,2,'Sổ bìa da Vivaone S804 với kích thước: 17 x 24 cm, bìa bọc simili, có nút gài, nền giấy trắng kẻ ngang, 240 trang ghi chú nội dung chuyên dụng ghi chú nội dung chuyên dụng ✓Tiết kiệm từ 10% - 30%
 Sản phẩm được sản xuất bởi các doanh nghiệp văn phòng phẩm uy tín tại Việt Nam
 Sản phẩm Sổ tập chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Việt Nam tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Sổ bìa da Vivaone S804 có đơn vị tính là Cuốn Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','so-bia-da-vivaone-s804.jpg', 'Vivaone ','Việt Nam',4000,'Nâu','85000');
+Sổ bìa da Vivaone S804 có đơn vị tính là Cuốn Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-4.jpg', 'Vivaone ','Việt Nam',4000,'Nâu','85000');
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Khay đứng 4 ngăn Xukiva 212','Khay', 2000,'','Nhựa',6,'','',2,'Khay đứng 4 ngăn Xukiva 212 (K-32) với dạng xéo, thân vỏ nhựa, 3 ngăn, khả năng lưu trữ 1800 tờ lưu trữ và phân loại tài liệu F4, A4 lưu trữ và phân loại tài liệu F4, A4 ✓Tiết kiệm từ 10% - 30%
 Xukiva là nhà sản xuất uy tín tại Việt Nam về sản phẩm đồ dùng văn phòng
 Sản phẩm Khay kệ chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Xukiva tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Khay đứng 4 ngăn Xukiva 212 còn gọi là kệ rỗ, kệ xéo, kệ liên hoàn có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','khay-dung-4-ngan-xukiva-212.jpg', 'Xukiva','Việt Nam',4000,'Xanh','55000');
+Khay đứng 4 ngăn Xukiva 212 còn gọi là kệ rỗ, kệ xéo, kệ liên hoàn có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-5.jpg', 'Xukiva','Việt Nam',4000,'Xanh','55000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Casio AX-120B','Máy tính', 2000,'','Nhựa',7,175,5,2,'Casio AX-120B (G-336) với màn hình 12 số, kích thước: 25(Dày) × 110(Rộng) × 175,5(Dài) mm, phím tính cơ bản, sử dụng năng lượng mặt trời và pin tính toán chuyên dụng đa năng ✓Tiết kiệm từ 10% - 30%
 Casio là hãng sản xuất uy tín tại Nhật Bản về sản phẩm máy tính học sinh, máy tính văn phòng
 Sản phẩm Máy tính chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Casio tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Casio AX-120B còn gọi là máy tính bàn, máy tính văn phòng có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','casio-ax-120b.jpg', 'Casio','Nhật Bản',3000,'Đen xám','290000');
+Casio AX-120B còn gọi là máy tính bàn, máy tính văn phòng có đơn vị tính là Cái Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-6.jpg', 'Casio','Nhật Bản',3000,'Đen xám','290000');
 
 insert into product (id, name,type, discount, avgrating, material, categoryid, height,width,weight,description,image,brand,madein,amount, color,price) values
 (product_seq.NEXTVAL,'Nước rửa tay Lifebuoy 493ml','Nước rửa tay', 2000,'','Nước rửa tay',8,'','','','Nước rửa tay Lifebuoy 493ml với dạng lỏng, dung tích 493ml, có vòi xịt, sát khuẩn mạnh, bảo vệ da, hương thơm tự nhiên vệ sinh cơ thể vệ sinh cơ thể ✓Tiết kiệm từ 10% - 30%
 Lifebuoy là nhà sản xuất nổi tiếng tại Việt Nam về sản phẩm xà phòng, nước rửa tay, dung dịch tẩy rửa
 Sản phẩm Chất tẩy rửa - xịt phòng chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Lifebuoy tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
-Nước rửa tay Lifebuoy 493ml còn gọi là xà phòng rửa tay có đơn vị tính là Chai Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','nuoc-rua-tay-lifebuoy-493ml.jpg', 'Lifebuoy','Việt Nam',5000,'Trắng xanh','75000');
+Nước rửa tay Lifebuoy 493ml còn gọi là xà phòng rửa tay có đơn vị tính là Chai Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-7.jpg', 'Lifebuoy','Việt Nam',5000,'Trắng xanh','75000');
 
 --TABLE CART_PRODUCT
 CREATE SEQUENCE cart_product_seq
