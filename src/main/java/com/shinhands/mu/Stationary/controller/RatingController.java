@@ -22,6 +22,12 @@ public class RatingController {
     {
         return ResponseEntity.ok().body(RatingService.getAllRatings());
     }
+    @GetMapping(value="/product/{productId}")
+    public ResponseEntity getRatingByProductId(@PathVariable(name="productId") long productId)
+    {
+        System.out.println("aaaaaaaaaaaaaaa");
+        return ResponseEntity.ok().body(RatingService.getAllRatingsByProductID(productId));
+    }
     @PostMapping()
     public ResponseEntity<RatingDTO> addRating(@RequestBody RatingDTO categoryDTO)
     {

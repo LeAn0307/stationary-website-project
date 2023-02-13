@@ -9,4 +9,5 @@ import java.util.List;
 public interface RatingRepository extends JpaRepository< Rating,Long> {
 List<Rating> findAllByDeletedEquals(Long deleted);
 Rating findByIdEqualsAndDeletedEquals(Long id,Long deleted);
+    List<Rating>findByProductIdEqualsAndDeletedEquals(Long productId,Long deleted);
 }
