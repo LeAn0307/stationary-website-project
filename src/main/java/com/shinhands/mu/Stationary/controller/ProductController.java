@@ -30,6 +30,11 @@ public class ProductController
     {
         return ResponseEntity.ok().body(productService.getProductById(id));
     }
+    @GetMapping(value="idcart/{id}")
+    public ResponseEntity getApiCartProduct(@PathVariable(name="id") long id)
+    {
+        return ResponseEntity.ok().body(productService.getApiCartProduct(id));
+    }
     @PutMapping(value="/{id}")
     public ResponseEntity updateProduct(@PathVariable(name="id") long id,@RequestBody ProductDTO productDTO)
     {
