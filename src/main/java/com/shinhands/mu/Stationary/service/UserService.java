@@ -12,4 +12,6 @@ public interface UserService {
     public Boolean updateUser(long id, UserDTO userDTO);
 
     public Boolean checkAdmin(String email, String password);
+
+    public UserDTO getUserByAccount(String email, String password);
 }

@@ -74,4 +74,9 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+    @Override
+    public UserDTO getUserByAccount(String email, String password) {
+        return userLoginRepository.getUserByAccount(email, password);
+    }
 }
