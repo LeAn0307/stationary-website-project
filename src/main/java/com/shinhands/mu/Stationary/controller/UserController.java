@@ -1,9 +1,11 @@
 package com.shinhands.mu.Stationary.controller;
 
+import com.shinhands.mu.Stationary.dto.AccountDTO;
 import com.shinhands.mu.Stationary.dto.ProductDTO;
 import com.shinhands.mu.Stationary.dto.UserDTO;
 import com.shinhands.mu.Stationary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +38,20 @@ public class UserController {
     public ResponseEntity deleteUser(@PathVariable(name="id") long id)
     {
         return ResponseEntity.ok().body(userService.deleteUser(id));
+    }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<UserDTO> loginUser(@RequestBody AccountDTO accountDTO) {
+        try {
+            UserDTO userDTO = userService.getUserByAccount(accountDTO.getEmail(), accountDTO.getAccountPassword());
+            if(userDTO != null) {
+                return ResponseEntity.ok().body(userDTO);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
