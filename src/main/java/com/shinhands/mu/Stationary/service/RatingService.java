@@ -9,4 +9,5 @@ public interface RatingService {
     public Boolean deleteRating(long id);
     public RatingDTO getRatingById(long id);
     public Boolean updateRating(long id, RatingDTO ratingDTO);
+    public List<RatingDTO> getAllRatingsByProductID(Long productId);
 }

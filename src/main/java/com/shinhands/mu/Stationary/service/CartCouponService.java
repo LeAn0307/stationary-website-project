@@ -10,4 +10,5 @@ public interface CartCouponService {
     public Boolean deleteCartCoupon(long id);
     public CartCouponDTO getCartCouponById(long id);
     public Boolean updateCartCoupon(long id, CartCouponDTO cartCouponDTO);
+
 }

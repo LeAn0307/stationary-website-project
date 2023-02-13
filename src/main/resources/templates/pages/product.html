@@ -48,7 +48,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="state:${productList}">
-                            <td><img class="img" th:src="@{/images/anh_demo_product.jpg}" alt="" width="100%" height="auto" style="height:100px;width: 100px"></td>
+                            <td><img class="img" th:src="@{/images/product/{i}(i = ${state.image})}" alt="" width="100%" height="auto" style="height:100px;width: 100px"></td>
                             <td th:utext="${state.name}"></td>
                             <td th:utext="${state.type}"></td>
                             <td th:utext="${state.categoriesName}"></td>

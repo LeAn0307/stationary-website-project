@@ -58,4 +58,12 @@ public class CouponServiceImpl implements CouponService {
         }
         return true;
     }
+
+    @Override
+    public CouponDTO getCartByCode(String code, long deleted) {
+        Coupon coupon = couponRepository.findByCodeEqualsAndDeletedEquals(code,deleted);
+        if (coupon != null) return mapper.map(coupon, CouponDTO.class);
+        else return null;
+
+    }
 }

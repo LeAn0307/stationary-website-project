@@ -60,4 +60,10 @@ public class RatingServiceImpl implements RatingService {
         }
         return true;
     }
+    @Override
+    public List<RatingDTO> getAllRatingsByProductID(Long productId)
+    {
+        return mapper.map(ratingRepository.findByProductIdEqualsAndDeletedEquals(productId,0L), new TypeToken<List<RatingDTO>>() {
+        }.getType());
+    }
 }

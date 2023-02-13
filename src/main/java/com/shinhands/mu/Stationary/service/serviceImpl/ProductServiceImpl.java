@@ -1,11 +1,9 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
-import com.shinhands.mu.Stationary.dto.AccountDTO;
-import com.shinhands.mu.Stationary.dto.CategoryDTO;
-import com.shinhands.mu.Stationary.dto.CouponDTO;
-import com.shinhands.mu.Stationary.dto.ProductDTO;
+import com.shinhands.mu.Stationary.dto.*;
 import com.shinhands.mu.Stationary.entity.Coupon;
 import com.shinhands.mu.Stationary.entity.Product;
+import com.shinhands.mu.Stationary.repository.ProductRepoMybatis;
 import com.shinhands.mu.Stationary.repository.ProductRepository;
 import com.shinhands.mu.Stationary.service.ProductService;
 import org.modelmapper.ModelMapper;
@@ -13,12 +11,14 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository productRepository;
-
+    @Resource
+    ProductRepoMybatis productRepoMybatis;
     @Autowired
     private ModelMapper mapper;
 
@@ -67,5 +67,20 @@ public class ProductServiceImpl implements ProductService {
             productRepository.save(mapper.map(productDTO,Product.class));
         }
         return true;
+    }
+
+    @Override
+    public List<CartProductApiDTO> getApiCartProduct(long id) {
+        return productRepoMybatis.getAPI(id);
+    }
+
+    @Override
+    public List<CartProductApiDTO> getProductFetch(long offset) {
+        return productRepoMybatis.getProductFetch((offset-1)*3);
+    }
+
+    @Override
+    public int countProduct() {
+        return productRepoMybatis.countProduct();
     }
 }
