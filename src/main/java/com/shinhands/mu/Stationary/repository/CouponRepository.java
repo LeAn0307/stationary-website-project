@@ -11,4 +11,5 @@ import java.util.List;
 public interface CouponRepository extends JpaRepository<Coupon,Long> {
     List<Coupon> findAllByDeletedEquals(Long deleted);
     Coupon findByIdEqualsAndDeletedEquals(Long id,Long deleted);
+    Coupon findByCodeEqualsAndDeletedEquals(String code, Long deleted);
 }

@@ -39,5 +39,10 @@ public class CouponController {
     {
         return ResponseEntity.ok().body(CouponService.deleteCoupon(id));
     }
+    @GetMapping(value="/code/{code}")
+    public ResponseEntity getCouponById(@PathVariable(name="code") String code)
+    {
+        return ResponseEntity.ok().body(CouponService.getCartByCode(code,0l));
+    }
 }
 
