@@ -73,4 +73,14 @@ public class ProductServiceImpl implements ProductService {
     public List<CartProductApiDTO> getApiCartProduct(long id) {
         return productRepoMybatis.getAPI(id);
     }
+
+    @Override
+    public List<CartProductApiDTO> getProductFetch(long offset) {
+        return productRepoMybatis.getProductFetch((offset-1)*3);
+    }
+
+    @Override
+    public int countProduct() {
+        return productRepoMybatis.countProduct();
+    }
 }

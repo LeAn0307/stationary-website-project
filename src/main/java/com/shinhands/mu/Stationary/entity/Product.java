@@ -70,7 +70,7 @@ public class Product {
     @Column(name = "discount")
     private Long discount;
     @Column(name = "avgrating")
-    private Long avgrating;
+    private Long avgrating = 0L;
     @Column(name = "material",length = 255)
     private String material;
     @Column(name = "categoryid")
