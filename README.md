@@ -33,12 +33,12 @@
 
 ## Introduction the project
 ### Stationery Business
-##### 1. For user:
+#### 1. For user:
 * Display product.
 * Add many product into cart.
 * Order and checkout.
 * Rating and Review about product.
-##### 1. For Owner.
+#### 1. For Owner.
 * Statictics on revenue, orders and users.
 * View information about orders, users, payments, product categories.
 * Confirms about order.
