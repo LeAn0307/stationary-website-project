@@ -21,8 +21,8 @@
     </li>
     <li><a href="#database-diagram">Database Diagram</a></li>
     <li><a href="#api-results">API Results</a></li>
-    <li><a href="#ui-shop-owner">UI of shop owner</a></li>
-    <li><a href="#ui-user">UI for User</a></li>
+    <li><a href="#ui-shop-owners">UI of shop owner</a></li>
+    <li><a href="#ui-shop-user">UI for User</a></li>
     <li><a href="#development-in-the-future">Development in the future</a></li>
     <li><a href="#about">About</a></li>
   </ol>
