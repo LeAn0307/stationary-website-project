@@ -5,75 +5,86 @@
 :sunflower: Sponsored by: **ShinhanDS, Likelion**
 ***
 
-### :fire: Main contents: 
-```
-There are 3 main contents:
-  1. Introduction to the project
-  2. Management page - for shop owners
-  3. Sales page - for users
-  4. Technology used
-  5. API Results 
-```
-***
+## :fire: Main contents: 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#introduction-the-project">Introduction the project</a>
+    </li>
+    <li>
+      <a href="#members">Members</a>
+    </li>
+    <li>
+      <a href="#technology-used">Technology Used</a>
+    </li>
+    <li><a href="#database-diagram">Database Diagram</a></li>
+    <li><a href="#api-results">API Results</a></li>
+    <li><a href="#ui-shop-owner">UI of shop owner</a></li>
+    <li><a href="#ui-user">UI for User</a></li>
+    <li><a href="#development-in-the-future">Development in the future</a></li>
+    <li><a href="#about">About</a></li>
+  </ol>
+</details>
 
-## Introduction to the project :mushroom:
+---
 
-<Quý>
-### Members 
-##  Technology used :cherry_blossom:
-<Mô tả Tiệp>
 
-### Database Diagram :partly_sunny:
-![image](https://user-images.githubusercontent.com/72481546/218981869-a2e663e0-bdeb-4e90-b7e5-6795e8348526.png)
+## Introduction the project
 
-## API Results: :sun_with_face:
+## Members 
+
+##  Technology used
+
+## Database Diagram
+![image](./src/main/resources/static/images/readme/dbdiagram.png)
+
+## API Results
 ![image](src/main/resources/static/images/readme/api.png)
-
-## API
-
-####
-####
-####
 
 ## UI Shop Owners
 ### Login
-![login owner](src/main/resources/static/images/readme/login owner.png)
+![login owner](./src/main/resources/static/images/readme/login%20owner.png)
 ### Statistic 
-![statistic owner](src/main/resources/static/images/readme/statistic owner.png)
+![statistic owner](src/main/resources/static/images/readme/statistic%20owner.png)
 ### Coupon
-![coupon owner](src/main/resources/static/images/readme/coupon owner.png)
+![coupon owner](src/main/resources/static/images/readme/coupon%20owner.png)
 ### Add Coupon
-![add coupond owner](src/main/resources/static/images/readme/add coupond owner.png)
+![add coupond owner](src/main/resources/static/images/readme/add%20coupond%20owner.png)
 ### Bill status
-![status bill owner](src/main/resources/static/images/readme/status bill owner.png)
+![status bill owner](src/main/resources/static/images/readme/status%20bill%20owner.png)
 ### Category
-![category owner](src/main/resources/static/images/readme/category owner.png)
+![category owner](src/main/resources/static/images/readme/category%20owner.png)
 ### Add and edit Category
-![edit category](src/main/resources/static/images/readme/edit category.png)
+![edit category](src/main/resources/static/images/readme/edit%20category.png)
 ### Product
-![product owner](src/main/resources/static/images/readme/product owner.png)
+![product owner](src/main/resources/static/images/readme/product%20owner.png)
 ### Add Product
-![add product](src/main/resources/static/images/readme/add product.png)
+![add product](src/main/resources/static/images/readme/add%20product.png)
 ### Product detail
-![product detail](src/main/resources/static/images/readme/product detail.png)
+![product detail](src/main/resources/static/images/readme/product%20detail.png)
 ### User
-![list user admin](src/main/resources/static/images/readme/list user admin.png)
+![list user admin](src/main/resources/static/images/readme/list%20user%20admin.png)
 ### User detail
-![user detail](src/main/resources/static/images/readme/user detail.png)
+![user detail](src/main/resources/static/images/readme/user%20detail.png)
 ## UI Shop User
+[Link Github Frontend Shop](https://github.com/LeAn0307/User-Stationary-website.git)
 ### Homepage
-![INDEX USER](src/main/resources/static/images/readme/INDEX USER.png)
+![INDEX USER](src/main/resources/static/images/readme/INDEX%20USER.png)
 ### List product
 ![PRODUCTLIST](src/main/resources/static/images/readme/PPRODUCTLIST.png)
 ### Product detail
-![DETAIL PRODUCT](src/main/resources/static/images/readme/DETAIL PRODUCT.png)
+![DETAIL PRODUCT](src/main/resources/static/images/readme/DETAIL%20PRODUCT.png)
 ### Cart
 ![CART](src/main/resources/static/images/readme/CART.png)
 
+## Development in the future
+- Add Hashing Password feature
+- Use Spring Security to handle requests from clients and manage user logins and registrations.
+- Design a chatbox that includes a chatbot to provide support for users during the purchasing process.
 
-### Development in the future. 
-### About 
+## About 
 
 
 
-(Quý bổ sung rồi đưa vào đây nha)
