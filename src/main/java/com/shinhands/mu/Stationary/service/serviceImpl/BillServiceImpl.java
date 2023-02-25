@@ -1,14 +1,17 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
 import com.shinhands.mu.Stationary.dto.BillDTO;
+import com.shinhands.mu.Stationary.dto.BillResponseDTO;
 import com.shinhands.mu.Stationary.entity.Bill;
 import com.shinhands.mu.Stationary.repository.BillRepository;
+import com.shinhands.mu.Stationary.repository.BillRepositoryMybatis;
 import com.shinhands.mu.Stationary.service.BillService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -18,33 +21,41 @@ public class BillServiceImpl implements BillService {
     @Autowired
     private BillRepository billRepository;
 
+    @Resource
+    private BillRepositoryMybatis billRepositoryMybatis;
+
     @Autowired
     private ModelMapper modelMapper;
 
     @Override
-    public List<BillDTO> getAllBills() {
-        return billRepository.findAllBills();
+    public List<BillResponseDTO> getAllBills() {
+        return billRepositoryMybatis.findAll();
     }
 
     @Override
-    public BillDTO getBillsByBillId(long billId) {
-        Bill bill = billRepository.findByIdEqualsAndDeletedEquals(billId, 0L);
-        if(bill != null) {
-            return modelMapper.map(bill, BillDTO.class);
-        }
-        return null;
+    public BillResponseDTO getById(Long id) {
+        return billRepositoryMybatis.findById(id);
     }
 
-    @Override
-    public List<BillDTO> getBillsByOrderDate(Date dateOrder) {
-        List<Bill> billList = billRepository.findAllByDateOrderAndDeleted(dateOrder, 0L);
-        if(billList.isEmpty()) {
-            return null;
-        } else {
-            return modelMapper.map(billList, new TypeToken<List<BillDTO>>(){}.getType());
-        }
-    }
-
+    //    @Override
+//    public BillDTO getBillsByBillId(long billId) {
+//        Bill bill = billRepository.findByIdEqualsAndDeletedEquals(billId, 0L);
+//        if(bill != null) {
+//            return modelMapper.map(bill, BillDTO.class);
+//        }
+//        return null;
+//    }
+//
+//    @Override
+//    public List<BillDTO> getBillsByOrderDate(Date dateOrder) {
+//        List<Bill> billList = billRepository.findAllByDateOrderAndDeleted(dateOrder, 0L);
+//        if(billList.isEmpty()) {
+//            return null;
+//        } else {
+//            return modelMapper.map(billList, new TypeToken<List<BillDTO>>(){}.getType());
+//        }
+//    }
+//
     @Override
     public BillDTO addBill(BillDTO billDTO) {
         return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class);

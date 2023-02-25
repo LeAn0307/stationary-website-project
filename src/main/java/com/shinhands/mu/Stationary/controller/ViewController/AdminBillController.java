@@ -1,6 +1,7 @@
 package com.shinhands.mu.Stationary.controller.ViewController;
 
 import com.shinhands.mu.Stationary.dto.BillDTO;
+import com.shinhands.mu.Stationary.dto.BillResponseDTO;
 import com.shinhands.mu.Stationary.dto.BillStatusDTO;
 import com.shinhands.mu.Stationary.service.BillService;
 import com.shinhands.mu.Stationary.service.BillStatusService;
@@ -26,7 +27,7 @@ public class AdminBillController {
 
     @GetMapping( value ="bill")
     public ModelMap getAllBill() {
-        List<BillDTO> billDTOList = billService.getAllBills();
+        List<BillResponseDTO> billDTOList = billService.getAllBills();
         List<BillStatusDTO> billStatusDTOList = billStatusService.getAllBillStatus();
         ModelMap modelMap = new ModelMap();
         modelMap.addAttribute("billList", billDTOList);
@@ -42,7 +43,7 @@ public class AdminBillController {
 
 //    @PostMapping("bill/update/payment/{id}")
 //    public String updatePaymentBill(@PathVariable long id, Model model) {
-//        billService.updateCompleteBill(id);
+//        billService.updateStatusBill(id, 2L);
 //        return "redirect:/pages/bill";
 //    }
 
