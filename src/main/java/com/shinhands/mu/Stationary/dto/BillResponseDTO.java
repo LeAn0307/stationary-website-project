@@ -1,7 +1,8 @@
 package com.shinhands.mu.Stationary.dto;
 
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,10 +11,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-public class BillDTO {
-    private long id;
+public class BillResponseDTO {
+    private Long id;
 
     private Date dateOrder;
 
@@ -29,7 +28,9 @@ public class BillDTO {
 
     private Date updatedAt;
 
-    private Long idBillStatus;
+    private String status;
 
-    private Long customerId;
+    private String customerName;
+
+    private List<BillDetailDTO> billDetailList;
 }

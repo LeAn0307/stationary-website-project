@@ -59,33 +59,33 @@
                 </div>
             </div>
 <!--        </div>-->
-        <div class="modal fade col-lg-12" id="editModal" tabindex="-1" role="dialog" >
-            <form action="#" method="post">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Cập nhật tình trạng đơn hàng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="col-form-label">Loại sản phẩm</label>
-                                <select class="form-control">
-                                    <option th:each="i : ${billStatusList}" th:value="${i.id}" th:text="${i.status}"></option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="submit" class="btn btn-primary">Lưu</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+<!--        <div class="modal fade col-lg-12" id="editModal" tabindex="-1" role="dialog" >-->
+<!--            <form action="#" method="post">-->
+<!--                <div class="modal-dialog" role="document">-->
+<!--                    <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                            <h5 class="modal-title">Cập nhật tình trạng đơn hàng</h5>-->
+<!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                <span aria-hidden="true">&times;</span>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-form-label">Loại sản phẩm</label>-->
+<!--                                <select class="form-control">-->
+<!--                                    <option th:each="i : ${billStatusList}" th:value="${i.id}" th:text="${i.status}"></option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+<!--                            <button type="submit" class="btn btn-primary">Lưu</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
 
 </section>
 
