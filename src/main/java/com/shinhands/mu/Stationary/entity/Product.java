@@ -73,7 +73,7 @@ public class Product {
     private Long avgrating = 0L;
     @Column(name = "material",length = 255)
     private String material;
-    @Column(name = "categoryid")
+    @Column(name = "category_id")
     private Long categoryid;
     @Column(name = "height")
     private Long height;
@@ -87,7 +87,7 @@ public class Product {
     private String image;
     @Column(name = "brand",length = 255)
     private String brand;
-    @Column(name = "madein",length = 255)
+    @Column(name = "made_in",length = 255)
     private String madein;
     @Column(name = "amount")
     private Long amount;

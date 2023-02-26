@@ -33,7 +33,7 @@ public class Bill {
     @Column(name = "payment")
     private String payment;
 
-    @Column(name = "codemomo")
+    @Column(name = "code_momo")
     private String codemomo;
 
     @Column(name = "created_at")

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
-@Mapper
+@Repository
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
     public List<Bill> findAllByDateOrderAndDeleted(Date dateOrder, Long deleted);

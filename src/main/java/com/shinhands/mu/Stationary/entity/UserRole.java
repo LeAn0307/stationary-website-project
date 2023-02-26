@@ -19,7 +19,7 @@ public class UserRole {
     private Long id;
     @Column(name = "id_role")
     private Long idRole;
-    @Column(name = "iduser")
+    @Column(name = "id_user")
     private Long idUser;
     @Column(name = "deleted")
     private Long deleted = 0L;
