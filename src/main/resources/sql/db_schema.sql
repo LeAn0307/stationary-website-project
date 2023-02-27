@@ -16,7 +16,7 @@
 --drop table ROLE_FUNCTION;
 --drop table USER_ROLE;
 --drop table USER_WEBSITE;
-
+----
 --drop sequence "ECOMMERCEWEBSITE"."ACCOUNT_SEQ";
 --drop sequence "ECOMMERCEWEBSITE"."BILL_DETAIL_SEQ";
 --drop sequence "ECOMMERCEWEBSITE"."BILL_SEQ";
@@ -29,6 +29,10 @@
 --drop sequence "ECOMMERCEWEBSITE"."FUNCTION_SEQ";
 --drop sequence "ECOMMERCEWEBSITE"."PRODUCT_SEQ";
 --drop sequence "ECOMMERCEWEBSITE"."RATING_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."ROLE_FUNCTION_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."ROLE_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."ROLE_USER_SEQ";
+--drop sequence "ECOMMERCEWEBSITE"."USER_WEBSITE_SEQ";
 
 --CREATE TABLE
 
@@ -46,7 +50,7 @@ CREATE TABLE product (
     description VARCHAR2(2000),
     image       VARCHAR2(255),
     brand       VARCHAR2(255),
-    madein      VARCHAR2(255),
+    made_in      VARCHAR2(255),
     amount      NUMBER(10, 0),
     color       VARCHAR2(255),
     price       NUMBER(10, 0),
@@ -116,6 +120,7 @@ CREATE TABLE rating (
     comment_product VARCHAR2(200),
     rate_score      NUMBER(10, 0),
     id_user         NUMBER(10, 0),
+    product_id      NUMBER(10, 0),
     deleted         NUMBER(1,0) DEFAULT 0,
     
     CONSTRAINT rating_pk PRIMARY KEY ( id )
@@ -249,6 +254,10 @@ ALTER TABLE bill
 ALTER TABLE rating
     ADD CONSTRAINT fk10 FOREIGN KEY ( id_user )
         REFERENCES user_website ( id );
+        
+ALTER TABLE rating
+    ADD CONSTRAINT FK18 FOREIGN KEY (PRODUCT_ID)
+        REFERENCES PRODUCT (ID);
 
 -- CART_PRODUCT - CART
 ALTER TABLE cart_product
@@ -285,13 +294,3 @@ ALTER TABLE CART
     ADD CONSTRAINT FK06 FOREIGN KEY (USER_ID) 
         REFERENCES USER_WEBSITE(ID);
         
---TRIGGER
-CREATE OR REPLACE TRIGGER CREATE_CART
-AFTER INSERT
-    ON USER_WEBSITE
-    FOR EACH ROW
-BEGIN
-
-    INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (CART_SEQ.NEXTVAL, 0, :NEW.ID);
-
-END;
