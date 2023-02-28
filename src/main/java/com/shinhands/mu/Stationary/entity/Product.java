@@ -16,7 +16,7 @@ import java.util.Date;
         name = "find_all_product",
         query = "SELECT p.*, c.categories_name " +
                 "FROM product p " +
-                "JOIN categories c ON p.categoryid = c.categoriesid " +
+                "JOIN categories c ON p.category_id = c.categories_id " +
                 "WHERE p.deleted = 0 ",
         resultSetMapping = "product_dto"
 )
@@ -24,7 +24,7 @@ import java.util.Date;
         name = "find_one_product",
         query = "SELECT p.*, c.categories_name " +
                 "FROM product p " +
-                "JOIN categories c ON p.categoryid = c.categoriesid " +
+                "JOIN categories c ON p.category_id = c.categories_id " +
                 "WHERE p.deleted = 0 AND p.id = ?1",
         resultSetMapping = "product_dto"
 )
@@ -39,14 +39,14 @@ import java.util.Date;
                         @ColumnResult(name = "discount", type = Long.class),
                         @ColumnResult(name = "avgrating", type = Long.class),
                         @ColumnResult(name = "material", type = String.class),
-                        @ColumnResult(name = "categoryid", type = Long.class),
+                        @ColumnResult(name = "category_id", type = Long.class),
                         @ColumnResult(name = "height", type = Long.class),
                         @ColumnResult(name = "width", type = Long.class),
                         @ColumnResult(name = "weight", type = Long.class),
                         @ColumnResult(name = "description", type = String.class),
                         @ColumnResult(name = "image", type = String.class),
                         @ColumnResult(name = "brand", type = String.class),
-                        @ColumnResult(name = "madein", type = String.class),
+                        @ColumnResult(name = "made_in", type = String.class),
                         @ColumnResult(name = "amount", type = Long.class),
                         @ColumnResult(name = "color", type = String.class),
                         @ColumnResult(name = "price", type = BigDecimal.class),
