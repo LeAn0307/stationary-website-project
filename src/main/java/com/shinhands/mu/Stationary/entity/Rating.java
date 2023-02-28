@@ -22,9 +22,9 @@ public class Rating {
     private Long id;
     @Column(name="comment_product",nullable=false,length=500)
     private String comment;
-    @Column(name="ratescore",nullable=false)
+    @Column(name="rate_score",nullable=false)
     private double rateScore;
-    @Column(name="iduser")
+    @Column(name="id_user")
     private Long userId;
     @Column(name = "product_id")
     private Long productId;

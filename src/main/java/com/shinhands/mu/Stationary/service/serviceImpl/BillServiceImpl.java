@@ -21,7 +21,7 @@ public class BillServiceImpl implements BillService {
     @Autowired
     private BillRepository billRepository;
 
-    @Resource
+    @Autowired
     private BillRepositoryMybatis billRepositoryMybatis;
 
     @Autowired

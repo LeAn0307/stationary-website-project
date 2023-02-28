@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper
 public interface BillRepositoryMybatis {
-    @Select("select b.bill_id, b.date_order, b.total, b.note, b.payment, b.codemomo, b.created_at, b.updated_at, bs.status, uw.user_name\n" +
+    @Select("select b.bill_id, b.date_order, b.total, b.note, b.payment, b.code_momo, b.created_at, b.updated_at, bs.status, uw.user_name\n" +
             "from bill b\n" +
             "join bill_status bs on b.id_bill_status = bs.id\n" +
             "join user_website uw on b.customer_id = uw.id\n" +
@@ -22,7 +22,7 @@ public interface BillRepositoryMybatis {
             @Result(property = "total", column = "total"),
             @Result(property = "note", column = "note"),
             @Result(property = "payment", column = "payment"),
-            @Result(property = "codeMomo", column = "codemomo"),
+            @Result(property = "codeMomo", column = "code_momo"),
             @Result(property = "createdAt", column = "created_at"),
             @Result(property = "updatedAt", column = "updated_at"),
             @Result(property = "status", column = "status"),

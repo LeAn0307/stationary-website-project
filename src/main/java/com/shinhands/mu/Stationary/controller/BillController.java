@@ -45,7 +45,7 @@ public class BillController {
 
     @GetMapping("/{id}")
     public ResponseEntity getBillById(@PathVariable Long id) {
-        try {
+//        try {
             BillResponseDTO billResponse = billService.getById(id);
             if(billResponse == null) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -53,9 +53,9 @@ public class BillController {
                 billResponse.setBillDetailList(billDetailService.getByIdBill(billResponse.getId()));
                 return new ResponseEntity<>(billResponse ,HttpStatus.OK);
             }
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
     }
 //
 //    @GetMapping("/byDate")
@@ -106,4 +106,5 @@ public class BillController {
            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
        }
     }
+
 }

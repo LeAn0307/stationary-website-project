@@ -87,6 +87,7 @@ CREATE TABLE bill_detail (
     updatedat  TIMESTAMP,
     id_bill    NUMBER(10, 0),
     id_product NUMBER(10, 0),
+    
     CONSTRAINT bill_detail_pk PRIMARY KEY ( id )
 );
 

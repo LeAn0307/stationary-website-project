@@ -17,10 +17,6 @@ public class BillDetailDTO {
 
     private long price;
 
-    private Date createdAt;
-
-    private Date updatedAt;
-
     private Long idBill;
 
     private Long idProduct;
