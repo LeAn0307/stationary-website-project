@@ -16,16 +16,16 @@ public interface RatingRepositoryMybatis {
 List<Rating> findAllByDeletedEquals(Long deleted);
 Rating findByIdEqualsAndDeletedEquals(Long id,Long deleted);
     List<Rating>findByProductIdEqualsAndDeletedEquals(Long productId,Long deleted);
-    @Select("select r.id, r.comment_product, r.ratescore, r.iduser, r.product_id, uw.user_name\n" +
+    @Select("select r.id, r.comment_product, r.rate_score, r.id_user, r.product_id, uw.user_name\n" +
             "from rating r\n" +
-            "join user_website uw on r.iduser = uw.id\n" +
+            "join user_website uw on r.id_user = uw.id\n" +
             "where r.deleted = 0 and r.product_id = #{productId}\n" )
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "comment", column = "comment_product"),
-            @Result(property = "rateScore", column = "ratescore"),
+            @Result(property = "rateScore", column = "rate_score"),
             @Result(property = "productId", column = "product_id"),
-            @Result(property = "userId", column = "iduser"),
+            @Result(property = "userId", column = "id_user"),
             @Result(property = "userName", column = "user_name")
     })
    public  List<RatingReview> getAllRatingByProductIdAndUserId(Long productId);

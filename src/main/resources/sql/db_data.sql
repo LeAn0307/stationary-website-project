@@ -22,7 +22,7 @@ CREATE SEQUENCE cart_seq
     START WITH 1
     INCREMENT BY 1
     CACHE 10;
-/
+
 CREATE OR REPLACE TRIGGER CREATE_CART
 AFTER INSERT
     ON USER_WEBSITE
@@ -32,8 +32,8 @@ BEGIN
     INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (CART_SEQ.NEXTVAL, 0, :NEW.ID);
 
 END;
-/
 --TABLE USER_WEBSITE
+DROP TRIGGER 
 CREATE SEQUENCE user_website_seq
     MINVALUE 1
     START WITH 1
@@ -354,5 +354,6 @@ insert into bill_detail(id, quantity, price, id_bill, id_product)
 values(bill_detail_seq.NEXTVAL, 1, 12000, 1, 7);
 insert into bill_detail(id, quantity, price, id_bill, id_product) 
 values(bill_detail_seq.NEXTVAL, 8, 147000, 8, 7);
+
 
 
