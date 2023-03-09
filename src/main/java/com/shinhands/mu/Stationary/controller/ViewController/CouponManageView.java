@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class CouponManageView {
 
     @Autowired
@@ -36,7 +36,7 @@ public class CouponManageView {
     @PostMapping(value = "/coupon-manage-element/post")
     public String addCoupon(@ModelAttribute CouponDTO couponDTO) {
         couponService.addCoupon(couponDTO);
-        return "redirect:/pages/coupon-manage-element";
+        return "redirect:/admin/coupon-manage-element";
     }
 
 
@@ -45,13 +45,13 @@ public class CouponManageView {
     public String putCoupon(@ModelAttribute CouponDTO couponDTO, @PathVariable long id) {
 
         couponService.updateCoupon(id,couponDTO);
-        return "redirect:/pages/coupon-manage-element";
+        return "redirect:/admin/coupon-manage-element";
     }
 
     @GetMapping("coupon-manage-element/delete/{id}")
     public String deleteProduct(@PathVariable long id, Model model) {
         couponService.deleteCoupon(id);
-        return "redirect:/pages/coupon-manage-element";
+        return "redirect:/admin/coupon-manage-element";
     }
 
 

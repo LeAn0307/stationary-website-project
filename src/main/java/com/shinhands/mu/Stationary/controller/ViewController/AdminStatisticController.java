@@ -13,7 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class AdminStatisticController {
 
     @Autowired

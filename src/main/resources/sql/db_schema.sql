@@ -293,6 +293,7 @@ ALTER TABLE product
 ALTER TABLE CART
     ADD CONSTRAINT FK06 FOREIGN KEY (USER_ID) 
         REFERENCES USER_WEBSITE(ID);
+<<<<<<< Updated upstream
 /
 -- Trigger for insert cartProduct.
 CREATE OR REPLACE TRIGGER INSERT_CARTPRODUCT
@@ -327,3 +328,16 @@ WHERE CART.ID=:OLD.CART_ID;
 END;
 --DROP TRIGGER DELETE_CARTPRODUCT;
 /
+=======
+        
+--Fix user_role table:
+ALTER TABLE user_role
+    DROP CONSTRAINT fk04;
+    
+ALTER TABLE user_role
+    RENAME COLUMN id_user TO id_account;
+    
+ALTER TABLE user_role
+    ADD CONSTRAINT fk04 FOREIGN KEY (id_account)
+        REFERENCES account (id);
+>>>>>>> Stashed changes
