@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class AdminProductController {
 
     @Autowired
@@ -57,7 +57,7 @@ public class AdminProductController {
     @GetMapping("product/delete")
     public String deleteProduct(@RequestParam long id, Model model) {
         productService.deleteProduct(id);
-        return "redirect:/pages/product";
+        return "redirect:/admin/product";
     }
 
     @RequestMapping(path = "/product/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -72,7 +72,7 @@ public class AdminProductController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "redirect:/pages/product";
+        return "redirect:/admin/product";
     }
 
     @RequestMapping(path = "/product/update", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -90,6 +90,6 @@ public class AdminProductController {
         } else {
             productService.updateProduct(productDTO.getId(), productDTO);
         }
-        return "redirect:/pages/product";
+        return "redirect:/admin/product";
     }
 }

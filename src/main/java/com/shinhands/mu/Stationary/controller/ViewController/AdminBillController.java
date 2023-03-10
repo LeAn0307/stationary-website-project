@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class AdminBillController {
 
     @Autowired
@@ -38,18 +38,18 @@ public class AdminBillController {
     @GetMapping("bill/updateStatus")
     public String updateStatusBill(@RequestParam long id, @RequestParam long statusId, Model model) {
         billService.updateStatusBill(id, statusId);
-        return "redirect:/pages/bill";
+        return "redirect:/admin/bill";
     }
 
 //    @PostMapping("bill/update/payment/{id}")
 //    public String updatePaymentBill(@PathVariable long id, Model model) {
 //        billService.updateStatusBill(id, 2L);
-//        return "redirect:/pages/bill";
+//        return "redirect:/admin/bill";
 //    }
 
     @GetMapping("bill/delete/{id}")
     public String deleteBill(@PathVariable long id, Model model) {
         billService.deleteBill(id);
-        return "redirect:/pages/bill";
+        return "redirect:/admin/bill";
     }
 }

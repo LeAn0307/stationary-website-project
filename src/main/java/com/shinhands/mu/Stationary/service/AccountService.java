@@ -12,4 +12,6 @@ public interface AccountService {
     public Boolean deleteAccount(long id);
     public AccountDTO getAccountById(long id);
     public Boolean updateAccount(long id, AccountDTO accountDTO);
+
+    public Boolean isExistAccount(String email);
 }
