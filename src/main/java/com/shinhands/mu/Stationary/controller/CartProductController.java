@@ -22,10 +22,12 @@ public class CartProductController {
     {
         return ResponseEntity.ok().body(cartProductService.getAllCartProducts());
     }
-    @PostMapping()
-    public ResponseEntity<CartProductDTO> addCartProduct(@RequestBody CartProductDTO categoryDTO)
+    @PostMapping("")
+    public ResponseEntity<Boolean> addCartProduct(@RequestBody CartProductDTO categoryDTO)
     {
+        System.out.println(1234);
         return ResponseEntity.ok().body(cartProductService.addCartProduct(categoryDTO));
+
     }
     @GetMapping(value="/{id}")
     public ResponseEntity getCartProductById(@PathVariable(name="id") long id)

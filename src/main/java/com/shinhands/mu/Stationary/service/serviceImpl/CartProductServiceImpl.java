@@ -14,6 +14,7 @@ import java.util.List;
 public class CartProductServiceImpl implements CartProductService {
     @Autowired
     private CartProductRepository cartProductRepository;
+
     @Autowired
     private ModelMapper mapper;
     @Override
@@ -23,11 +24,17 @@ public class CartProductServiceImpl implements CartProductService {
     }
 
     @Override public
-    CartProductDTO addCartProduct(CartProductDTO CartProductDTO) {
-        CartProduct CartProduct = mapper.map(CartProductDTO, CartProduct.class);
-        CartProduct.setDeleted(0L);
-        CartProduct CartProduct1 = cartProductRepository.save(CartProduct);
-        return mapper.map(CartProduct1, CartProductDTO.class);
+    Boolean addCartProduct(CartProductDTO cartProductDTO) {
+        try {
+            CartProduct CartProduct = mapper.map(cartProductDTO, CartProduct.class);
+            CartProduct.setDeleted(0L);
+            cartProductRepository.insert_Cart_Product(CartProduct.getCartId(), CartProduct.getProductId(), CartProduct.getQuantity());
+            return true;
+        }
+        catch(Exception ex) {
+            System.out.println(ex.getMessage()+" "+ex.getCause());
+          return false;
+        }
     }
 
     @Override
