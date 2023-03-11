@@ -2,7 +2,6 @@ package com.shinhands.mu.Stationary.controller.ViewController;
 
 import com.shinhands.mu.Stationary.config.FileUploadUtil;
 import com.shinhands.mu.Stationary.dto.CategoryDTO;
-import com.shinhands.mu.Stationary.dto.ProductDTO;
 import com.shinhands.mu.Stationary.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,7 +17,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class AdminCategoryController {
 
     @Autowired
@@ -37,7 +36,7 @@ public class AdminCategoryController {
     public String getCategoryById(@PathVariable(name="id") long id,Model model) {
         CategoryDTO categoryDTO=categoryService.getCategoryById(id);
         model.addAttribute("category",categoryDTO);
-        return "pages/edit-category";
+        return "admin/edit-category";
     }
     @RequestMapping(path = "/category/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String addCategory(@RequestParam("photo") MultipartFile photo,CategoryDTO categoryDTO,Model model) {
@@ -50,7 +49,7 @@ public class AdminCategoryController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "redirect:/pages/category";
+        return "redirect:/admin/category";
     }
     @RequestMapping(path = "/category/update", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public String updateProduct(@RequestParam("photo") MultipartFile photo, CategoryDTO categoryDTO, Model model) {
@@ -67,12 +66,12 @@ public class AdminCategoryController {
         } else {
             categoryService.updateCategory(categoryDTO.getId(), categoryDTO);
         }
-        return "redirect:/pages/category";
+        return "redirect:/admin/category";
     }
     @GetMapping("delete-category/{id}")
     public String deleteCategory(@PathVariable Long id, Model model) {
         categoryService.deleteCategory(id);
-        return "redirect:/pages/category";
+        return "redirect:/admin/category";
     }
 
 }

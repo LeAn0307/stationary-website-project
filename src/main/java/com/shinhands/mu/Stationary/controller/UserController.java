@@ -19,11 +19,11 @@ public class UserController {
     {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
-    @PostMapping()
-    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO)
-    {
-        return ResponseEntity.ok().body(userService.addUser(userDTO));
-    }
+//    @PostMapping()
+//    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO)
+//    {
+//        return ResponseEntity.ok().body(userService.addUser(userDTO));
+//    }
     @GetMapping(value="/{id}")
     public ResponseEntity getUserById(@PathVariable(name="id") long id)
     {

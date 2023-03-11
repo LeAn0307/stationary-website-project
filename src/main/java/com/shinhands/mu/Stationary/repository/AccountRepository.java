@@ -7,9 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AccountRepository extends JpaRepository<Account,Long> {
-
     List<Account> findAllByDeletedEquals(Long deleted);
-
     Account findByIdEqualsAndDeletedEquals(Long id, Long deleted);
-    Account findByEmail(String email);
+    Account findByEmailAndDeleted(String email, Long deleted);
 }
