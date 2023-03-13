@@ -17,6 +17,7 @@ INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 
 INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'buivantinh123@gmail.com', '123456789');
 
 --TRIGGER CREATE CART WHEN INSERT NEW USER
+/
 CREATE SEQUENCE cart_seq
     MINVALUE 1
     START WITH 1
@@ -32,8 +33,8 @@ BEGIN
     INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (CART_SEQ.NEXTVAL, 0, :NEW.ID);
 
 END;
+/
 --TABLE USER_WEBSITE
-DROP TRIGGER 
 CREATE SEQUENCE user_website_seq
     MINVALUE 1
     START WITH 1
