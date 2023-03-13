@@ -1,9 +1,6 @@
 package com.shinhands.mu.Stationary.controller;
 
-import com.shinhands.mu.Stationary.dto.CategoryDTO;
 import com.shinhands.mu.Stationary.dto.ProductDTO;
-import com.shinhands.mu.Stationary.entity.Product;
-import com.shinhands.mu.Stationary.service.CategoryService;
 import com.shinhands.mu.Stationary.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

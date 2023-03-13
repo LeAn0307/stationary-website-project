@@ -4,19 +4,15 @@ import com.shinhands.mu.Stationary.dto.BillDTO;
 import com.shinhands.mu.Stationary.dto.BillResponseDTO;
 import com.shinhands.mu.Stationary.service.BillDetailService;
 import com.shinhands.mu.Stationary.service.BillService;
-import com.shinhands.mu.Stationary.service.BillStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("api/v1/bill")
+@RequestMapping("api/bill")
 public class BillController {
 
     @Autowired

@@ -1,13 +1,11 @@
 package com.shinhands.mu.Stationary.entity;
 
-import com.shinhands.mu.Stationary.dto.BillDTO;
-import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "bill")

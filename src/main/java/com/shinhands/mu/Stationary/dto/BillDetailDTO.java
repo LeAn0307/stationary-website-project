@@ -2,9 +2,6 @@ package com.shinhands.mu.Stationary.dto;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

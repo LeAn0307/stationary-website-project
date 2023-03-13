@@ -1,6 +1,6 @@
-//package com.shinhands.mu.Stationary.service.serviceImpl;
+package com.shinhands.mu.Stationary.service.serviceImpl;//package com.shinhands.mu.Stationary.service.serviceImpl;
 //
-//import com.shinhands.mu.Stationary.config.security.HashPasswordConfig;
+//import com.shinhands.mu.Stationary.config.HashPasswordConfig;
 //import com.shinhands.mu.Stationary.dto.AccountDTO;
 //import com.shinhands.mu.Stationary.entity.Account;
 //import com.shinhands.mu.Stationary.repository.AccountRepository;
@@ -13,6 +13,8 @@
 //import java.util.List;
 //@Service
 //public class AccountServiceImpl implements AccountService {
+//
+//
 //    @Autowired
 //    AccountRepository accountRepository;
 //    @Autowired
@@ -22,7 +24,7 @@
 //
 //    @Override
 //    public boolean authentication(AccountDTO accountDTO) {
-//        Account account = accountRepository.findByEmail(accountDTO.getEmail());
+//        Account account = accountRepository.findByEmailAndDeleted(accountDTO.getEmail(), 0L);
 //        if (account == null) {
 //            return false;
 //        }
@@ -35,6 +37,15 @@
 //    @Override
 //    public List<AccountDTO> getAllAccounts() {
 //        return mapper.map(accountRepository.findAllByDeletedEquals(0L), new TypeToken<List<AccountDTO>>(){}.getType());
+//    }
+//
+//    @Override
+//    public Boolean isExistAccount(String email) {
+//        Account existAccount = accountRepository.findByEmailAndDeleted(email, 0L);
+//        if(existAccount == null) {
+//            return false;
+//        }
+//        return true;
 //    }
 //
 //    @Override

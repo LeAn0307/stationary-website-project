@@ -1,17 +1,16 @@
 package com.shinhands.mu.Stationary.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-public class AccountDTO {
-    private Long id;
+@NoArgsConstructor
+public class SignUpDTO {
+    private String userName;
+    private String address;
+    private String phone;
     private String email;
     private String accountPassword;
-
 }

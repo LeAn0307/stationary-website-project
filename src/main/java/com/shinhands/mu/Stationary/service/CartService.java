@@ -1,7 +1,7 @@
 package com.shinhands.mu.Stationary.service;
 
 import com.shinhands.mu.Stationary.dto.CartDTO;
-import com.shinhands.mu.Stationary.entity.Cart;
+
 import java.util.List;
 public interface CartService {
     public List<CartDTO> getAllCarts();

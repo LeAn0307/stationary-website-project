@@ -1,21 +1,17 @@
 package com.shinhands.mu.Stationary.controller.ViewController;
 
-import com.shinhands.mu.Stationary.config.FileUploadUtil;
-import com.shinhands.mu.Stationary.dto.CategoryDTO;
 import com.shinhands.mu.Stationary.dto.CouponDTO;
 import com.shinhands.mu.Stationary.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class CouponManageView {
 
     @Autowired
@@ -36,7 +32,7 @@ public class CouponManageView {
     @PostMapping(value = "/coupon-manage-element/post")
     public String addCoupon(@ModelAttribute CouponDTO couponDTO) {
         couponService.addCoupon(couponDTO);
-        return "redirect:/pages/coupon-manage-element";
+        return "redirect:/admin/coupon-manage-element";
     }
 
 
@@ -45,13 +41,13 @@ public class CouponManageView {
     public String putCoupon(@ModelAttribute CouponDTO couponDTO, @PathVariable long id) {
 
         couponService.updateCoupon(id,couponDTO);
-        return "redirect:/pages/coupon-manage-element";
+        return "redirect:/admin/coupon-manage-element";
     }
 
     @GetMapping("coupon-manage-element/delete/{id}")
     public String deleteProduct(@PathVariable long id, Model model) {
         couponService.deleteCoupon(id);
-        return "redirect:/pages/coupon-manage-element";
+        return "redirect:/admin/coupon-manage-element";
     }
 
 

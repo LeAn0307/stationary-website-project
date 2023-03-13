@@ -5,22 +5,23 @@ import com.shinhands.mu.Stationary.dto.CategoryDTO;
 import com.shinhands.mu.Stationary.dto.ProductDTO;
 import com.shinhands.mu.Stationary.service.CategoryService;
 import com.shinhands.mu.Stationary.service.ProductService;
-import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class AdminProductController {
 
     @Autowired
@@ -57,7 +58,7 @@ public class AdminProductController {
     @GetMapping("product/delete")
     public String deleteProduct(@RequestParam long id, Model model) {
         productService.deleteProduct(id);
-        return "redirect:/pages/product";
+        return "redirect:/admin/product";
     }
 
     @RequestMapping(path = "/product/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -72,7 +73,7 @@ public class AdminProductController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return "redirect:/pages/product";
+        return "redirect:/admin/product";
     }
 
     @RequestMapping(path = "/product/update", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
@@ -90,6 +91,6 @@ public class AdminProductController {
         } else {
             productService.updateProduct(productDTO.getId(), productDTO);
         }
-        return "redirect:/pages/product";
+        return "redirect:/admin/product";
     }
 }

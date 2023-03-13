@@ -3,7 +3,6 @@ package com.shinhands.mu.Stationary.service;
 import com.shinhands.mu.Stationary.dto.BillDTO;
 import com.shinhands.mu.Stationary.dto.BillResponseDTO;
 
-import java.util.Date;
 import java.util.List;
 
 public interface BillService {

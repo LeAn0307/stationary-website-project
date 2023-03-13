@@ -9,8 +9,13 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDTO {
+public class RatingDTO1 {
     private Long id;
-    private String categoriesName;
-    private String image;
+    private String comment;
+    private double rateScore;
+    private Long productId;
+    private Long userId;
+    private String userName;
+    private String userImage;
+
 }

@@ -1,8 +1,6 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
 import com.shinhands.mu.Stationary.dto.CategoryDTO;
-import com.shinhands.mu.Stationary.dto.CategoryDTO;
-import com.shinhands.mu.Stationary.entity.Category;
 import com.shinhands.mu.Stationary.entity.Category;
 import com.shinhands.mu.Stationary.repository.CategoryRepository;
 import com.shinhands.mu.Stationary.service.CategoryService;
@@ -11,7 +9,6 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @Service

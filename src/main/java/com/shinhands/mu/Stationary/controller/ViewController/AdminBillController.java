@@ -1,6 +1,5 @@
 package com.shinhands.mu.Stationary.controller.ViewController;
 
-import com.shinhands.mu.Stationary.dto.BillDTO;
 import com.shinhands.mu.Stationary.dto.BillResponseDTO;
 import com.shinhands.mu.Stationary.dto.BillStatusDTO;
 import com.shinhands.mu.Stationary.service.BillService;
@@ -9,14 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "pages")
+@RequestMapping(value = "admin")
 public class AdminBillController {
 
     @Autowired
@@ -38,18 +38,18 @@ public class AdminBillController {
     @GetMapping("bill/updateStatus")
     public String updateStatusBill(@RequestParam long id, @RequestParam long statusId, Model model) {
         billService.updateStatusBill(id, statusId);
-        return "redirect:/pages/bill";
+        return "redirect:/admin/bill";
     }
 
 //    @PostMapping("bill/update/payment/{id}")
 //    public String updatePaymentBill(@PathVariable long id, Model model) {
 //        billService.updateStatusBill(id, 2L);
-//        return "redirect:/pages/bill";
+//        return "redirect:/admin/bill";
 //    }
 
     @GetMapping("bill/delete/{id}")
     public String deleteBill(@PathVariable long id, Model model) {
         billService.deleteBill(id);
-        return "redirect:/pages/bill";
+        return "redirect:/admin/bill";
     }
 }

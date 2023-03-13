@@ -1,8 +1,10 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
 import com.shinhands.mu.Stationary.dto.RatingDTO;
+import com.shinhands.mu.Stationary.dto.RatingDTO1;
 import com.shinhands.mu.Stationary.entity.Rating;
 import com.shinhands.mu.Stationary.repository.RatingRepository;
+import com.shinhands.mu.Stationary.repository.RatingRepositoryMybatis;
 import com.shinhands.mu.Stationary.service.RatingService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -15,6 +17,8 @@ import java.util.List;
 public class RatingServiceImpl implements RatingService {
     @Autowired
     private RatingRepository ratingRepository;
+    @Autowired
+    private RatingRepositoryMybatis ratingRepositoryMybatis;
     @Autowired
     private ModelMapper mapper;
 
@@ -63,7 +67,7 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public List<RatingDTO> getAllRatingsByProductID(Long productId)
     {
-        return mapper.map(ratingRepository.findByProductIdEqualsAndDeletedEquals(productId,0L), new TypeToken<List<RatingDTO>>() {
+        return mapper.map(ratingRepositoryMybatis.getAllRatingByProductIdAndUserId(productId),new TypeToken<List<RatingDTO1>>() {
         }.getType());
     }
 }
