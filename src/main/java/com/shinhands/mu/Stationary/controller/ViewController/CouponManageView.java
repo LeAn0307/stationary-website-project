@@ -1,17 +1,13 @@
 package com.shinhands.mu.Stationary.controller.ViewController;
 
-import com.shinhands.mu.Stationary.config.FileUploadUtil;
-import com.shinhands.mu.Stationary.dto.CategoryDTO;
 import com.shinhands.mu.Stationary.dto.CouponDTO;
 import com.shinhands.mu.Stationary.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller

@@ -1,7 +1,6 @@
 package com.shinhands.mu.Stationary.controller;
 
 import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
-import com.shinhands.mu.Stationary.entity.Bill;
 import com.shinhands.mu.Stationary.service.HistoryOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

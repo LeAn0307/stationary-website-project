@@ -1,9 +1,7 @@
 package com.shinhands.mu.Stationary.repository;
 
 import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
-import com.shinhands.mu.Stationary.entity.Bill;
 import com.shinhands.mu.Stationary.entity.BillDetail;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,6 +1,5 @@
 package com.shinhands.mu.Stationary.entity;
 
-import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
 import com.shinhands.mu.Stationary.dto.ProductDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 
 @Entity
 @Table(name = "product")

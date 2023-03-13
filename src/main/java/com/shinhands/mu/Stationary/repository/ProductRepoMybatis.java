@@ -1,7 +1,6 @@
 package com.shinhands.mu.Stationary.repository;
 
 import com.shinhands.mu.Stationary.dto.CartProductApiDTO;
-import com.shinhands.mu.Stationary.dto.ProductDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
