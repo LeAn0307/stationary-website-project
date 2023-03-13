@@ -252,6 +252,7 @@ ALTER TABLE rating
 ALTER TABLE rating
     ADD CONSTRAINT fk18 FOREIGN KEY ( ipproduct )
         REFERENCES product ( id );
+
 -- CART_PRODUCT - CART
 ALTER TABLE cart_product
     ADD CONSTRAINT fk11 FOREIGN KEY ( cart_id )

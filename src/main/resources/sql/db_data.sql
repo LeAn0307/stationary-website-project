@@ -17,12 +17,13 @@ INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 
 INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'buivantinh123@gmail.com', '123456789');
 
 --TRIGGER CREATE CART WHEN INSERT NEW USER
+/
 CREATE SEQUENCE cart_seq
     MINVALUE 1
     START WITH 1
     INCREMENT BY 1
     CACHE 10;
-/
+
 CREATE OR REPLACE TRIGGER CREATE_CART
 AFTER INSERT
     ON USER_WEBSITE
@@ -354,5 +355,6 @@ insert into bill_detail(id, quantity, price, id_bill, id_product)
 values(bill_detail_seq.NEXTVAL, 1, 12000, 1, 7);
 insert into bill_detail(id, quantity, price, id_bill, id_product) 
 values(bill_detail_seq.NEXTVAL, 8, 147000, 8, 7);
+
 
 
