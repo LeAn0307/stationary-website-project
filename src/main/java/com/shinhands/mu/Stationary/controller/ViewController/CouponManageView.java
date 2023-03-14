@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -32,14 +34,17 @@ public class CouponManageView {
 
     // ADD
     @PostMapping(value = "/coupon/post")
-    public String addCoupon(@ModelAttribute CouponDTO couponDTO, Model model) {
+    public String addCoupon(@ModelAttribute @Valid CouponDTO couponDTO, Model model) {
         couponService.addCoupon(couponDTO);
         return "redirect:/admin/coupon";
     }
 
     //EDIT
     @PostMapping (value = "/coupon/update")
-    public String putCoupon(@ModelAttribute CouponDTO couponDTO, Model model) {
+    public String putCoupon( CouponDTO couponDTO, Model model,BindingResult result) {
+        if (result.hasErrors() || result.hasFieldErrors()) {
+            return "admin/edit-coupon";
+        }
         couponService.updateCoupon(couponDTO.getId(),couponDTO);
         return "redirect:/admin/coupon";
     }
