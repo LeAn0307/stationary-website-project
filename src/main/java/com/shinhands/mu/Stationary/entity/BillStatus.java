@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class BillStatus {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BillStatus_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id")
     private long id;
 

@@ -30,4 +30,8 @@ public class BillDTO {
     private Long idBillStatus;
 
     private Long customerId;
+    private Long discount;
+
+    private String address;
+
 }

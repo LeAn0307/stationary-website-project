@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class Cart {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CART_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name = "id",nullable = false)
     private Long id;
     

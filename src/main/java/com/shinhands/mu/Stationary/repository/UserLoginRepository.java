@@ -17,18 +17,29 @@ public interface UserLoginRepository {
             "where r.name_role = 'Admin' and a.email = #{email} and a.account_password = #{password}")
     int checkAdmin(String email, String password);
 
-    @Select("select uw.id, uw.user_name, uw.address, uw.phone, uw.id_account\n" +
+    @Select("select uw.id, uw.user_name, uw.address, uw.phone, uw.idaccount\n" +
             "from user_website uw\n" +
-            "join account a on uw.id_account = a.id\n" +
+            "join account a on uw.idaccount = a.id\n" +
             "where a.deleted = 0 and uw.deleted = 0 and a.email = #{email} and a.account_password = #{password}")
     @Results(value = {
             @Result(property = "id", column = "id"),
             @Result(property = "userName", column = "user_name"),
             @Result(property = "address", column = "address"),
             @Result(property = "phone", column = "phone"),
-            @Result(property = "idAccount", column = "id_account")
+            @Result(property = "idAccount", column = "idaccount")
     })
     UserDTO getUserByAccount(String email, String password);
 
+    @Select("select u.id, u.user_name, u.phone,u.address,a.email " +
+            "from account a, user_website u " +
+            "where u.deleted=0 and u.id_account=a.id and a.id = #{id}")
+    @Results(value = {
+            @Result(property = "id", column = "id"),
+            @Result(property = "userName", column = "user_name"),
+            @Result(property = "phone", column = "phone"),
+            @Result(property = "address", column = "address"),
+            @Result(property = "email", column = "email")
+    })
+    UserDTO getUserById(Long id);
 
 }

@@ -58,7 +58,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Product_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name = "name",length = 255)
