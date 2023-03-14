@@ -17,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Rating {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Rating_SEQUENCE")
     @Column(name="id",nullable=false)
     private Long id;
     @Column(name="comment_product",nullable=false,length=500)

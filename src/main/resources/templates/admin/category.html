@@ -2,7 +2,7 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
 <head>
-  <title>Home</title>
+  <title>Category manage</title>
   <style>
     .max-width-200 {
       max-width: 200px!important;
@@ -36,7 +36,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="py-2">Quản lý danh mục</h4>
-          <a  class = "btn btn-success text-white btn-sm mb-3" data-toggle="modal" data-target="#addModal"> Thêm mới danh mục</a>
+          <a  class = "btn btn-success text-white btn-sm mb-3" data-toggle="modal" data-target="#addModal"> Thêm </a>
           <div class="table-responsive " style="max-height: 713px!important;overflow-y: auto!important;">
             <table class="table table-bordered"  style="">
               <thead class="thead-light fixed-header!important">
@@ -66,9 +66,9 @@
                       Tùy chọn
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" th:href = "@{/pages/category/{id}(id=${state.id})}">
+                      <a class="dropdown-item" th:href = "@{/admin/category/{id}(id=${state.id})}">
                         <i class="fa fa-reply fa-fw"></i>Sửa</a>
-                      <a id="delete" class="dropdown-item" onclick="DeleteFunction"  th:href = "@{/pages/delete-category/{id}(id=${state.id})}" >
+                      <a id="delete" class="dropdown-item" onclick="DeleteFunction"  th:href = "@{/admin/delete-category/{id}(id=${state.id})}" >
                         <i class="fa fa-history fa-fw"></i>Xóa</a>
                     </div>
                   </div>
@@ -81,11 +81,11 @@
       </div>
     </div>
     <div class="modal fade col-lg-12" id="addModal" tabindex="-1" role="dialog"  style="background-color: white">
-      <form th:action="@{/pages/category/add}" th:object="${categoryDTO}" method="post" enctype="multipart/form-data">
+      <form th:action="@{/admin/category/add}" th:object="${categoryDTO}" method="post" enctype="multipart/form-data">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Thêm Danh mục sản phẩm mới</h5>
+              <h5 class="modal-title">Thêm danh mục sản phẩm</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

@@ -16,12 +16,14 @@ public class CouponManageView {
 
     @Autowired
     CouponService couponService;
-    @GetMapping(value = "coupon-manage-element")
+
+
+    @GetMapping(value = "coupon")
     public ModelMap CategoryElements(ModelMap model) {
         List<CouponDTO> coupon =  couponService.getAllCoupons();
-        model.addAttribute("coupon",coupon);
+        model.addAttribute("coupon", coupon);
 
-        //  Add an object to prevent "Unsupport type"
+        // Add an object to prevent "Unsupport type"
         CouponDTO couponDTO = new CouponDTO();
         model.addAttribute("couponDTO", couponDTO);
         return model;
@@ -29,25 +31,31 @@ public class CouponManageView {
 
 
     // ADD
-    @PostMapping(value = "/coupon-manage-element/post")
-    public String addCoupon(@ModelAttribute CouponDTO couponDTO) {
+    @PostMapping(value = "/coupon/post")
+    public String addCoupon(@ModelAttribute CouponDTO couponDTO, Model model) {
         couponService.addCoupon(couponDTO);
-        return "redirect:/admin/coupon-manage-element";
+        return "redirect:/admin/coupon";
     }
-
 
     //EDIT
-    @PostMapping (value = "/coupon-manage-element/put/{id}")
-    public String putCoupon(@ModelAttribute CouponDTO couponDTO, @PathVariable long id) {
-
-        couponService.updateCoupon(id,couponDTO);
-        return "redirect:/admin/coupon-manage-element";
+    @PostMapping (value = "/coupon/update")
+    public String putCoupon(@ModelAttribute CouponDTO couponDTO, Model model) {
+        couponService.updateCoupon(couponDTO.getId(),couponDTO);
+        return "redirect:/admin/coupon";
+    }
+    //    GET COUPON BY ID  - TO EDIT
+    @GetMapping(value = "coupon/{id}")
+    public String getCategoryById(@PathVariable(name="id") long id,Model model) {
+        CouponDTO couponDTO=couponService.getCouponById(id);
+        model.addAttribute("coupon",couponDTO);
+        return "admin/edit-coupon";
     }
 
-    @GetMapping("coupon-manage-element/delete/{id}")
+    //DELETE
+    @GetMapping("coupon/delete/{id}")
     public String deleteProduct(@PathVariable long id, Model model) {
         couponService.deleteCoupon(id);
-        return "redirect:/admin/coupon-manage-element";
+        return "redirect:/admin/coupon";
     }
 
 
