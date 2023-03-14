@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class UserRole {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UserRole_SEQUENCE")
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name = "id_role")

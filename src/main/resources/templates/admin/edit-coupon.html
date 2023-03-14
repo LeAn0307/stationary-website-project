@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+  <title>Edit coupon</title>
+</head>
+<body>
+<section layout:fragment="content"  class="container-fluid!important">
+  <form th:action="@{/admin/coupon/update}" th:object="${coupon}" method="post" enctype="application/x-www-form-urlencoded">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"style="background-color: white" >
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa danh sách coupon</h5>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+
+            <label class="col-form-label my-2">ID: </label>
+            <input  type="hidden" class="form-control my-2" name="id" id="id" th:value="${coupon.id}">
+
+            <label class="col-form-label my-2">Code: </label>
+            <input type="text" class="form-control my-2"  name="code" id="code" th:value="${coupon.code}">
+
+            <label class="col-form-label my-2">Tên coupon: </label>
+            <input type="text" class="form-control my-2" name="name" id="name" th:value="${coupon.name}">
+
+            <label class="col-form-label my-2">Giá trị:</label>
+            <input type="number" class="form-control my-2" name="discount" id="discount" th:value="${coupon.discount}">
+
+            <label class="col-form-label my-2">Giá trị đơn hàng tối thiểu:</label>
+            <input type="number" class="form-control my-2" name="minPrice" id="minPrice" th:value="${coupon.minPrice}">
+
+            <label class="col-form-label my-2">Giảm tối đa:</label>
+            <input type="number" class="form-control my-2" name="maxPrice" id="maxPrice" th:value="${coupon.maxPrice}">
+
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary my-2">Lưu</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</section>
+</body>
+</html>

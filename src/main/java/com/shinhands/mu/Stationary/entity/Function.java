@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Function {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Function_SEQUENCE")
 
     @Column(name = "id", nullable = false)
     private Long id;

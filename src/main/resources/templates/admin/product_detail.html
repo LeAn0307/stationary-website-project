@@ -3,7 +3,7 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product detail</title>
 </head>
 <body>
 <section layout:fragment="content">
@@ -84,11 +84,11 @@
         </div>
     </div>
     <div class="modal fade col-lg-12" id="editModal" tabindex="-1" role="dialog" >
-        <form th:action="@{/pages/product/update}" th:object="${productDTO}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/admin/product/update}" th:object="${productDTO}" method="post" enctype="multipart/form-data">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Thêm sản phẩm mới</h5>
+                        <h5 class="modal-title">Thêm sản phẩm</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

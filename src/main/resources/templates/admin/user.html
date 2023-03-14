@@ -2,7 +2,7 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
 <head>
-  <title>user</title>
+  <title>User manage</title>
   <style>
     .table-container {
       overflow-y: auto!important;
@@ -57,7 +57,7 @@
                     Tùy chọn
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" th:href="@{/pages/user/{id}(id=${state.id})}">
+                    <a class="dropdown-item" th:href="@{/admin/user/{id}(id=${state.id})}">
                       <i class="fa fa-reply fa-fw"></i>Sửa</a>
 
 <!--                    <a class="dropdown-item" href="#">-->

@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 public class Bill {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BILL_SEQUENCE")
     @Column(name = "bill_id")
     private long id;
 

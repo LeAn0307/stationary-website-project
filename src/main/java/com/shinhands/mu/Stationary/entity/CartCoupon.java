@@ -16,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class CartCoupon {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CartCoupon_SEQUENCE")
     @Column(name="id")
     private long id;
     @Column(name="cart_id")

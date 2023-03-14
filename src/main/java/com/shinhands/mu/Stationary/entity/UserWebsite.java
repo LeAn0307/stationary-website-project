@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserWebsite {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UserWebsite_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name="user_name",length = 255,nullable = false)
