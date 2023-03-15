@@ -11,15 +11,15 @@ public interface UserLoginRepository {
 
     @Select("select count(*)\n" +
             "from account a\n" +
-            "join user_website uw on a.id = uw.idaccount\n" +
-            "join user_role ur on ur.iduser = uw.id\n" +
+            "join user_website uw on a.id = uw.id_account\n" +
+            "join user_role ur on ur.id_user = uw.id\n" +
             "join role r on r.id = ur.id_role\n" +
             "where r.name_role = 'Admin' and a.email = #{email} and a.account_password = #{password}")
     int checkAdmin(String email, String password);
 
-    @Select("select uw.id, uw.user_name, uw.address, uw.phone, uw.idaccount\n" +
+    @Select("select uw.id, uw.user_name, uw.address, uw.phone, uw.id_account\n" +
             "from user_website uw\n" +
-            "join account a on uw.idaccount = a.id\n" +
+            "join account a on uw.id_account = a.id\n" +
             "where a.deleted = 0 and uw.deleted = 0 and a.email = #{email} and a.account_password = #{password}")
     @Results(value = {
             @Result(property = "id", column = "id"),
