@@ -36,7 +36,7 @@ public class CouponManageView {
     }
     // ADD
     @PostMapping(value = "/coupon/post")
-    public String addCoupon(@ModelAttribute @Valid CouponDTO couponDTO, Model model) {
+    public String addCoupon(@ModelAttribute CouponDTO couponDTO, Model model) {
         System.out.println(couponDTO);
         couponService.addCoupon(couponDTO);
         return "redirect:/admin/coupon";
