@@ -12,5 +12,6 @@ import java.util.List;
 public interface CartRepository extends JpaRepository<Cart,Long> {
       List<Cart> findAllByDeletedEquals(Long deleted);
      Cart findByIdEqualsAndDeletedEquals(Long cartId,Long deleted);
+    Cart findByUserIdEqualsAndAndDeletedEquals(Long cartId,Long deleted);
 
 }

@@ -27,6 +27,11 @@ public class CartController {
     {
         return ResponseEntity.ok().body(cartService.getCartById(id));
     }
+    @GetMapping(value="/userid/{id}")
+    public ResponseEntity getCartByUserId(@PathVariable(name="id") long id)
+    {
+        return ResponseEntity.ok().body(cartService.getCartByUserId(id));
+    }
     @PutMapping(value="/{id}")
     public ResponseEntity updateCart(@PathVariable(name="id") long id,@RequestBody CartDTO categoryDTO)
     {
