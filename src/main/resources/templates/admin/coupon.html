@@ -38,54 +38,65 @@
         }
     </style>
     <script>
-        // document.getElementById("show-form").addEventListener("click", function(){
-        //     document.getElementById("editModal").style.display = "block";
-        // });
-        // const saveBtn = document.getElementById('save');
-        // saveBtn.addEventListener(function (event) {
-        //     console.log("save btn have click");
-        // })
 
-        $('#save').click(function(event) {
-            console.log(event);
-            console.log("click");
-            // var name = $('#name').val();
-            // var value_coupon = $('#value_coupon').val();
-            // var min_price = $('#min-price').val();
-            // var max_price = $('#max-price').val();
-            // var code = $('#code').val();
-            // var quantity = $('#quantity').val();
-            //
-            // if(name == '' || value_coupon == 0.0 || min_price == 0.0 || max_price == 0.0|| code == '' || quantity == 0.0) {
-            //     alert('Vui lòng nhập đầy đủ thông tin');
-            //     console.log("RUN1");
-            //     event.preventDefault();
-            // } else {
-            //     var settings = {
-            //         "url": "http://localhost:8080/admin/coupon/post",
-            //         "method": "POST",
-            //         "timeout": 0,
-            //         "headers": {
-            //             "Content-Type": "application/json"
-            //         },
-            //         "data": JSON.stringify({
-            //             "name": name,
-            //             "discount": value_coupon,
-            //             "minPrice": min_price,
-            //             "maxPrice": max_price,
-            //             "code": code,
-            //             "amount": quantity
-            //         }),
-            //     };
-            //     $.ajax(settings).done(function (response) {
-            //         console.log("RESULT:",response);
-            //     });
-            //}
-        });
+        // function saveFunc(event) {
+        //     // console.log(event);
+        //
+        //     console.log("click");
+        //     var name = $('#name').val();
+        //     var value_coupon = Number($('#value_coupon').val());
+        //     var min_price = Number($('#min-price').val());
+        //     var max_price = Number($('#max-price').val());
+        //     var code = $('#code').val();
+        //     var quantity = Number($('#quantity').val());
+        //     console.log("name",name);
+        //     console.log("value_coupon",value_coupon);
+        //     console.log("min_price",min_price);
+        //     console.log("max_price",max_price);
+        //     console.log("code",code);
+        //     console.log("quantity",quantity);
+        //
+        //
+        //     if(name == '' || value_coupon == 0.0 || min_price == 0.0 || max_price == 0.0|| code == '' || quantity == 0.0) {
+        //         alert('Vui lòng nhập đầy đủ thông tin');
+        //         console.log("RUN1");
+        //
+        //         return;
+        //     // } else {
+        //     //
+        //     //     $.ajax({
+        //     //         "url": "http://localhost:8080/admin/coupon/post",
+        //     //         "method": "POST",
+        //     //         "timeout": 0,
+        //     //         "headers": {
+        //     //             "Content-Type": "application/json"
+        //     //         },
+        //     //         "data": JSON.stringify({
+        //     //             "name": name,
+        //     //             "discount": value_coupon,
+        //     //             "minPrice": min_price,
+        //     //             "maxPrice": max_price,
+        //     //             "code": code,
+        //     //             "amount": quantity
+        //     //         }),
+        //     //     }).done(function (response) {
+        //     //         console.log(response);
+        //     //     });
+        //     //
+        //     // }
+        // }
+        const name_input = document.getElementById("name");
+        console.log(name_input);
+        // if (name_input.validity.badInput) {
+        //     console.log("Bad input detected…");
+        // } else {
+        //     console.log("Content of input OK.");
+        // }
+
     </script>
 </head>
 <body>
-<section class="mt-2 mx-2 " layout:fragment="content">
+<section id="coupon" class="mt-2 mx-2 " layout:fragment="content">
 
 
     <div class="m-2 p-4" style="background-color: white">
@@ -135,7 +146,7 @@
 
         <!--    //create-->
         <div class="modal fade col-lg-12 " id="addModal" tabindex="-1" role="dialog" >
-            <form  th:object="${couponDTO}"   >
+            <form  th:object="${couponDTO}"  th:action="@{/admin/coupon/post}" method="post" enctype="application/x-www-form-urlencoded">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content bg-white">
                         <div class="modal-header">
@@ -172,7 +183,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button type="button" id="save" class="btn btn-primary" >Lưu</button>
+                            <button type="submit" id="save" class="btn btn-primary"  >Lưu</button>
                         </div>
                     </div>
                 </div>
