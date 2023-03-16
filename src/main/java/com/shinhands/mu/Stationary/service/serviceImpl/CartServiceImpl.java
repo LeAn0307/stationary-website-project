@@ -49,6 +49,13 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public CartDTO getCartByUserId(long id) {
+        Cart oldCart = cartRepository.findByUserIdEqualsAndAndDeletedEquals(id, 0L);
+        if (oldCart != null) return mapper.map(oldCart, CartDTO.class);
+        else return null;
+    }
+
+    @Override
     public Boolean updateCart(long id, CartDTO CartDTO) {
         Cart oldCart = cartRepository.findByIdEqualsAndDeletedEquals(id, 0L);
         if (oldCart == null) {

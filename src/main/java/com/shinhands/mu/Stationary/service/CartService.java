@@ -8,5 +8,6 @@ public interface CartService {
     public CartDTO addCart(CartDTO cartDTO);
     public Boolean deleteCart(long id);
     public CartDTO getCartById(long id);
+    public CartDTO getCartByUserId(long id);
     public Boolean updateCart(long id, CartDTO cartDTO);
 }
