@@ -55,7 +55,16 @@ public class BillServiceImpl implements BillService {
 //
     @Override
     public BillDTO addBill(BillDTO billDTO) {
-        return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class);
+        Bill bill = new Bill();
+        try {
+            bill = modelMapper.map(billDTO, Bill.class);
+            System.out.println("heloo");
+        } catch (Exception e) {
+            // handle the error
+            // for example, log the error message
+            e.printStackTrace();
+        }
+        return modelMapper.map(billRepository.save(bill), BillDTO.class);
     }
 
     @Override

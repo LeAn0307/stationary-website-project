@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class Coupon {
    @Id
-   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COUPON_SEQUENCE")
+   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
    @Column(name = "ID",nullable = false)
    private Long id;
    @Column(name="name",nullable=false,length=100)

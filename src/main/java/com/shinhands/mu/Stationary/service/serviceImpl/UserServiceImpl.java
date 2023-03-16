@@ -51,8 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUserById(long id) {
-        UserWebsite oldUser=userRepository.findByIdEqualsAndDeletedEquals(id,0L);
-        return mapper.map(oldUser, UserDTO.class);
+        return userLoginRepository.getUserById(id);
     }
 
     @Override

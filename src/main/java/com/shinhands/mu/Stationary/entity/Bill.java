@@ -41,10 +41,16 @@ public class Bill {
     private Date updatedAt;
 
     @Column(name = "customer_id")
-    private Long customer_id;
+    private Long customerId;
+
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "id_bill_status")
     private Long idBillStatus;
+
+    @Column(name = "discount")
+    private Long discount;
 
     @Column(name = "deleted")
     private Long deleted = 0L;
