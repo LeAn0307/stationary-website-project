@@ -15,28 +15,35 @@
         <div class="modal-body">
           <div class="form-group">
 
-            <label class="col-form-label my-2">ID: </label>
-            <input  type="hidden" class="form-control my-2" name="id" id="id" th:value="${coupon.id}">
+            <label class="col-form-label my-2"> </label>
+            <input  type="hidden" class="form-control my-2"  name="id" id="id" th:value="${coupon.id}">
 
-            <label class="col-form-label my-2">Code: </label>
-            <input type="text" class="form-control my-2"  name="code" id="code" th:value="${coupon.code}">
+            <label class="col-form-label my-2" >Code: </label>
+            <input type="text" class="form-control my-2" th:field="*{code}" name="code" id="code" th:value="${coupon.code}">
+            <div class="alert alert-warning" th:if="${code}" th:text="${code}"></div>
 
             <label class="col-form-label my-2">Tên coupon: </label>
             <input type="text" class="form-control my-2" name="name" id="name" th:value="${coupon.name}">
+            <div class="alert alert-warning" th:if="${name}" th:text="${name}"></div>
 
-            <label class="col-form-label my-2">Giá trị:</label>
-            <input type="number" class="form-control my-2" name="discount" id="discount" th:value="${coupon.discount}">
+            <label class="col-form-label my-2">Giảm giá (%):</label>
+            <input type="number"  max="100" class="form-control my-2" name="discount" id="discount" th:value="${coupon.discount}">
+            <div class="alert alert-warning" th:if="${discount}" th:text="${discount}"></div>
 
             <label class="col-form-label my-2">Giá trị đơn hàng tối thiểu:</label>
             <input type="number" class="form-control my-2" name="minPrice" id="minPrice" th:value="${coupon.minPrice}">
+            <div class="alert alert-warning" th:if="${minPrice}" th:text="${minPrice}"></div>
 
             <label class="col-form-label my-2">Giảm tối đa:</label>
             <input type="number" class="form-control my-2" name="maxPrice" id="maxPrice" th:value="${coupon.maxPrice}">
+            <div class="alert alert-warning" th:if="${maxPrice}" th:text="${maxPrice}"></div>
+
+            <label class="col-form-label my-2">Số lượng:</label>
+            <input type="number" class="form-control my-2" name="amount" id="amount" th:value="${coupon.amount}">
+            <div class="alert alert-warning" th:if="${amount}" th:text="${amount}"></div>
 
           </div>
-
         </div>
-
         <button type="submit" class="btn btn-primary my-2">Lưu</button>
       </div>
     </div>

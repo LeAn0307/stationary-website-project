@@ -463,9 +463,9 @@ CREATE OR REPLACE TRIGGER create_bill
 BEFORE INSERT ON bill
 FOR EACH ROW
 BEGIN
-    :NEW.date_order := TO_CHAR(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
-    :NEW.created_at := TO_CHAR(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
-    :NEW.updated_at := TO_CHAR(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
+    :NEW.date_order := TO_DATE(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
+    :NEW.created_at := TO_DATE(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
+    :NEW.updated_at := TO_DATE(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
 
 END;
 /
