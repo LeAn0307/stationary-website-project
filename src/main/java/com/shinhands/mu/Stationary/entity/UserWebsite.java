@@ -8,13 +8,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_website")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "USER_WEBSITE_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "USER_WEBSITE_SEQUENCE", sequenceName = "USER_WEBSITE_SEQ", allocationSize = 1)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserWebsite {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_WEBSITE_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name="user_name",length = 255,nullable = false)

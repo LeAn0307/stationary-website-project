@@ -13,14 +13,14 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="coupon")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "COUPON_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "COUPON_SEQUENCE", sequenceName = "COUPON_SEQ", allocationSize = 1)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Coupon {
    @Id
-   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="COUPON_SEQUENCE")
    @Column(name = "ID",nullable = false)
    private Long id;
    @Column(name="name",nullable=false,length=100)

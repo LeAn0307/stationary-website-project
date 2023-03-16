@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "bill")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "BILL_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "BILL_SEQUENCE", sequenceName = "BILL_SEQ", allocationSize = 1)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

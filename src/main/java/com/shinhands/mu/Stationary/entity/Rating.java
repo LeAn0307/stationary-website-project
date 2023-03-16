@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 
 @Table(name="rating")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "RATING_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "RATING_SEQUENCE", sequenceName = "RATING_SEQ", allocationSize = 1)
 @Entity
 @Getter
 @Setter
@@ -17,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Rating {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="RATING_SEQUENCE")
     @Column(name="id",nullable=false)
     private Long id;
     @Column(name="comment_product",nullable=false,length=500)

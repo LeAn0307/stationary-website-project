@@ -8,13 +8,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "function")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "FUNCTION_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "FUNCTION_SEQUENCE", sequenceName = "FUNCTION_SEQ", allocationSize = 1)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Function {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FUNCTION_SEQUENCE")
 
     @Column(name = "id", nullable = false)
     private Long id;

@@ -8,13 +8,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "role_function")
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "ROLE_FUNCTION_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "ROLE_FUNCTION_SEQUENCE", sequenceName = "ROLE_FUNCTION_SEQ", allocationSize = 1)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleFuntion {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ROLE_FUNCTION_SEQUENCE")
     @Column(name = "id",nullable = false)
     private Long id;
     @Column(name = "role_id")

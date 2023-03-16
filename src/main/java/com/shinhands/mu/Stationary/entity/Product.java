@@ -52,13 +52,13 @@ import java.math.BigDecimal;
                 }
         )
 )
-@SequenceGenerator(name= "NAME_SEQUENCE", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
+@SequenceGenerator(name= "PRODUCT_SEQUENCE", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCT_SEQUENCE")
     @Column(name="id",nullable = false)
     private Long id;
     @Column(name = "name",length = 255)
