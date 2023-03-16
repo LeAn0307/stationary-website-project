@@ -83,7 +83,7 @@ CREATE OR REPLACE TRIGGER update_bill
 BEFORE UPDATE ON bill
                   FOR EACH ROW
 BEGIN
-    :NEW.updated_at := TO_CHAR(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
+    :NEW.updated_at := TO_DATE(SYSDATE, 'DD/MM/YYYY HH24:MI:SS');
 END;
 /
 --procedure
