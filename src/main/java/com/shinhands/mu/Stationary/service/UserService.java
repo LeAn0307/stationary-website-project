@@ -14,4 +14,5 @@ public interface UserService {
     public Boolean checkAdmin(String email, String password);
 
     public UserDTO getUserByAccount(String email, String password);
+
 }

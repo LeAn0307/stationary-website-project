@@ -7,12 +7,9 @@ import com.shinhands.mu.Stationary.repository.BillRepository;
 import com.shinhands.mu.Stationary.repository.BillRepositoryMybatis;
 import com.shinhands.mu.Stationary.service.BillService;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -58,7 +55,16 @@ public class BillServiceImpl implements BillService {
 //
     @Override
     public BillDTO addBill(BillDTO billDTO) {
-        return modelMapper.map(billRepository.save(modelMapper.map(billDTO, Bill.class)), BillDTO.class);
+        Bill bill = new Bill();
+        try {
+            bill = modelMapper.map(billDTO, Bill.class);
+            System.out.println("heloo");
+        } catch (Exception e) {
+            // handle the error
+            // for example, log the error message
+            e.printStackTrace();
+        }
+        return modelMapper.map(billRepository.save(bill), BillDTO.class);
     }
 
     @Override

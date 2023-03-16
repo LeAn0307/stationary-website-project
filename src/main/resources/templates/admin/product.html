@@ -3,7 +3,7 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Product</title>
+    <title> Product manage</title>
     <style>
         .table td, .table th {
             width: 100px !important;
@@ -32,7 +32,7 @@
 
             <div class="card-body">
                 <h4 >Danh sách sản phẩm</h4>
-                <button class="btn btn-success  my-3" data-toggle="modal" data-target="#addModal" >Thêm mới sản phẩm
+                <button class="btn btn-success  my-3" data-toggle="modal" data-target="#addModal" >Thêm
                     <i class="mdi mdi-plus"></i>
                 </button>
                 <div class="table-responsive table-container!important" style="max-height: 713px!important;overflow-y: auto!important;">
@@ -60,9 +60,9 @@
                                         Tùy chọn
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" th:href="@{/pages/product_detail(id=${state.id})}">
+                                            <a class="dropdown-item" th:href="@{/admin/product_detail(id=${state.id})}">
                                                 <i class="fa fa-reply fa-fw"></i>Xem</a>
-                                            <a class="dropdown-item" th:href="@{/pages/product/delete(id=${state.id})}">
+                                            <a class="dropdown-item" th:href="@{/admin/product/delete(id=${state.id})}">
                                                 <i class="fa fa-history fa-fw"></i>Xóa</a>
                                         </div>
                                     </div>
@@ -76,11 +76,11 @@
         </div>
     </div>
     <div class="modal fade col-lg-12" id="addModal" tabindex="-1" role="dialog" >
-        <form th:action="@{/pages/product/add}" th:object="${productDTO}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/admin/product/add}" th:object="${productDTO}" method="post" enctype="multipart/form-data">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title my-3">Thêm sản phẩm mới</h5>
+                        <h5 class="modal-title my-3">Thêm</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

@@ -1,6 +1,5 @@
 package com.shinhands.mu.Stationary.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

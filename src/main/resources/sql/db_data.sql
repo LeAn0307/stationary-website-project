@@ -1,9 +1,4 @@
---ACCOUNT
-CREATE SEQUENCE account_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'darklord0305@gmail.com', '123456789');
 INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'thelionking0305@gmail.com', '123456789');
@@ -17,11 +12,8 @@ INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 
 INSERT INTO account ( id, email, account_password) values (account_seq.NEXTVAL, 'buivantinh123@gmail.com', '123456789');
 
 --TRIGGER CREATE CART WHEN INSERT NEW USER
-CREATE SEQUENCE cart_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+/
+
 
 CREATE OR REPLACE TRIGGER CREATE_CART
 AFTER INSERT
@@ -33,12 +25,8 @@ BEGIN
 
 END;
 --TABLE USER_WEBSITE
-DROP TRIGGER 
-CREATE SEQUENCE user_website_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+--DROP TRIGGER
+
     
 INSERT INTO user_website (id, user_name, address, phone, id_account) values (user_website_seq.NEXTVAL, 'Nguyễn Viết Quý', 'Chư Puh, Gia Lai', '0134567896', 1);
 INSERT INTO user_website (id, user_name, address, phone, id_account) values (user_website_seq.NEXTVAL, 'Phạm Phúc Hậu', 'Vũng Tàu', '0125487898', 2);
@@ -51,12 +39,7 @@ INSERT INTO user_website (id, user_name, address, phone, id_account) values (use
 INSERT INTO user_website (id, user_name, address, phone, id_account) values (user_website_seq.NEXTVAL, 'Aladin', 'Bình Dương', '0125484587', 9);
 INSERT INTO user_website (id, user_name, address, phone, id_account) values (user_website_seq.NEXTVAL, 'Nguyễnn Văn Hiếu', 'Dak Lak', '0125487852', 10);
 
---TABLE COUPON  
-CREATE SEQUENCE coupon_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Khuyến mãi cho khách hàng mới', 0.1, 0, 50000, 'KMKHM', 50, 0);
 INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 50,000đ đơn tối thiểu 99,000đ', 0.1, 99000, 50000, 'HUJUI', 30, 0);
@@ -69,12 +52,7 @@ INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 150,000đ đơn tối thi
 INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 60,000đ đơn tối thiểu 400,000đ', 0.1, 400000, 60000, 'YEUWGY', 30, 0);
 INSERT INTO coupon VALUES (coupon_seq.NEXTVAL, 'Giảm 10% Giảm tối đa 100,000đ đơn tối thiểu 600,000đ', 0.1, 600000, 100000, 'EGYFGE', 30, 0);
 
---TABLE CART_COUPON
-CREATE SEQUENCE cart_coupon_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 1, 1, 0);
 INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 2, 1, 0);
@@ -87,12 +65,7 @@ INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 8, 1, 0);
 INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 9, 1, 0);
 INSERT INTO cart_coupon VALUES (cart_coupon_seq.NEXTVAL, 10, 1, 0);
 
---TABLE ROLE
-CREATE SEQUENCE role_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO role VALUES (role_seq.NEXTVAL, 'ADMIN', 0);
 INSERT INTO role VALUES (role_seq.NEXTVAL, 'USER', 0);
@@ -101,12 +74,7 @@ INSERT INTO role VALUES (role_seq.NEXTVAL, 'Nhân viên bán hàng', 0);
 INSERT INTO role VALUES (role_seq.NEXTVAL, 'Thu ngân', 0);
 INSERT INTO role VALUES (role_seq.NEXTVAL, 'Quản lý nhân sự', 0);
 
---TABLE ROLE_USER
-CREATE SEQUENCE role_user_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
 
 INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 1, 1, 0);
 INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 2, 2, 0);
@@ -119,12 +87,7 @@ INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 4, 8, 0);
 INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 5, 9, 0);
 INSERT INTO user_role VALUES (role_user_seq.NEXTVAL, 6, 10, 0);
 
---TABLE FUNCTION
-CREATE SEQUENCE function_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý sản phẩm', 'Thêm, xóa, sửa sản phẩm', 0);
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý khách hàng', 'Tra cứu các thông tin của khách hàng', 0);
@@ -137,12 +100,7 @@ INSERT INTO function VALUES (function_seq.NEXTVAL, 'Quản lý kho hàng', 'Thay
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Thống kê và báo cáo', 'Xem báo cáo kinh doanh cửa cửa hàng', 0);
 INSERT INTO function VALUES (function_seq.NEXTVAL, 'Đánh giá sản phẩm', '�?ánh giá sản phẩm', 0);
 
---TABLE ROLE_FUNCTION
-CREATE SEQUENCE role_function_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 1, 0);
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 2, 0);
@@ -155,12 +113,7 @@ INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 3, 8, 0);
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 1, 9, 0);
 INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 2, 0);
 
---TABLE BILL_STATUS
-CREATE SEQUENCE bill_status_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
 
 insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Pending');
 insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Complete');
@@ -173,12 +126,7 @@ insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Error');
 insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Continues');
 insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Sending');
 
---TABLE BILL
-CREATE SEQUENCE bill_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
 
 insert into bill(bill_id,customer_id, id_bill_status, date_order,total, note,payment,code_momo,created_at, updated_at)
 values(bill_seq.NEXTVAL,1,1,TO_DATE('02/02/2022', 'dd/mm/yyyy'),3000,'Note1','Payment online','ewu',TO_DATE('02/02/2022', 'dd/mm/yyyy'),TO_DATE('02/02/2022', 'dd/mm/yyyy'));
@@ -212,12 +160,7 @@ values(bill_seq.NEXTVAL,4,3,TO_DATE('02/02/2022', 'dd/mm/yyyy'),5000,'Note1','Pa
 
 
 
---TABLE CATEGORIES
-CREATE SEQUENCE categories_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 insert into categories(categories_id,categories_name,image) values(categories_seq.NEXTVAL,'Dụng cụ văn phòng','dungcuvanphong.png');
 insert into categories(categories_id,categories_name,image) values(categories_seq.NEXTVAL,'Giấy','giay.jpg');
@@ -229,12 +172,7 @@ insert into categories(categories_id,categories_name,image) values(categories_se
 insert into categories(categories_id,categories_name,image) values(categories_seq.NEXTVAL,'Gia dụng vệ sinh','giadungvesinh.jpg');
 insert into categories(categories_id,categories_name,image) values(categories_seq.NEXTVAL,'Mực in - Ruban','mucinruban.jpg');
 
---TABLE PRODUCT
-CREATE SEQUENCE product_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
 
 insert into product (id, name,type, discount, avgrating, material, category_id, height,width,weight,description,image,brand,made_in,amount, color,price) values
 (product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 t?','Kanex', 2000,'','Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
@@ -292,12 +230,7 @@ Sản phẩm Chất tẩy rửa - xịt phòng chính hãng đáp ứng tiêu ch
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Lifebuoy tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.
 Nước rửa tay Lifebuoy 493ml còn gọi là xà phòng rửa tay có đơn vị tính là Chai Mẫu mã và thông tin sản phẩm có thể thay đổi theo chính sách nhà sản xuất.','product-7.jpg', 'Lifebuoy','Việt Nam',5000,'Trắng xanh','75000');
 
---TABLE RATING
-CREATE SEQUENCE rating_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 INSERT INTO rating(id, comment_product, rate_score, id_user, product_id) values(rating_seq.NEXTVAL, 'sản phẩm tốt', 1, 1, 1);
 INSERT INTO rating(id, comment_product, rate_score, id_user, product_id) values(rating_seq.NEXTVAL, 'sản phẩm nhanh hỏng', 1, 1, 2);
@@ -310,12 +243,7 @@ INSERT INTO rating(id, comment_product, rate_score, id_user, product_id) values(
 INSERT INTO rating(id, comment_product, rate_score, id_user, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 INSERT INTO rating(id, comment_product, rate_score, id_user, product_id) values(rating_seq.NEXTVAL, 'Comment1', 1, 1, 1);
 
---TABLE CART_PRODUCT
-CREATE SEQUENCE cart_product_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,1,1,10);
 insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,1,10);
@@ -327,12 +255,7 @@ insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq
 insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,3,10);
 insert into cart_product(id,cart_id,product_id,quantity) values(cart_product_seq.NEXTVAL,2,4,10);
 
---TABLE BILL_DETAIL
-CREATE SEQUENCE bill_detail_seq
-    MINVALUE 1
-    START WITH 1
-    INCREMENT BY 1
-    CACHE 10;
+
     
 insert into bill_detail(id, quantity, price, id_bill, id_product) 
 values(bill_detail_seq.NEXTVAL, 2, 30000, 1, 1);

@@ -2,11 +2,11 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
 <head>
-    <title>Home</title>
+    <title>Edit user</title>
 </head>
 <body>
 <section layout:fragment="content">
-    <form th:action="@{/pages/user/update}" th:object="${userDTO}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/admin/user/update}" th:object="${userDTO}" method="post" enctype="multipart/form-data">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

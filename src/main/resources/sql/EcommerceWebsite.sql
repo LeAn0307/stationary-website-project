@@ -115,7 +115,8 @@ CREATE TABLE rating (
     comment_product VARCHAR2(200),
     ratescore       NUMBER(10, 0),
     iduser          NUMBER(10, 0),
-    product_id      NUMBER(10, 0),
+
+    product_id          NUMBER(10, 0),
     CONSTRAINT rating_pk PRIMARY KEY ( id )
 );
 
@@ -508,15 +509,16 @@ CREATE SEQUENCE rating_seq
     CACHE 10;
     
 insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment1',5, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment1',4, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment',5, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment',4, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'�?ẹp',5, 4,2);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment3',3, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment4',4, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment4',5, 2,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment6',5, 1,1);
-insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Tuyệt',5, 2,1);
+
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'�?ẹp', 4,1,2);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment3', 1,1,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment4',1, 1,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment4',1, 2,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment6',1, 1,1);
+insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Tuyệt',1, 2,1);
 
 --TABLE CATEGORIES
 CREATE SEQUENCE categories_seq

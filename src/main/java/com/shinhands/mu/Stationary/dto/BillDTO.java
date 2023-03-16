@@ -1,11 +1,9 @@
 package com.shinhands.mu.Stationary.dto;
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,4 +30,8 @@ public class BillDTO {
     private Long idBillStatus;
 
     private Long customerId;
+    private Long discount;
+
+    private String address;
+
 }

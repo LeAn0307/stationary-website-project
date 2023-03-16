@@ -3,7 +3,7 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Bill</title>
+    <title> Bill manage</title>
 
 </head>
 <body>
@@ -42,11 +42,11 @@
                                                 Tùy chọn
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" th:href="@{/pages/bill/updateStatus(id=${state.id}, statusId=${2})}">
+                                                <a class="dropdown-item" th:href="@{/admin/bill/updateStatus(id=${state.id}, statusId=${2})}">
                                                     <i class="fa fa-reply fa-fw"></i>Đã giao hàng</a>
-                                                <a class="dropdown-item" th:href="@{/pages/bill/updateStatus(id=${state.id}, statusId=${3})}">
+                                                <a class="dropdown-item" th:href="@{/admin/bill/updateStatus(id=${state.id}, statusId=${3})}">
                                                     <i class="fa fa-reply fa-fw"></i>Đang thanh toán</a>
-                                                <a class="dropdown-item" th:href="@{/pages/bill/delete/{id}(id = ${state.id})}">
+                                                <a class="dropdown-item" th:href="@{/admin/bill/delete/{id}(id = ${state.id})}">
                                                     <i class="fa fa-reply fa-fw"></i>Hủy</a>
                                             </div>
                                         </div>

@@ -1,10 +1,8 @@
 package com.shinhands.mu.Stationary.repository;
 
 import com.shinhands.mu.Stationary.dto.ProductDTO;
-import com.shinhands.mu.Stationary.entity.Account;
 import com.shinhands.mu.Stationary.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

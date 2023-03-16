@@ -1,13 +1,11 @@
 package com.shinhands.mu.Stationary.entity;
 
-import com.shinhands.mu.Stationary.dto.BillDTO;
-import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "bill")
@@ -17,7 +15,7 @@ import java.util.List;
 @Data
 public class Bill {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="NAME_SEQUENCE")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BILL_SEQUENCE")
     @Column(name = "bill_id")
     private long id;
 
@@ -43,10 +41,16 @@ public class Bill {
     private Date updatedAt;
 
     @Column(name = "customer_id")
-    private Long customer_id;
+    private Long customerId;
+
+    @Column(name = "address")
+    private String address;
 
     @Column(name = "id_bill_status")
     private Long idBillStatus;
+
+    @Column(name = "discount")
+    private Long discount;
 
     @Column(name = "deleted")
     private Long deleted = 0L;

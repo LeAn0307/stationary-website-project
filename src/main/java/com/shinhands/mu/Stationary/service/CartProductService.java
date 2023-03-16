@@ -10,4 +10,5 @@ public interface CartProductService {
     public Boolean deleteCartProduct(long id);
     public CartProductDTO getCartProductById(long id);
     public Boolean updateCartProduct(long id, CartProductDTO cartProductDTO);
+    public Long countProductIdInCart(Long cardId);
 }

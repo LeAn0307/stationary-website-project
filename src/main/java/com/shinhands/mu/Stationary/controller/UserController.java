@@ -1,7 +1,6 @@
 package com.shinhands.mu.Stationary.controller;
 
 import com.shinhands.mu.Stationary.dto.AccountDTO;
-import com.shinhands.mu.Stationary.dto.ProductDTO;
 import com.shinhands.mu.Stationary.dto.UserDTO;
 import com.shinhands.mu.Stationary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

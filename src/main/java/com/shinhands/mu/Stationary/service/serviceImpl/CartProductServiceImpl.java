@@ -61,8 +61,17 @@ public class CartProductServiceImpl implements CartProductService {
         if (oldCartProduct == null) {
             return false;
         } else {
-            cartProductRepository.save(mapper.map(CartProductDTO, CartProduct.class));
+            CartProduct cP = mapper.map(CartProductDTO, CartProduct.class);
+            oldCartProduct.setQuantity(cP.getQuantity());
+            cartProductRepository.save(oldCartProduct);
         }
         return true;
     }
+
+    @Override
+    public Long countProductIdInCart(Long cardId) {
+        return cartProductRepository.countCartProductByCartIdEqualsAndDeletedEquals(cardId,0L);
+    }
+
+
 }

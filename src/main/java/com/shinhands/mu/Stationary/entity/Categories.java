@@ -1,4 +1,4 @@
-//package com.shinhands.mu.Stationary.entity;
+package com.shinhands.mu.Stationary.entity;//package com.shinhands.mu.Stationary.entity;
 //
 //import lombok.AllArgsConstructor;
 //import lombok.Data;

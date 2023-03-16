@@ -2,11 +2,11 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layout}">
 <head>
-    <title>Home</title>
+    <title>Category manage</title>
 </head>
 <body>
 <section layout:fragment="content"  class="container-fluid!important">
-    <form th:action="@{/pages/category/update}" th:object="${categoryDTO}" method="post" enctype="multipart/form-data">
+    <form th:action="@{/admin/category/update}" th:object="${categoryDTO}" method="post" enctype="multipart/form-data">
         <div class="modal-dialog " role="document">
             <div class="modal-content"style="background-color: white" >
                 <div class="modal-header">
@@ -23,10 +23,8 @@
                         <label class="my-2 mr-4 col-form-labelmy-2">Hình ảnh</label>
                         <input class ="my-2" type="text" th:value="${category.image}" id="image" name="image" readonly="readonly">
                         <input type="file" class="my-2 form-control-file" id="photo" name="photo">
-
                     </div>
                 </div>
-
                     <button type="submit" class="btn btn-primary my-2">Lưu</button>
             </div>
         </div>
