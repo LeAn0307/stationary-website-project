@@ -115,7 +115,6 @@ CREATE TABLE rating (
     comment_product VARCHAR2(200),
     ratescore       NUMBER(10, 0),
     iduser          NUMBER(10, 0),
-
     product_id          NUMBER(10, 0),
     CONSTRAINT rating_pk PRIMARY KEY ( id )
 );
@@ -251,7 +250,7 @@ ALTER TABLE rating
     ADD CONSTRAINT fk10 FOREIGN KEY ( iduser )
         REFERENCES user_website ( id );
 ALTER TABLE rating
-    ADD CONSTRAINT fk18 FOREIGN KEY ( product_id )
+    ADD CONSTRAINT fk18 FOREIGN KEY ( ipproduct )
         REFERENCES product ( id );
 
 -- CART_PRODUCT - CART
@@ -509,7 +508,6 @@ CREATE SEQUENCE rating_seq
     CACHE 10;
     
 insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment1',5, 1,1);
-
 insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment1', 1,1);
 insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
 insert into rating(id, comment_product,ratescore,product_id,iduser) values(rating_seq.NEXTVAL,'Comment', 1,1);
