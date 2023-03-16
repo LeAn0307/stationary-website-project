@@ -38,46 +38,50 @@
         }
     </style>
     <script>
-        document.getElementById("show-form").addEventListener("click", function(){
-            document.getElementById("editModal").style.display = "block";
+        // document.getElementById("show-form").addEventListener("click", function(){
+        //     document.getElementById("editModal").style.display = "block";
+        // });
+        // const saveBtn = document.getElementById('save');
+        // saveBtn.addEventListener(function (event) {
+        //     console.log("save btn have click");
+        // })
+
+        $('#save').click(function(event) {
+            console.log(event);
+            console.log("click");
+            // var name = $('#name').val();
+            // var value_coupon = $('#value_coupon').val();
+            // var min_price = $('#min-price').val();
+            // var max_price = $('#max-price').val();
+            // var code = $('#code').val();
+            // var quantity = $('#quantity').val();
+            //
+            // if(name == '' || value_coupon == 0.0 || min_price == 0.0 || max_price == 0.0|| code == '' || quantity == 0.0) {
+            //     alert('Vui lòng nhập đầy đủ thông tin');
+            //     console.log("RUN1");
+            //     event.preventDefault();
+            // } else {
+            //     var settings = {
+            //         "url": "http://localhost:8080/admin/coupon/post",
+            //         "method": "POST",
+            //         "timeout": 0,
+            //         "headers": {
+            //             "Content-Type": "application/json"
+            //         },
+            //         "data": JSON.stringify({
+            //             "name": name,
+            //             "discount": value_coupon,
+            //             "minPrice": min_price,
+            //             "maxPrice": max_price,
+            //             "code": code,
+            //             "amount": quantity
+            //         }),
+            //     };
+            //     $.ajax(settings).done(function (response) {
+            //         console.log("RESULT:",response);
+            //     });
+            //}
         });
-        var name = $('#name').val();
-        var value_coupon = $('#value_coupon').val();
-        var min_price = $('#min-price').val();
-        var max_price = $('#max-price').val();
-        var code = $('#code').val();
-        var quantity = $('#quantity').val();
-        var settings = {
-            "url": "http://localhost:8080/admin/coupon/post",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "data": JSON.stringify({
-                "name": name,
-                "discount": value_coupon,
-                "minPrice": min_price,
-                "maxPrice": max_price,
-                "code": code,
-                "amount": quantity
-            }),
-        };
-        $('form').submit(function(event) {
-
-            if(name == '' || value_coupon == 0.0 || min_price == 0.0 || max_price == 0.0|| code == '' || quantity == 0.0) {
-                alert('Vui lòng nhập đầy đủ thông tin');
-                event.preventDefault();
-            }
-            else{
-                $.ajax(settings).done(function (response) {
-                    console.log("RESULT:",response);
-                });
-            }
-        });
-
-
-
     </script>
 </head>
 <body>
@@ -176,8 +180,6 @@
         </div>
 
     </div>
-
-
 
 </section>
 </body>
