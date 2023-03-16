@@ -10,7 +10,7 @@ spring:
     config:
       server:
         native:
-          search-locations: E:\ShinhanCuoiKY\Stationary_Website_Project\config-data
+          search-locations: config-data
 #        git:
 #          uri: https://github.com/PhamPhucHau/spring-cloud-config-server
 #          searchPaths: SpringCloudStationaryAppConfigServer

@@ -16,8 +16,9 @@
     <module>currencycalculationservice</module>
       <module>product</module>
       <module>order</module>
-      <module>admin</module>
     <module>eureka-server</module>
+    <module>user</module>
+    <module>cart</module>
   </modules>
   <parent>
   <groupId>org.springframework.boot</groupId>
