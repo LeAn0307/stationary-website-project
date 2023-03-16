@@ -21,7 +21,7 @@ AFTER INSERT
     FOR EACH ROW
 BEGIN
 
-    INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (CART_SEQ.NEXTVAL, 0, :NEW.ID);
+    INSERT INTO CART(ID, TOTAL, USER_ID) VALUES (:NEW.ID, 0, :NEW.ID);
 
 END;
 /
@@ -116,16 +116,13 @@ INSERT INTO role_function VALUES (role_function_seq.NEXTVAL, 2, 2, 0);
 
 
 
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Pending');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Complete');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'payment');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Yes');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'No');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Cancel');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Phạt');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Error');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Continues');
-insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Sending');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đang xử lý');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đã xác nhận');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đang vận chuyển');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đã giao hàng');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đã nhận hàng');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đã thanh toán');
+insert into bill_status(id,status) values(bill_status_seq.NEXTVAL, 'Đã hủy');
 
 
 
@@ -176,7 +173,7 @@ insert into categories(categories_id,categories_name,image) values(categories_se
 
 
 insert into product (id, name,type, discount, avgrating, material, category_id, height,width,weight,description,image,brand,made_in,amount, color,price) values
-(product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 t?','Kanex', 2000,'','Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
+(product_seq.NEXTVAL,'Bấm kim Kanex HD10 - 10 tờ','Kanex', 2000,'','Nhật Bản',1,720,1080,2,'Bấm kim Kanex HD10 - 10 tờ (B-11.6) với thân máy bằng nhựa, dạng bấm, lực bấm 10 tờ, sử dụng kim bấm no.10 liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ liên kết và phân nhóm tài liệu bằng lực bấm hoặc đóng nhiều tờ giấy thành xấp hoặc cuốn phù hợp với nghiệp vụ photocopy và lưu trữ chứng từ ✓Tiết kiệm từ 10% - 30%
 Kanex là nhà sản xuất uy tín tại Ấn Độ về sản phẩm máy bấm kim, bấm lổ, kim bấm văn phòng
 Sản phẩm Bấm kim chính hãng đáp ứng tiêu chuẩn bảo vệ sức khỏe người dùng và nâng cao tối đa hiệu quả công việc văn phòng mỗi ngày.
 Bạn có thể đặt mua nhiều dòng văn phòng phẩm Kanex tại Officexinh.com với mức giá thật ưu đãi và nhận được chính sách vận chuyển miễn phí nếu có dựa trên tổng giá trị đơn hàng và tùy theo khu vực nhận hàng.

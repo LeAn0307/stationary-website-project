@@ -78,11 +78,14 @@ public class AccountController {
                     UserRole newUserRole = new UserRole(null, 2L, newAccountDTO.getId(), 0L);
                     if(userRoleService.addUserRole(newUserRole) == false) {
                         return ResponseEntity.badRequest().build();
+                    } else{
+                        UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
+                        String jwt = jwtTokenUtil.generateToken((CustomUserDetails) userDetails);
+                        return ResponseEntity.ok().body(jwt);
                     }
-                    UserDetails userDetails = userDetailsService.loadUserByUsername(accountDTO.getEmail());
-                    String jwt = jwtTokenUtil.generateToken((CustomUserDetails) userDetails);
-                    return ResponseEntity.ok().body(jwt);
+
                 } else {
+                    accountService.deleteAccountByEmail(accountDTO.getEmail());
                     return ResponseEntity.badRequest().build();
                 }
             }

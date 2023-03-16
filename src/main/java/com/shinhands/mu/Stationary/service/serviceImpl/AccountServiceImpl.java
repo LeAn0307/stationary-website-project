@@ -50,6 +50,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public Boolean deleteAccountByEmail(String email) {
+        return accountRepository.deleteAccountByEmail(email);
+    }
+
+    @Override
     public AccountDTO addAccount(AccountDTO accountDTO) {
         String encodedPassword = _hashPasswordConfig.encode(accountDTO.getAccountPassword());
         accountDTO.setAccountPassword(encodedPassword);
