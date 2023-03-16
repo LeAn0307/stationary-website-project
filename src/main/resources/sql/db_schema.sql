@@ -7,7 +7,7 @@
 --drop table CART;
 --drop table CART_COUPON;
 --drop table CART_PRODUCT;
---drop table CATEGORIES;
+--drop table CATEGORIES;    
 --drop table COUPON;
 --drop table FUNCTION;
 --drop table PRODUCT;

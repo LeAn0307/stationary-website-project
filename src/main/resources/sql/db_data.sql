@@ -356,5 +356,31 @@ values(bill_detail_seq.NEXTVAL, 1, 12000, 1, 7);
 insert into bill_detail(id, quantity, price, id_bill, id_product) 
 values(bill_detail_seq.NEXTVAL, 8, 147000, 8, 7);
 
+--Change status in bill_status
+UPDATE BILL_STATUS    
+SET STATUS = 'Đang xử lý'
+WHERE ID = 1;
 
+UPDATE BILL_STATUS    
+SET STATUS = 'Đã xác nhận'
+WHERE ID = 2;
 
+UPDATE BILL_STATUS    
+SET STATUS = 'Đang vận chuyển'
+WHERE ID = 3;
+
+UPDATE BILL_STATUS    
+SET STATUS = 'Đã giao hàng'
+WHERE ID = 4;
+
+UPDATE BILL_STATUS    
+SET STATUS = 'Đã nhận hàng'
+WHERE ID = 5;
+
+UPDATE BILL_STATUS    
+SET STATUS = 'Đã thanh toán'
+WHERE ID = 6;
+
+UPDATE BILL_STATUS    
+SET STATUS = 'Đã hủy'
+WHERE ID = 7;
