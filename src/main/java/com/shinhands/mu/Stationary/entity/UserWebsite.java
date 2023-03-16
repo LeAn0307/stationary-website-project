@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user_website")
@@ -24,9 +23,8 @@ public class UserWebsite {
     private String address;
     @Column(name="phone",nullable = false)
     private String phone;
-//    @Column(name="idcart")
-//    private Long idCart;
-    @Column(name="idaccount")
+
+    @Column(name="id_account")
     private Long idAccount;
     @Column(name = "deleted")
     private Long deleted = 0L;

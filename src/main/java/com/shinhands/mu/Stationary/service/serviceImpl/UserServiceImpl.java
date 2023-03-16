@@ -30,10 +30,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO addUser(UserDTO userDTO) {
-        UserWebsite userWebsite =mapper.map(userDTO, UserWebsite.class);
+    public Boolean addUser(UserDTO userDTO) {
+        UserWebsite userWebsite = mapper.map(userDTO, UserWebsite.class);
         userWebsite.setDeleted(0L);
-        return mapper.map(userRepository.save(userWebsite), UserDTO.class);
+        if(userRepository.save(userWebsite) != null) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -48,8 +51,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUserById(long id) {
-        UserWebsite oldUser=userRepository.findByIdEqualsAndDeletedEquals(id,0L);
-        return mapper.map(oldUser, UserDTO.class);
+        return userLoginRepository.getUserById(id);
     }
 
     @Override

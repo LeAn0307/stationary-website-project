@@ -1,6 +1,5 @@
 package com.shinhands.mu.Stationary.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -55,14 +54,12 @@ public class BillDetail {
     @Column(name = "price")
     private long price;
 
-    @Column(name = "createdat")
-    private Date createdAt;
-
-    @Column(name = "updateat")
-    private Date updatedAt;
-
     @Column(name = "ID_BILL")
     private Long idBill;
+
+    @Column(name = "id_product")
+    private Long idProduct;
+
     @Column(name = "deleted")
     private Long deleted = 0L;
 

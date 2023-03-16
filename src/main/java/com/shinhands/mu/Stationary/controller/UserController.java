@@ -1,7 +1,6 @@
 package com.shinhands.mu.Stationary.controller;
 
 import com.shinhands.mu.Stationary.dto.AccountDTO;
-import com.shinhands.mu.Stationary.dto.ProductDTO;
 import com.shinhands.mu.Stationary.dto.UserDTO;
 import com.shinhands.mu.Stationary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +18,11 @@ public class UserController {
     {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
-    @PostMapping()
-    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO)
-    {
-        return ResponseEntity.ok().body(userService.addUser(userDTO));
-    }
+//    @PostMapping()
+//    public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO)
+//    {
+//        return ResponseEntity.ok().body(userService.addUser(userDTO));
+//    }
     @GetMapping(value="/{id}")
     public ResponseEntity getUserById(@PathVariable(name="id") long id)
     {

@@ -1,7 +1,6 @@
 package com.shinhands.mu.Stationary.service.serviceImpl;
 
 import com.shinhands.mu.Stationary.dto.HistoryOrderDTO;
-import com.shinhands.mu.Stationary.entity.Bill;
 import com.shinhands.mu.Stationary.repository.HistoryOrderRepository;
 import com.shinhands.mu.Stationary.service.HistoryOrderService;
 import org.modelmapper.ModelMapper;

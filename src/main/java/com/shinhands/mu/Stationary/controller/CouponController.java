@@ -1,14 +1,10 @@
 package com.shinhands.mu.Stationary.controller;
+
 import com.shinhands.mu.Stationary.dto.CouponDTO;
-import com.shinhands.mu.Stationary.entity.Coupon;
 import com.shinhands.mu.Stationary.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 @RestController("")
 @RequestMapping(value="/coupon")
 public class CouponController {
