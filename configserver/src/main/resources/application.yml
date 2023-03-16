@@ -4,16 +4,22 @@ server:
 spring:
   application:
     name: config-server
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/PhamPhucHau/spring-cloud-config-server
+        native:
+          search-locations: E:\ShinhanCuoiKY\Stationary_Website_Project\config-data
+#        git:
+#          uri: https://github.com/PhamPhucHau/spring-cloud-config-server
 #          searchPaths: SpringCloudStationaryAppConfigServer
-          default-label: main
-          skip-ssl-validation: true
+#          default-label: main
+#          skip-ssl-validation: true
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone=${EUREKA_SERVER:http://localhost:8761/eureka}
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+  instance:
+    hostname: eureka-server

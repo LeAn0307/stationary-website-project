@@ -12,10 +12,8 @@
     <artifactId>currencyexchangeservice</artifactId>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-cloud.version>2021.0.6</spring-cloud.version>
+        <java.version>11</java.version>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
@@ -72,6 +70,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>curencyexchangeservice</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
