@@ -22,7 +22,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "admin")
-public class AdminProductController {
+public class    AdminProductController {
 
     @Autowired
     private ProductService productService;
