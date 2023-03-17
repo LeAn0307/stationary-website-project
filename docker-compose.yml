@@ -69,3 +69,22 @@ services:
       mode: replicated
       replicas: 2
 
+  product-service:
+    build:
+      context: /product
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - "SPRING_PROFILES_ACTIVE=dev"
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+        -Dlogging.level.org.springframework=DEBUG
+    restart: on-failure
+    links:
+      - config-server
+    depends_on:
+      - eureka-server
+      - config-server
+    deploy:
+      mode: replicated
+      replicas: 1
