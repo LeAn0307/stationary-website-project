@@ -1,0 +1,44 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: configserver
+      failFast: false
+  application:
+    name: order-service
+  profiles:
+    active: dev
+
+server:
+  port: 8077
+# dang ky voi eureka
+eureka:
+  client:
+  serviceUrl:
+    defaultZone:${EUREKA_SERVER:http://localhost:8761/eureka}
+
+#logging:
+#  level:
+#    root: DEBUG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
