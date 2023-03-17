@@ -33,7 +33,7 @@ public class SecurityConfig {
         .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/currency-converter-feign/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/products/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "/products/**","/api/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
@@ -67,6 +67,7 @@ public class SecurityConfig {
                 .route("echo", r -> r.path("/echo/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://echo"))
                 .route("products", r -> r.path("/products/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://PRODUCT-SERVICE/"))
                 .route("hello", r -> r.path("/hello/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://hello"))
+                .route("cart", r -> r.path("/api/cart/**").uri("lb://PRODUCT-SERVICE/"))
                 .route("currency-converter", r -> r.path("/currency-converter/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://CURRENCY-CALCULATION-SERVICE")).build();
 
     }
