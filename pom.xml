@@ -11,7 +11,6 @@
   <modules>
 
     <module>gateway</module>
-    <module>configserver</module>
     <module>currencyexchangeservice</module>
     <module>currencycalculationservice</module>
     <module>product</module>
@@ -19,6 +18,7 @@
     <module>eureka-server</module>
     <module>user</module>
     <module>cart</module>
+    <module>configserver</module>
   </modules>
   <parent>
   <groupId>org.springframework.boot</groupId>
