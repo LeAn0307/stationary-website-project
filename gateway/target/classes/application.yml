@@ -15,6 +15,18 @@ spring:
           uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/**
+        - id: cart-service
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/**
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/**
     loadbalancer:
       ribbon:
         enable: true
@@ -23,4 +35,4 @@ jwt:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_SERVER:http://eureka-server:8761/eureka}
