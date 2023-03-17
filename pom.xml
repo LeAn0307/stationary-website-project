@@ -14,8 +14,8 @@
     <module>configserver</module>
     <module>currencyexchangeservice</module>
     <module>currencycalculationservice</module>
-      <module>product</module>
-      <module>order</module>
+    <module>product</module>
+    <module>order</module>
     <module>eureka-server</module>
     <module>user</module>
     <module>cart</module>
