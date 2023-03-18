@@ -59,7 +59,8 @@ https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-
 
 https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7986d2f44dafe0102
 
-##### BÁO CÁO ĐỢT 1:
+### :partly_sunny: BÁO CÁO ĐỢT 1:
+----
 
 ![image](https://user-images.githubusercontent.com/72481546/226098853-09b12de0-4cce-47f2-986c-2e8b8d75e097.png)
 
@@ -69,7 +70,9 @@ https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7
 
 ![image](https://user-images.githubusercontent.com/72481546/226098935-d8a860f2-0fe0-4805-89d0-19915dc7ada2.png)
 
-##### BÁO CÁO ĐỢT 2:
+### :partly_sunny: BÁO CÁO ĐỢT 2:
+
+----
 
 ![image](https://user-images.githubusercontent.com/72481546/226098956-efb16bba-e6f2-4241-958f-98258fa68eaf.png)
 
@@ -104,8 +107,8 @@ https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7
 
 
 ### 4.1 DB diagram
+![image](https://user-images.githubusercontent.com/72481546/226099017-b28a02a2-2118-4a56-a4d0-4f45181fab44.png)
 
-![image](./src/main/resources/static/images/readme/dbdiagram.png)
 
 ### 4.2 Micro service
 
