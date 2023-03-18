@@ -5,51 +5,63 @@
 :sunflower: Sponsored by: **ShinhanDS, Likelion**
 ***
 
-## :fire: Main contents: 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#introduction-the-project">Introduction the project</a>
-    </li>
-    <li>
-      <a href="#members">Members</a>
-    </li>
-    <li>
-      <a href="#technology-used">Technology Used</a>
-    </li>
-    <li><a href="#database-diagram">Database Diagram</a></li>
-    <li><a href="#api-results">API Results</a></li>
-    <li><a href="#ui-shop-owners">UI of shop owner</a></li>
-    <li><a href="#ui-shop-user">UI for User</a></li>
-    <li><a href="#development-in-the-future">Development in the future</a></li>
-    <li><a href="#about">About</a></li>
-  </ol>
-</details>
-
----
 
 
-## Introduction the project
-### Stationery Business
-#### 1. For user:
-* Display product.
-* Add many product into cart.
-* Order and checkout.
-* Rating and Review about product.
-#### 2. For Owner.
-* Statictics on revenue, orders and users.
-* View information about orders, users, payments, product categories.
-* Confirms about order.
-## Members 
-| # 	| Name            	| Note   	|
-|---	|-----------------	|--------	|
-| 1 	| Le Thi Xuan An  	| Leader 	|
-| 2 	| Phan Van Tiep   	| Member 	|
-| 3 	| Nguyen Viet Quy 	| Member 	|
-| 4 	| Pham Phuc Hau   	| Member 	|
-##  Technology used
+## 1. Giới thiệu về ý tưởng:
+
+"Theo Hiệp hội Thương mại điện tử Việt Nam (VECOM), 42% doanh nghiệp có website tính đến năm 2019 và 37% trong số đó nhận đơn đặt hàng thông qua website. Không chỉ các khách hàng đơn lẻ, nhiều doanh nghiệp thực hiện đặt hàng qua website của đối tác. Số lượng này lên tới 44%. 
+Dự kiến sẽ tăng trong tương lai". 
+
+Ưu điểm khi xây dựng riêng một website bán hàng là: phù hợp với mô hình kinh doanh, không bị lộ thông tin, làm chủ hoàn toàn ,....
+
+
+![image](https://user-images.githubusercontent.com/72481546/226086440-800b5b86-4a63-4bb8-bcea-c1fc38d097ef.png)
+
+Do đó, nhóm chúng em chọn xây dựng website bán hàng và quản lý bán hàng cho chủ shop để bắt kịp xu hướng phát triển. 
+Gồm 2 trang chính:
+
+
+### 1.1 Trang quản lý dành cho chủ shop
+```
+Đây là trang quản lý việc bán hàng trên website được thiết kế riêng cho chủ shop:
+- Thống kê
+- Quản lý coupon.
+- Quản lý sản phẩm
+- Quản lý danh mục sản phẩm
+- Quản lý đơn hàng
+- Quản lý người dùng 
+```
+
+
+Video trang chủ shop:
+
+https://user-images.githubusercontent.com/72481546/226087377-860dbdba-7022-4a6b-b7b8-7e0ad23c53cf.mp4
+
+
+
+### 1.2 Trang bán hàng cho user sử dụng:
+```
+Đây là trang bán hàng (văn phòng phẩm) được thiết kế riêng cho người mua. Gồm các chức năng:
+- Xem sản phẩm
+- Thêm vào giỏ hàng
+- Đặt hàng 
+- Thanh toán:
+```
+Video:
+
+https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-91a4-fa1807198705.mp4
+
+
+
+## 2. Phân công công việc
+
+#### Xem chi tiết phân công từng buổi: 
+
+https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7986d2f44dafe0102
+
+![image](https://user-images.githubusercontent.com/72481546/226095019-f1c56b4a-173b-49ff-96f0-80fcbc5ccb45.png)
+
+##  3. Công nghệ sử dụng
 <div align="center">
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192107854-765620d7-f909-4953-a6da-36e1ef69eea6.png" alt="HTTP" title="HTTP" /></code>
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192107858-fe19f043-c502-4009-8c47-476fc89718ad.png" alt="REST" title="REST" /></code>
@@ -73,54 +85,83 @@
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/186884150-05e9ff6d-340e-4802-9533-2c3f02363ee3.png" alt="Windows" title="Windows" /></code>
 </div>
 
-## Database Diagram
+## 4. Mô tả cấu trúc chung
+
+
+### 4.1 DB diagram
+
 ![image](./src/main/resources/static/images/readme/dbdiagram.png)
 
-## API Results
-![image](src/main/resources/static/images/readme/api.png)
+### 4.2 Micro service
 
-## UI Shop Owners
-### Login
-![login owner](./src/main/resources/static/images/readme/login%20owner.png)
-### Statistic 
-![statistic owner](src/main/resources/static/images/readme/statistic%20owner.png)
-### Coupon
-![coupon owner](src/main/resources/static/images/readme/coupon%20owner.png)
-### Add Coupon
-![add coupond owner](src/main/resources/static/images/readme/add%20coupond%20owner.png)
-### Bill status
-![status bill owner](src/main/resources/static/images/readme/status%20bill%20owner.png)
-### Category
-![category owner](src/main/resources/static/images/readme/category%20owner.png)
-### Add and edit Category
-![edit category](src/main/resources/static/images/readme/edit%20category.png)
-### Product
-![product owner](src/main/resources/static/images/readme/product%20owner.png)
-### Add Product
-![add product](src/main/resources/static/images/readme/add%20product.png)
-### Product detail
-![product detail](src/main/resources/static/images/readme/product%20detail.png)
-### User
-![list user admin](src/main/resources/static/images/readme/list%20user%20admin.png)
-### User detail
-![user detail](src/main/resources/static/images/readme/user%20detail.png)
-## UI Shop User
-[Link Github Frontend Shop](https://github.com/LeAn0307/User-Stationary-website.git)
-### Homepage
-![INDEX USER](src/main/resources/static/images/readme/INDEX%20USER.png)
-### List product
-![PRODUCTLIST](src/main/resources/static/images/readme/PPRODUCTLIST.png)
-### Product detail
-![DETAIL PRODUCT](src/main/resources/static/images/readme/DETAIL%20PRODUCT.png)
-### Cart
-![CART](src/main/resources/static/images/readme/CART.png)
+![image](https://user-images.githubusercontent.com/72481546/226092660-966c8703-5ccd-4369-bbc7-8e58fee9d95f.png)
 
-## Development in the future
-- Add Hashing Password feature
-- Use Spring Security to handle requests from clients and manage user logins and registrations.
-- Design a chatbox that includes a chatbot to provide support for users during the purchasing process.
+### 4.3 Cấu trúc thư mục
 
-## About 
-- Contact: <0.199qui@gmail.com>
+```
+Stationary_Website_Project
+|__ide
+|__mvn
+|__configserver
+|__currencycalculationservice
+|__currencyexchangeservice
+|__eureka-server
+|__gateway
+|__cart (service module)
+|   |_src
+|   |  |_main
+|   |    |_java
+|   |    |  |_com.shinhands.mu.Stationary
+|   |    |     |_config
+|   |    |     |_controller
+|   |    |     |_entity
+|   |    |     |_repository
+|   |    |     |_service
+|   |    |     |_CartServieApplication
+|   |    |_resources  
+|   |       |_ static
+|   |       |_  templates
+|   |       |_  application.yml
+|   |_target
+|          |_ ..... 
+|
+|__order (service module)
+|   |_src
+|   |  |_main
+|   |    |_java
+|   |    |  |_com.shinhands.mu.Stationary
+|   |    |     |_config
+|   |    |     |_controller
+|   |    |     |_entity
+|   |    |     |_repository
+|   |    |     |_service
+|   |    |     |_CartServieApplication
+|   |    |_resources  
+|   |       |_ static
+|   |       |_  templates
+|   |       |_  application.yml
+|   |_target
+|          |_ ..... 
+|
+|__product (service module)
+|   |_src
+|   |  |_......
+|   |_target
+|
+|__user (service module)
+|   |_src
+|   |  |_......
+|   |_target
+|__view (view user)
+|   |_src
+|   |  |_......
+|   |_target
+|__.gitignore
+|__docker-compose.yml
+|__pom.xml
+|__readme.md
+
+
+```
 
 
