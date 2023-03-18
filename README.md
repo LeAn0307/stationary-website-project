@@ -8,20 +8,18 @@
 
 
 ## 1. Giới thiệu về ý tưởng:
-```
-"Theo Hiệp hội Thương mại điện tử Việt Nam (VECOM), 42% doanh nghiệp có website tính đến năm 2019 và 37% trong số đó nhận đơn đặt hàng thông qua website. 
-Không chỉ các khách hàng đơn lẻ, nhiều doanh nghiệp thực hiện đặt hàng qua website của đối tác. Số lượng này lên tới 44%. 
+
+"Theo Hiệp hội Thương mại điện tử Việt Nam (VECOM), 42% doanh nghiệp có website tính đến năm 2019 và 37% trong số đó nhận đơn đặt hàng thông qua website. Không chỉ các khách hàng đơn lẻ, nhiều doanh nghiệp thực hiện đặt hàng qua website của đối tác. Số lượng này lên tới 44%. 
 Dự kiến sẽ tăng trong tương lai". 
 
 Ưu điểm khi xây dựng riêng một website bán hàng là: phù hợp với mô hình kinh doanh, không bị lộ thông tin, làm chủ hoàn toàn ,....
 
-```
 
 ![image](https://user-images.githubusercontent.com/72481546/226086440-800b5b86-4a63-4bb8-bcea-c1fc38d097ef.png)
-```
+
 Do đó, nhóm chúng em chọn xây dựng website bán hàng và quản lý bán hàng cho chủ shop để bắt kịp xu hướng phát triển. 
 Gồm 2 trang chính:
-```
+
 
 ### 1.1 Trang quản lý dành cho chủ shop
 ```
@@ -57,11 +55,11 @@ https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-
 
 ## 2. Phân công công việc
 
-```
-Xem chi tiết phân công từng buổi: https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7986d2f44dafe0102
-```
+#### Xem chi tiết phân công từng buổi: 
 
-![image](https://user-images.githubusercontent.com/72481546/226088677-7ed5f741-5ed4-4e5e-85bd-02152ba7ee4e.png)
+https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7986d2f44dafe0102
+
+![image](https://user-images.githubusercontent.com/72481546/226095019-f1c56b4a-173b-49ff-96f0-80fcbc5ccb45.png)
 
 ##  3. Công nghệ sử dụng
 <div align="center">
