@@ -152,8 +152,11 @@ Stationary_Website_Project
 |   |_src
 |   |  |_......
 |   |_target
+|__view (view user)
+|   |_src
+|   |  |_......
+|   |_target
 |__.gitignore
-|__docker-compose.yml
 |__docker-compose.yml
 |__pom.xml
 |__readme.md
