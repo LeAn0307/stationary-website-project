@@ -1,4 +1,4 @@
-package com.shinhands.mu.Stationary.config;
+package com.shinhands.mu.Stationary.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -10,11 +10,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
+import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -38,11 +38,18 @@ public class JwtGatewayFilter implements WebFilter {
             try {
                 Jws<Claims> claims = Jwts.parser().setSigningKey(jwtUtil.getSecretKey()).parseClaimsJws(token);
                 String username = claims.getBody().getSubject();
-                UserDetails userDetails = userDetailsService.findByUsername(username).block();
-                Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                exchange.getAttributes().put("AUTHENTICATION_ATTRIBUTE_KEY", authentication);
-                return chain.filter(exchange)
-                .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication));
+                userDetailsService.findByUsername(username).subscribe(userDetails1 -> {
+                    Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails1, null, userDetails1.getAuthorities());
+                    exchange.getAttributes().put("AUTHENTICATION_ATTRIBUTE_KEY", authentication);
+                    chain.filter(exchange)
+                            .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication))
+                            .subscribe();
+                }, error -> {
+                    log.error(error.toString());
+                    exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                    exchange.getResponse().setComplete().subscribe();
+                });
+
             } catch (Exception e) {
                 log.error(e.toString());
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);

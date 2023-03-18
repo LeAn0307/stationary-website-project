@@ -1,6 +1,6 @@
 package com.shinhands.mu.Stationary.controller;
 
-import com.shinhands.mu.Stationary.config.JwtUtil;
+import com.shinhands.mu.Stationary.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

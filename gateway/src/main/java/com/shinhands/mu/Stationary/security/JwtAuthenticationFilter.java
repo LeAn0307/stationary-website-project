@@ -1,4 +1,4 @@
-package com.shinhands.mu.Stationary.config;
+package com.shinhands.mu.Stationary.security;
 
 import com.shinhands.mu.Stationary.exception.JwtTokenMalformedException;
 import com.shinhands.mu.Stationary.exception.JwtTokenMissingException;

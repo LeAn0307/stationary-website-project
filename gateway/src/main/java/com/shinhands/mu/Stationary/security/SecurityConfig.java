@@ -1,4 +1,4 @@
-package com.shinhands.mu.Stationary.config;
+package com.shinhands.mu.Stationary.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -33,7 +33,7 @@ public class SecurityConfig {
         .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/currency-converter-feign/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/products/**","/api/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "/products/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
