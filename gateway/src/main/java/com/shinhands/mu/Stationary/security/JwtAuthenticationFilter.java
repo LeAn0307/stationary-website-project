@@ -1,5 +1,6 @@
 package com.shinhands.mu.Stationary.security;
 
+
 import com.shinhands.mu.Stationary.exception.JwtTokenMalformedException;
 import com.shinhands.mu.Stationary.exception.JwtTokenMissingException;
 import io.jsonwebtoken.Claims;
@@ -25,7 +26,6 @@ public class JwtAuthenticationFilter implements GatewayFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = (ServerHttpRequest) exchange.getRequest();
-
         final List<String> apiEndpoints = List.of("/register", "/login");
 
         Predicate<ServerHttpRequest> isApiSecured = r -> apiEndpoints.stream()

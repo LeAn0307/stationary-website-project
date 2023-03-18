@@ -15,13 +15,13 @@ server:
 # dang ky voi eureka
 eureka:
   client:
-  serviceUrl:
-    defaultZone:${EUREKA_SERVER:http://localhost:8761/eureka}
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+
 
 #logging:
 #  level:
 #    root: DEBUG
-
 
 
 
