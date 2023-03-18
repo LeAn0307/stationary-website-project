@@ -59,7 +59,22 @@ https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-
 
 https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7986d2f44dafe0102
 
-![image](https://user-images.githubusercontent.com/72481546/226095019-f1c56b4a-173b-49ff-96f0-80fcbc5ccb45.png)
+##### BÁO CÁO ĐỢT 1:
+
+![image](https://user-images.githubusercontent.com/72481546/226098853-09b12de0-4cce-47f2-986c-2e8b8d75e097.png)
+
+![image](https://user-images.githubusercontent.com/72481546/226098864-f621dafc-114e-4f02-bc84-d5f4ce504d96.png)
+
+![image](https://user-images.githubusercontent.com/72481546/226098884-caa4d3ff-144d-43d1-9bd7-5ff160687a7e.png)
+
+![image](https://user-images.githubusercontent.com/72481546/226098935-d8a860f2-0fe0-4805-89d0-19915dc7ada2.png)
+
+##### BÁO CÁO ĐỢT 2:
+
+![image](https://user-images.githubusercontent.com/72481546/226098956-efb16bba-e6f2-4241-958f-98258fa68eaf.png)
+
+![image](https://user-images.githubusercontent.com/72481546/226098969-5cbe6c55-f9b1-4584-9ed5-d80a04693b23.png)
+
 
 ##  3. Công nghệ sử dụng
 <div align="center">
