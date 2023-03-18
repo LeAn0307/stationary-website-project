@@ -6,42 +6,25 @@
 ***
 
 
-## :fire: Main contents: 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#introduction-the-project">Introduction the project</a>
-    </li>
-    <li>
-      <a href="#members">Members</a>
-    </li>
-    <li>
-      <a href="#technology-used">Technology Used</a>
-    </li>
-    <li><a href="#database-diagram">Database Diagram</a></li>
-    <li><a href="#api-results">API Results</a></li>
-    <li><a href="#ui-shop-owners">UI of shop owner</a></li>
-    <li><a href="#ui-shop-user">UI for User</a></li>
-    <li><a href="#development-in-the-future">Development in the future</a></li>
-    <li><a href="#about">About</a></li>
-  </ol>
-</details>
 
----
-
-
-## 1. Introduction the project
-
-"Theo Hiệp hội Thương mại điện tử Việt Nam (VECOM), 42% doanh nghiệp có website tính đến năm 2019 và 37% trong số đó nhận đơn đặt hàng thông qua website. Không chỉ các khách hàng đơn lẻ, nhiều doanh nghiệp thực hiện đặt hàng qua website của đối tác. Số lượng này lên tới 44%. Dự kiến sẽ tăng trong tương lai". 
+## 1. Giới thiệu về ý tưởng:
+```
+"Theo Hiệp hội Thương mại điện tử Việt Nam (VECOM), 42% doanh nghiệp có website tính đến năm 2019 và 37% trong số đó nhận đơn đặt hàng thông qua website. 
+Không chỉ các khách hàng đơn lẻ, nhiều doanh nghiệp thực hiện đặt hàng qua website của đối tác. Số lượng này lên tới 44%. 
+Dự kiến sẽ tăng trong tương lai". 
 
 Ưu điểm khi xây dựng riêng một website bán hàng là: phù hợp với mô hình kinh doanh, không bị lộ thông tin, làm chủ hoàn toàn ,....
+
+```
+
 ![image](https://user-images.githubusercontent.com/72481546/226086440-800b5b86-4a63-4bb8-bcea-c1fc38d097ef.png)
+```
+Do đó, nhóm chúng em chọn xây dựng website bán hàng và quản lý bán hàng cho chủ shop để bắt kịp xu hướng phát triển. 
+Gồm 2 trang chính:
+```
 
-Do đó, nhóm chúng em chọn xây dựng website bán hàng và quản lý bán hàng cho chủ shop để bắt kịp xu hướng phát triển. Gồm 2 trang chính:
 ### 1.1 Trang quản lý dành cho chủ shop
-
+```
 Đây là trang quản lý việc bán hàng trên website được thiết kế riêng cho chủ shop:
 - Thống kê
 - Quản lý coupon.
@@ -49,30 +32,34 @@ Do đó, nhóm chúng em chọn xây dựng website bán hàng và quản lý b�
 - Quản lý danh mục sản phẩm
 - Quản lý đơn hàng
 - Quản lý người dùng 
+```
+
 
 Video trang chủ shop:
-
-
 
 https://user-images.githubusercontent.com/72481546/226087377-860dbdba-7022-4a6b-b7b8-7e0ad23c53cf.mp4
 
 
 
 ### 1.2 Trang bán hàng cho user sử dụng:
-
+```
 Đây là trang bán hàng (văn phòng phẩm) được thiết kế riêng cho người mua. Gồm các chức năng:
 - Xem sản phẩm
 - Thêm vào giỏ hàng
 - Đặt hàng 
 - Thanh toán:
-
-
+```
+Video:
 
 https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-91a4-fa1807198705.mp4
 
 
 
 ## 2. Phân công công việc
+
+```
+Xem chi tiết phân công từng buổi: https://clammy-enthusiasm-6e1.notion.site/H-P-PROJECT-SHINHANDS-ef573ea26a0541b7986d2f44dafe0102
+```
 
 ![image](https://user-images.githubusercontent.com/72481546/226088677-7ed5f741-5ed4-4e5e-85bd-02152ba7ee4e.png)
 
@@ -101,17 +88,79 @@ https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-
 </div>
 
 ## 4. Mô tả cấu trúc chung
+
+
+### 4.1 DB diagram
+
 ![image](./src/main/resources/static/images/readme/dbdiagram.png)
 
-## 3. API Results
-![image](src/main/resources/static/images/readme/api.png)
+### 4.2 Micro service
+
+![image](https://user-images.githubusercontent.com/72481546/226092660-966c8703-5ccd-4369-bbc7-8e58fee9d95f.png)
+
+### 4.3 Cấu trúc thư mục
+
+```
+Stationary_Website_Project
+|__ide
+|__mvn
+|__configserver
+|__currencycalculationservice
+|__currencyexchangeservice
+|__eureka-server
+|__gateway
+|__cart (service module)
+|   |_src
+|   |  |_main
+|   |    |_java
+|   |    |  |_com.shinhands.mu.Stationary
+|   |    |     |_config
+|   |    |     |_controller
+|   |    |     |_entity
+|   |    |     |_repository
+|   |    |     |_service
+|   |    |     |_CartServieApplication
+|   |    |_resources  
+|   |       |_ static
+|   |       |_  templates
+|   |       |_  application.yml
+|   |_target
+|          |_ ..... 
+|
+|__order (service module)
+|   |_src
+|   |  |_main
+|   |    |_java
+|   |    |  |_com.shinhands.mu.Stationary
+|   |    |     |_config
+|   |    |     |_controller
+|   |    |     |_entity
+|   |    |     |_repository
+|   |    |     |_service
+|   |    |     |_CartServieApplication
+|   |    |_resources  
+|   |       |_ static
+|   |       |_  templates
+|   |       |_  application.yml
+|   |_target
+|          |_ ..... 
+|
+|__product (service module)
+|   |_src
+|   |  |_......
+|   |_target
+|
+|__user (service module)
+|   |_src
+|   |  |_......
+|   |_target
+|__.gitignore
+|__docker-compose.yml
+|__docker-compose.yml
+|__pom.xml
+|__readme.md
 
 
-## 6. Development in the future
-- Add Hashing Password feature
-- Use Spring Security to handle requests from clients and manage user logins and registrations.
-- Design a chatbox that includes a chatbot to provide support for users during the purchasing process.
-
-
+```
 
 
