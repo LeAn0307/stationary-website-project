@@ -13,8 +13,8 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping("")
-    public ResponseEntity<?> findAccountByEmail(@RequestParam(value = "email") String email) {
+    @GetMapping("/{email}")
+    public ResponseEntity<?> findAccountByEmail(@PathVariable String email) {
         try {
             AccountDTO accountDTO = accountService.getAccountByEmail(email);
             if(accountDTO == null) {

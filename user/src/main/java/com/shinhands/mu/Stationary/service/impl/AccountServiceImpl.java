@@ -2,15 +2,11 @@ package com.shinhands.mu.Stationary.service.impl;
 
 import com.shinhands.mu.Stationary.config.HashPasswordConfig;
 import com.shinhands.mu.Stationary.dto.AccountDTO;
-import com.shinhands.mu.Stationary.dto.RoleDTO;
 import com.shinhands.mu.Stationary.dto.UserDTO;
 import com.shinhands.mu.Stationary.entity.Account;
-import com.shinhands.mu.Stationary.entity.Role;
-import com.shinhands.mu.Stationary.entity.UserWebsite;
 import com.shinhands.mu.Stationary.repository.AccountRepository;
 import com.shinhands.mu.Stationary.repository.RoleRepoMybatis;
 import com.shinhands.mu.Stationary.repository.UserLoginRepository;
-import com.shinhands.mu.Stationary.repository.UserRepository;
 import com.shinhands.mu.Stationary.service.AccountService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -54,8 +50,9 @@ public class AccountServiceImpl implements AccountService {
         AccountDTO accountDTO = mapper.map(accountRepository.findByEmailAndDeleted(email, 0L), AccountDTO.class);
         if(accountDTO != null) {
             UserDTO userDTO = userLoginRepository.getUserByAccount(accountDTO.getEmail(), accountDTO.getAccountPassword());
-            List<RoleDTO> roleLists = roleRepoMybatis.getRolesByAccountId(accountDTO.getId());
+            List<String> roleLists = roleRepoMybatis.getRolesByAccountId(accountDTO.getId());
             accountDTO.setUserId(userDTO.getId());
+            accountDTO.setFullName(userDTO.getUserName());
             accountDTO.setRoleList(roleLists);
         }
         return accountDTO;
