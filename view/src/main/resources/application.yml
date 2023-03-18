@@ -1,0 +1,32 @@
+server:
+  port: 8090
+# dang ky voi eureka
+
+spring:
+  application:
+    name: view-service
+
+
+#logging:
+#  level:
+#    root: DEBUG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
