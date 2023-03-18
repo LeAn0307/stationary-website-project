@@ -33,13 +33,13 @@ Gồm 2 trang chính:
 ```
 
 
-Video trang chủ shop:
+## :point_down: :point_down: :point_down: VIDEO trang chủ shop: :point_down: :point_down: :point_down: 
 
 https://user-images.githubusercontent.com/72481546/226087377-860dbdba-7022-4a6b-b7b8-7e0ad23c53cf.mp4
 
 
 
-### 1.2 Trang bán hàng cho user sử dụng:
+## 1.2 Trang bán hàng cho user sử dụng:
 ```
 Đây là trang bán hàng (văn phòng phẩm) được thiết kế riêng cho người mua. Gồm các chức năng:
 - Xem sản phẩm
@@ -47,7 +47,7 @@ https://user-images.githubusercontent.com/72481546/226087377-860dbdba-7022-4a6b-
 - Đặt hàng 
 - Thanh toán:
 ```
-Video:
+## :point_down: :point_down: :point_down: VIDEO trang bán hàng: :point_down: :point_down: :point_down:
 
 https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-91a4-fa1807198705.mp4
 
