@@ -1,11 +1,13 @@
 package com.shinhands.mu.Stationary.security;
 
+import io.netty.handler.codec.http.cors.CorsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -14,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
+import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.server.session.WebSessionManager;
 import reactor.core.publisher.Mono;
 
@@ -31,15 +34,17 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
         .authorizeExchange()
-                .pathMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/currency-converter-feign/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/products/**","/images/**").permitAll()
+                .pathMatchers("/admin/login/**").permitAll()
+                .pathMatchers("/admin/**").hasRole("ADMIN")
+                .pathMatchers("/api/users","/api/carts","api/cartproduct","api/bills").hasAnyAuthority("USER","ADMIN")
+                .pathMatchers(HttpMethod.GET,"/api/**","/images/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
                 .addFilterAt(filter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .csrf().disable()
+                .cors().and()
                 .httpBasic().disable()
                 .formLogin().disable()
                 .logout().disable()
@@ -62,16 +67,10 @@ public class SecurityConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder, LoadBalancerClient loadBalancerClient) {
         return builder.routes()
-                .route("auth", r -> r.path("/auth/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://auth"))
-                .route("alert", r -> r.path("/alert/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://alert"))
-                .route("echo", r -> r.path("/echo/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://echo"))
-                .route("products", r -> r.path("/products/**").uri("lb://PRODUCT-SERVICE/"))
-                .route("bill", r -> r.path("/api/bill/**").uri("lb://ORDER-SERVICE/"))
-                .route("cart", r -> r.path("/api/cart/**","/api/cartcoupon/**","/api/cartproduct/**","/api/coupon/**").uri("lb://CART-SERVICE/"))
-                .route("user", r -> r.path("/api/accounts/**","/api/users/**").uri("lb://USER-SERVICE/"))
-
-                .route("hello", r -> r.path("/hello/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://hello"))
-                .route("currency-converter", r -> r.path("/currency-converter/**").filters(f -> f.filter(jwtAuthenticationFilter)).uri("lb://CURRENCY-CALCULATION-SERVICE")).build();
-
+                .route("products", r -> r.path("/api/products/**","/admin/category/**","/admin/product/**","/admin/product_detail/**").uri("lb://PRODUCT-SERVICE/"))
+                .route("bill", r -> r.path("/api/bills/**","/admin/bill/**").uri("lb://ORDER-SERVICE/"))
+                .route("cart", r -> r.path("/api/carts/**","/api/cartcoupon/**","/api/cartproduct/**","/api/coupons/**","/admin/coupon/**").uri("lb://CART-SERVICE/"))
+                .route("user", r -> r.path("/api/accounts/**","/api/users/**","/admin/user/**","/admin/delete-user/**").uri("lb://USER-SERVICE/"))
+                .build();
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController("")
-@RequestMapping(value="/rating")
+@RequestMapping(value="/api/ratings")
 public class RatingController {
     @Autowired
     RatingService RatingService;
@@ -20,7 +20,6 @@ public class RatingController {
     @GetMapping(value="/product/{productId}")
     public ResponseEntity getRatingByProductId(@PathVariable(name="productId") long productId)
     {
-
         return ResponseEntity.ok().body(RatingService.getAllRatingsByProductID(productId));
     }
     @PostMapping()

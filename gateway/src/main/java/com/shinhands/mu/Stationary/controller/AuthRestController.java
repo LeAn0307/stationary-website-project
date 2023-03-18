@@ -19,12 +19,12 @@ public class AuthRestController {
 
     @Autowired
     private RestTemplate restTemplate;
-
+    private String urlPage = "localhost:8099";
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthDTO authDTO) {
-        Boolean isAuthen = restTemplate.postForObject("http://localhost:8099/api/accounts/authen", authDTO, Boolean.class);
+        Boolean isAuthen = restTemplate.postForObject("http://"+urlPage+"/api/accounts/authen", authDTO, Boolean.class);
         if(isAuthen) {
-            AccountDTO accountDTO = restTemplate.getForObject("http://localhost:8099/api/accounts/" + authDTO.getEmail(), AccountDTO.class);
+            AccountDTO accountDTO = restTemplate.getForObject("http://"+urlPage+"/api/accounts/" + authDTO.getEmail(), AccountDTO.class);
             String token = jwtUtil.generateToken(accountDTO);
             return new ResponseEntity<>(token, HttpStatus.OK);
         } else {
@@ -34,9 +34,9 @@ public class AuthRestController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody SignUpDTO signUpDTO) {
-        Boolean isSuscessRegister = restTemplate.postForObject("http://localhost:8099/api/accounts", signUpDTO, Boolean.class);
+        Boolean isSuscessRegister = restTemplate.postForObject("http://"+urlPage+"/api/accounts", signUpDTO, Boolean.class);
         if(isSuscessRegister) {
-            AccountDTO accountDTO = restTemplate.getForObject("http://localhost:8099/api/accounts/" + signUpDTO.getEmail(), AccountDTO.class);
+            AccountDTO accountDTO = restTemplate.getForObject("http://"+urlPage+"/api/accounts/" + signUpDTO.getEmail(), AccountDTO.class);
             String token = jwtUtil.generateToken(accountDTO);
             return new ResponseEntity<String>(token, HttpStatus.CREATED);
         } else {
