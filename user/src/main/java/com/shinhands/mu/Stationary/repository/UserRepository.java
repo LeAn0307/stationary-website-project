@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<UserWebsite,Long> {
     List<UserWebsite> findAllByDeletedEquals(Long deleted);
 
     UserWebsite findByIdEqualsAndDeletedEquals(Long id, Long deleted);
+
+
 }
