@@ -1,5 +1,6 @@
 package com.shinhands.mu.Stationary.security;
 
+import com.shinhands.mu.Stationary.dto.AccountDTO;
 import com.shinhands.mu.Stationary.exception.JwtTokenMalformedException;
 import com.shinhands.mu.Stationary.exception.JwtTokenMissingException;
 import io.jsonwebtoken.*;
@@ -15,12 +16,6 @@ import java.util.Date;
 @Component
 @Slf4j
 public class JwtUtil {
-
-    @Value("${jwt.secret}")
-    private String jwtSecret;
-
-//    @Value("${jwt.token.validity}")
-//    private long tokenValidity;
 
     private Key key;
 
@@ -43,11 +38,11 @@ public class JwtUtil {
         return key;
     }
 
-    public String generateToken(String username) {
+    public String generateToken(AccountDTO accountDTO) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + 6000000);
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(accountDTO.getEmail())
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(key)

@@ -40,7 +40,7 @@ public class UserWebServiceImpl implements UserWebService {
     }
 
     @Override
-    public Boolean deleteUser(long id) {
+    public Boolean deleteUser(Long id) {
         UserWebsite oldUser=userRepository.findByIdEqualsAndDeletedEquals(id,0L);
         if (oldUser!=null){
             oldUser.setDeleted(1L);

@@ -11,7 +11,7 @@ public interface UserWebService {
 
     public Boolean addUser(UserDTO userDTO);
 
-    public Boolean deleteUser(long id);
+    public Boolean deleteUser(Long id);
 
     public UserDTO getUserById(long id);
 
