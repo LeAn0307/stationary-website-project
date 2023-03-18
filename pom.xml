@@ -19,6 +19,7 @@
     <module>user</module>
     <module>cart</module>
     <module>configserver</module>
+    <module>view</module>
   </modules>
   <parent>
   <groupId>org.springframework.boot</groupId>
