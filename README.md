@@ -73,12 +73,9 @@ https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-
 
 
 ## 2. Phân công công việc
-| # 	| Name            	| Note   	|
-|---	|-----------------	|--------	|
-| 1 	| Le Thi Xuan An  	| Leader 	|
-| 2 	| Phan Van Tiep   	| Member 	|
-| 3 	| Nguyen Viet Quy 	| Member 	|
-| 4 	| Pham Phuc Hau   	| Member 	|
+
+![image](https://user-images.githubusercontent.com/72481546/226088677-7ed5f741-5ed4-4e5e-85bd-02152ba7ee4e.png)
+
 ##  3. Công nghệ sử dụng
 <div align="center">
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192107854-765620d7-f909-4953-a6da-36e1ef69eea6.png" alt="HTTP" title="HTTP" /></code>
