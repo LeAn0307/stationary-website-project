@@ -33,7 +33,7 @@ public class SecurityConfig {
         .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .pathMatchers(HttpMethod.GET, "/currency-converter-feign/**").permitAll()
-                .pathMatchers(HttpMethod.GET, "/products/**").permitAll()
+                .pathMatchers(HttpMethod.GET, "/products/**","/images/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
