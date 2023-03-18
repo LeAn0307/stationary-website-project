@@ -6,15 +6,6 @@
 ***
 
 
-<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFcBRIucGs&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https://www.canva.com/design/DAFcBRIucGs/view?utm_content=DAFcBRIucGs&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">Báo cáo</a> của CanvaPro.
-
-
-
 ## :fire: Main contents: 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -41,25 +32,54 @@
 ---
 
 
-## Introduction the project
-### Stationery Business
-#### 1. For user:
-* Display product.
-* Add many product into cart.
-* Order and checkout.
-* Rating and Review about product.
-#### 2. For Owner.
-* Statictics on revenue, orders and users.
-* View information about orders, users, payments, product categories.
-* Confirms about order.
-## Members 
+## 1. Introduction the project
+
+"Theo Hiệp hội Thương mại điện tử Việt Nam (VECOM), 42% doanh nghiệp có website tính đến năm 2019 và 37% trong số đó nhận đơn đặt hàng thông qua website. Không chỉ các khách hàng đơn lẻ, nhiều doanh nghiệp thực hiện đặt hàng qua website của đối tác. Số lượng này lên tới 44%. Dự kiến sẽ tăng trong tương lai". 
+
+Ưu điểm khi xây dựng riêng một website bán hàng là: phù hợp với mô hình kinh doanh, không bị lộ thông tin, làm chủ hoàn toàn ,....
+![image](https://user-images.githubusercontent.com/72481546/226086440-800b5b86-4a63-4bb8-bcea-c1fc38d097ef.png)
+
+Do đó, nhóm chúng em chọn xây dựng website bán hàng và quản lý bán hàng cho chủ shop để bắt kịp xu hướng phát triển. Gồm 2 trang chính:
+### 1.1 Trang quản lý dành cho chủ shop
+
+Đây là trang quản lý việc bán hàng trên website được thiết kế riêng cho chủ shop:
+- Thống kê
+- Quản lý coupon.
+- Quản lý sản phẩm
+- Quản lý danh mục sản phẩm
+- Quản lý đơn hàng
+- Quản lý người dùng 
+
+Video trang chủ shop:
+
+
+
+https://user-images.githubusercontent.com/72481546/226087377-860dbdba-7022-4a6b-b7b8-7e0ad23c53cf.mp4
+
+
+
+### 1.2 Trang bán hàng cho user sử dụng:
+
+Đây là trang bán hàng (văn phòng phẩm) được thiết kế riêng cho người mua. Gồm các chức năng:
+- Xem sản phẩm
+- Thêm vào giỏ hàng
+- Đặt hàng 
+- Thanh toán:
+
+
+
+https://user-images.githubusercontent.com/72481546/226087476-a74c4c86-3758-4b54-91a4-fa1807198705.mp4
+
+
+
+## 2. Phân công công việc
 | # 	| Name            	| Note   	|
 |---	|-----------------	|--------	|
 | 1 	| Le Thi Xuan An  	| Leader 	|
 | 2 	| Phan Van Tiep   	| Member 	|
 | 3 	| Nguyen Viet Quy 	| Member 	|
 | 4 	| Pham Phuc Hau   	| Member 	|
-##  Technology used
+##  3. Công nghệ sử dụng
 <div align="center">
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192107854-765620d7-f909-4953-a6da-36e1ef69eea6.png" alt="HTTP" title="HTTP" /></code>
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/192107858-fe19f043-c502-4009-8c47-476fc89718ad.png" alt="REST" title="REST" /></code>
@@ -83,54 +103,18 @@
 	<code><img height="50" src="https://user-images.githubusercontent.com/25181517/186884150-05e9ff6d-340e-4802-9533-2c3f02363ee3.png" alt="Windows" title="Windows" /></code>
 </div>
 
-## Database Diagram
+## 4. Mô tả cấu trúc chung
 ![image](./src/main/resources/static/images/readme/dbdiagram.png)
 
-## API Results
+## 3. API Results
 ![image](src/main/resources/static/images/readme/api.png)
 
-## UI Shop Owners
-### Login
-![login owner](./src/main/resources/static/images/readme/login%20owner.png)
-### Statistic 
-![statistic owner](src/main/resources/static/images/readme/statistic%20owner.png)
-### Coupon
-![coupon owner](src/main/resources/static/images/readme/coupon%20owner.png)
-### Add Coupon
-![add coupond owner](src/main/resources/static/images/readme/add%20coupond%20owner.png)
-### Bill status
-![status bill owner](src/main/resources/static/images/readme/status%20bill%20owner.png)
-### Category
-![category owner](src/main/resources/static/images/readme/category%20owner.png)
-### Add and edit Category
-![edit category](src/main/resources/static/images/readme/edit%20category.png)
-### Product
-![product owner](src/main/resources/static/images/readme/product%20owner.png)
-### Add Product
-![add product](src/main/resources/static/images/readme/add%20product.png)
-### Product detail
-![product detail](src/main/resources/static/images/readme/product%20detail.png)
-### User
-![list user admin](src/main/resources/static/images/readme/list%20user%20admin.png)
-### User detail
-![user detail](src/main/resources/static/images/readme/user%20detail.png)
-## UI Shop User
-[Link Github Frontend Shop](https://github.com/LeAn0307/User-Stationary-website.git)
-### Homepage
-![INDEX USER](src/main/resources/static/images/readme/INDEX%20USER.png)
-### List product
-![PRODUCTLIST](src/main/resources/static/images/readme/PPRODUCTLIST.png)
-### Product detail
-![DETAIL PRODUCT](src/main/resources/static/images/readme/DETAIL%20PRODUCT.png)
-### Cart
-![CART](src/main/resources/static/images/readme/CART.png)
 
-## Development in the future
+## 6. Development in the future
 - Add Hashing Password feature
 - Use Spring Security to handle requests from clients and manage user logins and registrations.
 - Design a chatbox that includes a chatbot to provide support for users during the purchasing process.
 
-## About 
-- Contact: <0.199qui@gmail.com>
+
 
 
