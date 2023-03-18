@@ -8,9 +8,9 @@
         var pass = inputPass.value;
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/accounts/login",
+            url: "http://localhost:8765/auth/login",
             contentType: "application/json",
-            data: JSON.stringify({ email: emailUser, accountPassword: pass }),
+            data: JSON.stringify({ email: emailUser, password: pass }),
             success: function (result, status, xhr) {
                 document.cookie = "token=" + result + ";path=/;"
                 console.log(result);

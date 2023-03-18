@@ -2,10 +2,19 @@
 const collapse = document.getElementById('collapseExample');
 function checkLoginFunc() {
     const loginbtn = document.getElementById('loginBtn');
-    if(localStorage.getItem('isLoggedIn')) {
-        loginbtn.innerText = 'Hello ' + localStorage.getItem('userName');
+    var jwt = "";
+    var decoded="";
+    if (document.cookie.indexOf("token") != -1) 
+    {
+        jwt = document.cookie.split(";").find(row => row.startsWith('token='))?.split('=')[1];
+        console.log(jwt);
+        decoded = jwt_decode(jwt);
+        console.log(decoded);
+        console.log(decoded.userId);
+        loginbtn.innerText = 'Hello ' + decoded.fullName;
         loginbtn.setAttribute("data-toggle", "collapse");
-    } else {
+            } 
+        else {
         loginbtn.innerText = 'Đăng nhập';
         loginbtn.setAttribute("data-toggle", "");
     }

@@ -24,10 +24,10 @@
             
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/cart/userid/"+ decoded.userId,
-                headers: {
-                    "Authorization": "Bearer "+jwt
-                },
+                url:"http://localhost:8765/api/carts/userid/"+ decoded.userId,
+                // headers: {
+                //     "Authorization": "Bearer "+jwt
+                // },
                 success:function (data){
                     console.log(data);
                     localStorage.setItem("cardId",data.id);
@@ -42,11 +42,11 @@
             
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/products/idcart/"+localStorage.getItem("cardId"),
+                url:"http://localhost:8765/api/products/idcart/"+localStorage.getItem("cardId"),
                 success:function (data){
                     console.log(data);
                     localStorage.setItem("myCart" ,JSON.stringify(data));  
-                    console.log(myJsonCopy);
+                    //console.log(myJsonCopy);
                     $.each(data, function (index,value){
                         $("#row-table").append("<tr>\n" +
                             "                            <td class=\"align-middle name\"><img src=\"img/"+value.image+"\" alt=\"\" style=\"width: 50px;\">"+value.name+"</td>\n" +
@@ -79,10 +79,10 @@
             });
             $.ajax({
                 type:"GET",
-                url:"http://localhost:8080/users/"+decoded.userId,
-                headers: {
-                    "Authorization": "Bearer "+jwt
-                },
+                url:"http://localhost:8765/api/users/"+decoded.userId,
+                // headers: {
+                //     "Authorization": "Bearer "+jwt
+                // },
                 success:function (data){
                     console.log(data);
                     $("#nameUser").val(data.userName);
@@ -147,12 +147,12 @@
                     //console.log(value.name === nameProduct);
                     if(value.name === nameProduct){
                         var settings = {
-                            "url": "http://localhost:8080/cartproduct/"+value.id,
+                            "url": "http://localhost:8765/api/cartproducts/"+value.id,
                             "method": "PUT",
                             "timeout": 0,
                             "headers": {
-                                "Content-Type": "application/json",
-                                "Authorization": "Bearer "+jwt
+                                "Content-Type": "application/json"
+                                // "Authorization": "Bearer "+jwt
                             },
                             "data": JSON.stringify({
                                 "quantity": newVal
@@ -182,12 +182,12 @@
                 //console.log(value.name === nameProduct);
                 if(value.name === nameProduct){
                     var settings = {
-                        "url": "http://localhost:8080/cartproduct/" +value.id,
+                        "url": "http://localhost:8765/api/cartproducts/" +value.id,
                         "method": "DELETE",
                         "timeout": 0,
-                        "headers": {
-                            "Authorization": "Bearer "+jwt
-                        },
+                        // "headers": {
+                        //     "Authorization": "Bearer "+jwt
+                        // },
                     };
 
                     $.ajax(settings).done(function (response) {
@@ -198,13 +198,13 @@
         });
         $(document).on("click", '#apply-code' , function() {
             event.preventDefault();
-            var url1 = "http://localhost:8080/coupon/code/"+$(".codeCoupon").val();
+            var url1 = "http://localhost:8765/api/coupons/code/"+$(".codeCoupon").val();
             $.ajax({
                 type:"GET",
                 url: url1,
-                headers: {
-                    "Authorization": "Bearer "+jwt
-                },
+                // headers: {
+                //     "Authorization": "Bearer "+jwt
+                // },
                 success:function (data){
                     console.log(data);
                     if (data!=null && data !=""){
@@ -246,14 +246,14 @@
             });
             $('#place-order').click(function (){
                 var settings = {
-                    "url": "http://localhost:8080/api/v1/bill",
+                    "url": "http://localhost:8765/api/bills",
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
                         "Content-Type": "application/json",
-                        "headers": {
-                            "Authorization": "Bearer "+jwt
-                        },
+                        // "headers": {
+                        //     "Authorization": "Bearer "+jwt
+                        // },
                     },
                     "data": JSON.stringify({
                         "total": $("#total-bill").text(),
@@ -278,14 +278,14 @@
         });
         $(document).on("click", '#apply-code' , function() {
             event.preventDefault();
-            var url1 = "http://localhost:8080/coupon/code/"+$(".codeCoupon").val();
+            var url1 = "http://localhost:8765/api/coupons/code/"+$(".codeCoupon").val();
             
             $.ajax({
                 type:"GET",
                 url: url1,
-                headers: {
-                    "Authorization": "Bearer "+jwt
-                },
+                // headers: {
+                //     "Authorization": "Bearer "+jwt
+                // },
                 success:function (data){
                     console.log(data);
 

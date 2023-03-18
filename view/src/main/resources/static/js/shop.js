@@ -10,7 +10,7 @@
 
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/products/count",
+            url: "http://localhost:8765/api/products/count",
             success: function (data) {
                 //alert(data.valueOf())
                 let offset =data.valueOf()/3;
@@ -31,7 +31,7 @@
                 alert(error);
             }
         })
-        fetch("http://127.0.0.1:8080/products/offset/0")
+        fetch("http://localhost:8765/api/products/offset/0")
             .then((response) => response.json())
             .then((data) => {
                 let productList = "";
@@ -40,7 +40,7 @@
     <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
         <div class="product-item bg-light mb-4">
           <div class="product-img position-relative overflow-hidden">
-            <img class="img-fluid w-100" src="http://127.0.0.1:8080/images/product/${product.image}" alt="">
+            <img class="img-fluid w-100" src="http://127.0.0.1:8765/images/product/${product.image}" alt="">
             <div class="product-action">
               <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
               <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
@@ -76,7 +76,7 @@
         var button = $(this);
         //document.getElementById("product-list").innerHTML=``;
 
-        fetch("http://127.0.0.1:8080/products/offset/"+button.text())
+        fetch("http://127.0.0.1:8765/api/products/offset/"+button.text())
             .then((response) => response.json())
             .then((data) => {
                 let productList = "";
@@ -86,7 +86,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                       <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="http://127.0.0.1:8080/images/product/${product.image}" alt="">
+                        <img class="img-fluid w-100" src="http://127.0.0.1:8765/images/product/${product.image}" alt="">
                         <div class="product-action">
                           <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                           <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
