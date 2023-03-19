@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
@@ -39,7 +40,7 @@ public class AdminCategoryController {
         return "admin/edit-category";
     }
     @RequestMapping(path = "/category/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public String addCategory(@RequestParam("photo") MultipartFile photo,CategoryDTO categoryDTO,Model model) {
+    public String addCategory(@RequestParam("photo") MultipartFile photo,@Valid CategoryDTO categoryDTO,Model model) {
         String fileName = StringUtils.cleanPath(photo.getOriginalFilename());
         categoryDTO.setImage(fileName);
         String upload = "src/main/resources/static/images/category";
@@ -52,7 +53,7 @@ public class AdminCategoryController {
         return "redirect:/admin/category";
     }
     @RequestMapping(path = "/category/update", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public String updateProduct(@RequestParam("photo") MultipartFile photo, CategoryDTO categoryDTO, Model model) {
+    public String updateProduct(@RequestParam("photo") MultipartFile photo, @Valid CategoryDTO categoryDTO, Model model) {
         String fileName = StringUtils.cleanPath(photo.getOriginalFilename());
         if(!fileName.equals("")) {
             categoryDTO.setImage(fileName);

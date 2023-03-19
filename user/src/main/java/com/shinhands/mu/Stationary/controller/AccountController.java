@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value="/api/accounts")
 public class AccountController {
@@ -58,7 +60,7 @@ public class AccountController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> registerAccount(@RequestBody SignUpDTO signUpDTO) {
+    public ResponseEntity<?> registerAccount(@RequestBody @Valid SignUpDTO signUpDTO) {
         try {
             if(accountService.isExistAccount(signUpDTO.getEmail())) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("Account already exists");
