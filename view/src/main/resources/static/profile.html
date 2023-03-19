@@ -188,6 +188,19 @@
           </div>
           <!-- Order History Start -->
           <div class="row">
+              <div>
+                  <nav aria-label="...">
+                      <ul class="pagination pagination-lg text-reset">
+                          <li class="page-item">
+                              <a class="page-link text-reset" href="#history-order">Tất cả</a>
+                          </li>
+                          <li class="page-item"><a class="page-link text-reset" href="#history-order">Vận chuyển</a></li>
+                          <li class="page-item"><a class="page-link text-reset" href="#history-order">Đang giao</a></li>
+                          <li class="page-item"><a class="page-link text-reset" href="#history-order">Hoàn thành</a></li>
+                          <li class="page-item"><a class="page-link text-reset" href="#history-order">Đã hủy</a></li>
+                      </ul>
+                  </nav>
+              </div>
             <div class="card card-stepper w-100 mx-auto mb-4" style="border-radius: 16px;">
                 <div class="card-header p-4">
                   <div class="d-flex justify-content-between align-items-center">
@@ -213,13 +226,16 @@
                         src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/6.webp" width="250">
                     </div>
                   </div>
-                  <ul id="progressbar-1" class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
-                    <li class="step0 active" id="step1"><span
-                        style="margin-left: 22px; margin-top: 12px;">PLACED</span></li>
-                    <li class="step0 active text-center" id="step2"><span>SHIPPED</span></li>
-                    <li class="step0 text-muted text-end" id="step3"><span
-                        style="margin-right: 22px;">DELIVERED</span></li>
-                  </ul>
+                    <div class="progress" style="height: 50px;">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                             aria-valuemax="100">Đã xác nhận</div>
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                             aria-valuemax="100">Đang vận chuyển</div>
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                             aria-valuemax="100">Đã giao hàng</div>
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                             aria-valuemax="100">Đã nhận hàng</div>
+                    </div>
                 </div>
                 <div class="card-footer p-4">
                   <div class="d-flex justify-content-between">
@@ -234,52 +250,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card card-stepper w-100 mx-auto" style="border-radius: 16px;">
-                <div class="card-header p-4">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                      <p class="text-muted mb-2"> Order ID <span class="fw-bold text-body">1222528743</span></p>
-                      <p class="text-muted mb-0"> Place On <span class="fw-bold text-body">12,March 2019</span> </p>
-                    </div>
-                    <div>
-                      <h6 class="mb-0"> <a href="#">View Details</a> </h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body p-4">
-                  <div class="d-flex flex-row mb-4 pb-2">
-                    <div class="flex-fill">
-                      <h5 class="bold">Headphones Bose 35 II</h5>
-                      <p class="text-muted"> Qt: 1 item</p>
-                      <h4 class="mb-3"> $ 299 <span class="small text-muted"> via (COD) </span></h4>
-                      <p class="text-muted">Tracking Status on: <span class="text-body">11:30pm, Today</span></p>
-                    </div>
-                    <div>
-                      <img class="align-self-center img-fluid"
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/6.webp" width="250">
-                    </div>
-                  </div>
-                  <ul id="progressbar-1" class="mx-0 mt-0 mb-5 px-0 pt-0 pb-4">
-                    <li class="step0 active" id="step1"><span
-                        style="margin-left: 22px; margin-top: 12px;">PLACED</span></li>
-                    <li class="step0 active text-center" id="step2"><span>SHIPPED</span></li>
-                    <li class="step0 text-muted text-end" id="step3"><span
-                        style="margin-right: 22px;">DELIVERED</span></li>
-                  </ul>
-                </div>
-                <div class="card-footer p-4">
-                  <div class="d-flex justify-content-between">
-                    <h5 class="fw-normal mb-0"><a href="#!">Track</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!">Cancel</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!">Pre-pay</a></h5>
-                    <div class="border-start h-100"></div>
-                    <h5 class="fw-normal mb-0"><a href="#!" class="text-muted"><i class="fas fa-ellipsis-v"></i></a>
-                    </h5>
-                  </div>
-                </div>
-              </div>
+
           </div>
         </div>
       </section>
@@ -375,6 +346,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script src="js/shop.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>
