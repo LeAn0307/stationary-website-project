@@ -44,4 +44,5 @@ public class BillDetailServiceImpl implements BillDetailService {
         return modelMapper.map(billDetailRepository.findByIdBillAndDeleted(idBill, 0L), new TypeToken<List<BillDetailDTO>>() {
         }.getType());
     }
+
 }

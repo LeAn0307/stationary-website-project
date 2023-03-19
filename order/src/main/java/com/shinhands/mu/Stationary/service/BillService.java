@@ -20,6 +20,7 @@ public interface BillService {
     public long deleteBill(long id);
 
     public boolean updateStatusBill(long id, long statusId);
+    public List<BillDTO> getBillsCustomerId(Long customerId);
 
 
 }

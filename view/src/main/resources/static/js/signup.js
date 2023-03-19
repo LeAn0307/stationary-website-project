@@ -37,15 +37,13 @@
                       "phone": sdt,
                       "email": email,
                       "accountPassword": pass
-                    }).fail(function (jqXHR, textStatus, errorThrown) {
-                        alert("Đã có lỗi xảy ra");
-                        //console.log("AJAX request failed: " + textStatus + ", " + errorThrown);
-                    }),
+                    })
                   };
                   
                   $.ajax(settings).done(function (response) {
                     console.log(response);
                     alert('Đăng ký thành công');
+                    document.cookie = "token=" + result + ";path=/;"
                     window.location.href = "index.html";
                   });
             }

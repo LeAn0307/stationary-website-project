@@ -15,6 +15,7 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
     public Bill findByIdEqualsAndDeletedEquals(long id, long deleted);
 
     public List<Bill> findByDeleted(Long deleted);
+    public List<Bill> findByDeletedAndCustomerId(Long deleted,Long customerId);
 
 //    @Query(name = "find_all_bill", nativeQuery = true)
 //    public List<BillDTO> findAllBills();
