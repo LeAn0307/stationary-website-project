@@ -48,8 +48,8 @@ public class JwtUtil {
         claims.put("fullName", accountDTO.getFullName());
         claims.put("userId", accountDTO.getUserId());
         return Jwts.builder()
-                .setSubject(accountDTO.getEmail())
                 .setClaims(claims)
+                .setSubject(accountDTO.getEmail())
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(key)

@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -32,7 +33,7 @@ public class JwtGatewayFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        String authorizationHeader = exchange.getRequest().getHeaders().getFirst(AUTHORIZATION_HEADER);
+        String authorizationHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         if (authorizationHeader != null && authorizationHeader.startsWith(BEARER_PREFIX)) {
             String token = authorizationHeader.substring(BEARER_PREFIX.length());
             try {

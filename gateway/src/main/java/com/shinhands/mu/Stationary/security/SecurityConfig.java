@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
+import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.server.session.WebSessionManager;
 import reactor.core.publisher.Mono;
@@ -29,22 +30,25 @@ public class SecurityConfig {
 
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
+//    @Autowired
+//    private CorsWebFilter corsWebFilter;
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
         .authorizeExchange()
-                .pathMatchers("/admin/login/**").permitAll()
+                .pathMatchers("/admin/login/**","/auth/**").permitAll()
                 .pathMatchers("/admin/**").hasRole("ADMIN")
-                .pathMatchers("/api/users","/api/carts","api/cartproduct","api/bills").hasAnyAuthority("USER","ADMIN")
-                .pathMatchers(HttpMethod.GET,"/api/**","/images/**").permitAll()
+                .pathMatchers("/api/users/**","/api/carts/**","/api/bills/**","/api/cartproducts/**").hasAnyAuthority("USER","ADMIN")
+                //.pathMatchers("/api/**","/images/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
                 .addFilterAt(filter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .csrf().disable()
-                .cors().and()
+                .cors().disable()
+
                 .httpBasic().disable()
                 .formLogin().disable()
                 .logout().disable()
@@ -67,9 +71,9 @@ public class SecurityConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder, LoadBalancerClient loadBalancerClient) {
         return builder.routes()
-                .route("products", r -> r.path("/api/products/**","/admin/category/**","/admin/product/**","/admin/product_detail/**").uri("lb://PRODUCT-SERVICE/"))
+                .route("products", r -> r.path("/api/ratings","/api/products/**","/admin/category/**","/admin/product/**","/admin/product_detail/**").uri("lb://PRODUCT-SERVICE/"))
                 .route("bill", r -> r.path("/api/bills/**","/admin/bill/**").uri("lb://ORDER-SERVICE/"))
-                .route("cart", r -> r.path("/api/carts/**","/api/cartcoupon/**","/api/cartproduct/**","/api/coupons/**","/admin/coupon/**").uri("lb://CART-SERVICE/"))
+                .route("cart", r -> r.path("/api/carts/**","/api/cartcoupon/**","/api/cartproducts/**","/api/coupons/**","/admin/coupon/**").uri("lb://CART-SERVICE/"))
                 .route("user", r -> r.path("/api/accounts/**","/api/users/**","/admin/user/**","/admin/delete-user/**").uri("lb://USER-SERVICE/"))
                 .build();
     }

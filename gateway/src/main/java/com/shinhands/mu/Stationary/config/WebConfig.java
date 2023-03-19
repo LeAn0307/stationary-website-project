@@ -10,26 +10,20 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
 
 import java.util.Arrays;
 
-@Configuration
-public class WebConfig implements WebFluxConfigurer {
-
-    @Override
-    public void addCorsMappings(CorsRegistry corsRegistry) {
-        corsRegistry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("*")
-                .maxAge(3600);
-    }
-
-    @Bean
-    public CorsWebFilter corsWebFilter() {
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
-        corsConfiguration.setMaxAge(3600L);
-        corsConfiguration.addAllowedMethod("*");
-        corsConfiguration.addAllowedHeader("*");
-        UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
-        return new CorsWebFilter(urlBasedCorsConfigurationSource);
-    }
+//@Configuration
+public class WebConfig  {
+//    @Bean
+//    CorsWebFilter corsWebFilter() {
+//        CorsConfiguration corsConfig = new CorsConfiguration();
+//        corsConfig.setAllowedOrigins(Arrays.asList("*"));
+//        corsConfig.setMaxAge(8000L);
+//        corsConfig.addAllowedMethod("*");
+//        corsConfig.addAllowedHeader("*");
+//
+//        UrlBasedCorsConfigurationSource source =
+//                new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", corsConfig);
+//
+//        return new CorsWebFilter(source);
+//    }
 }
