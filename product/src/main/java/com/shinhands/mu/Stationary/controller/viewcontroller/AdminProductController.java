@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class    AdminProductController {
     }
 
     @RequestMapping(path = "/product/add", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public String addProduct(@RequestParam("photo") MultipartFile photo, ProductDTO productDTO, Model model) {
+    public String addProduct(@RequestParam("photo") MultipartFile photo, @Valid ProductDTO productDTO, Model model) {
         String fileName = StringUtils.cleanPath(photo.getOriginalFilename());
         productDTO.setImage(fileName);
 
@@ -77,7 +78,7 @@ public class    AdminProductController {
     }
 
     @RequestMapping(path = "/product/update", method = RequestMethod.POST, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public String updateProduct(@RequestParam("photo") MultipartFile photo, ProductDTO productDTO, Model model) {
+    public String updateProduct(@RequestParam("photo") MultipartFile photo, @Valid ProductDTO productDTO, Model model) {
         String fileName = StringUtils.cleanPath(photo.getOriginalFilename());
         if(!fileName.equals("")) {
             productDTO.setImage(fileName);

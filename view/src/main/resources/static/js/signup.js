@@ -45,6 +45,9 @@
                     alert('Đăng ký thành công');
                     document.cookie = "token=" + result + ";path=/;"
                     window.location.href = "index.html";
+                  }).fail(function (jqXHR, textStatus, errorThrown) {
+                      alert("Đã có lỗi xảy ra");
+                      //console.log("AJAX request failed: " + textStatus + ", " + errorThrown);
                   });
             }
         });

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Data
@@ -11,6 +13,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ProductDTO {
     private Long     id;
+    @NotBlank(message = "Tên sản phẩm không được trống")
+    @Size(max = 255, message = "Tên sản phẩm không quá 255 ký tự")
     private String name;
     private String type;
     private Long discount;

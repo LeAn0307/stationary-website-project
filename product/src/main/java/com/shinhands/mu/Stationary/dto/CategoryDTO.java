@@ -11,6 +11,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryDTO {
     private Long id;
+
+    @NotBlank(message = "Tên danh mục không được trống")
     private String categoriesName;
+
+    @NotBlank(message = "Hình ảnh không được trống")
     private String image;
 }
