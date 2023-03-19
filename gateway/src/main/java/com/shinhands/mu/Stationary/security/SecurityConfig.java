@@ -1,5 +1,6 @@
 package com.shinhands.mu.Stationary.security;
 
+import com.shinhands.mu.Stationary.config.WebConfig;
 import io.netty.handler.codec.http.cors.CorsConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -18,6 +20,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.session.WebSessionManager;
 import reactor.core.publisher.Mono;
 
@@ -28,10 +31,13 @@ public class SecurityConfig {
     @Autowired
     private JwtGatewayFilter filter;
 
-    @Autowired
-    private JwtAuthenticationFilter jwtAuthenticationFilter;
+//    @Autowired
+//    private JwtAuthenticationFilter jwtAuthenticationFilter;
 //    @Autowired
 //    private CorsWebFilter corsWebFilter;
+
+    @Autowired
+    private WebConfig webConfig;
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
@@ -40,16 +46,17 @@ public class SecurityConfig {
                 .pathMatchers("/admin/login/**","/auth/**").permitAll()
                 .pathMatchers("/admin/**").hasRole("ADMIN")
                 .pathMatchers("/api/users/**","/api/carts/**","/api/bills/**","/api/cartproducts/**").hasAnyAuthority("USER","ADMIN")
-                //.pathMatchers("/api/**","/images/**").permitAll()
+                .pathMatchers("/api/hello").hasAuthority("USER")
+                .pathMatchers("/api/**","/images/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
                 .addFilterAt(filter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
                 .csrf().disable()
-                .cors().disable()
-
-                .httpBasic().disable()
+                .cors()
+                .and()
+                .httpBasic().and()
                 .formLogin().disable()
                 .logout().disable()
         ;

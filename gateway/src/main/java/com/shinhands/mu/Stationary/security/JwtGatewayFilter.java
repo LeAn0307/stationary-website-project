@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
@@ -39,18 +40,12 @@ public class JwtGatewayFilter implements WebFilter {
             try {
                 Jws<Claims> claims = Jwts.parser().setSigningKey(jwtUtil.getSecretKey()).parseClaimsJws(token);
                 String username = claims.getBody().getSubject();
-                userDetailsService.findByUsername(username).subscribe(userDetails1 -> {
-                    Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails1, null, userDetails1.getAuthorities());
+                return userDetailsService.findByUsername(username).flatMap(userDetails -> {
+                    Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     exchange.getAttributes().put("AUTHENTICATION_ATTRIBUTE_KEY", authentication);
-                    chain.filter(exchange)
-                            .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication))
-                            .subscribe();
-                }, error -> {
-                    log.error(error.toString());
-                    exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                    exchange.getResponse().setComplete().subscribe();
+                    return chain.filter(exchange)
+                            .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication));
                 });
-
             } catch (Exception e) {
                 log.error(e.toString());
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
