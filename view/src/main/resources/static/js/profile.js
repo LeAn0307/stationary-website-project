@@ -6,30 +6,32 @@
   // }
   var userId = 1;
   var cartId = 1;
-  var jwt="";
-  var decoded="";
-  if (document.cookie.indexOf("token") != -1) 
-  {
-      jwt = document.cookie.split(";").find(row => row.startsWith('token='))?.split('=')[1];
-      console.log(jwt);
-      decoded = jwt_decode(jwt);
-      userId=decoded.userId;
-      cartId=decoded.userId;
-      console.log(decoded);
-      console.log(decoded.userId);
+  var jwt = "";
+  var decoded = "";
+  if (document.cookie.indexOf("token") != -1) {
+    jwt = document.cookie.split(";").find(row => row.startsWith('token='))?.split('=')[1];
+    console.log(jwt);
+    decoded = jwt_decode(jwt);
+    userId = decoded.userId;
+    cartId = decoded.userId;
+    console.log(decoded);
+    console.log(decoded.userId);
   } else {
-      window.location.href = "login.html";
-  }   
-    $(document).ready(function () {
-        var jwt = document.cookie.split(";").find(row => row.startsWith('token=')).split('=')[1];
-        const objectUser = getInfoFromToken(jwt);
-        console.log(userId);
-        fetch("http://localhost:8765/users/" + decoded.userId, {
-            method: 'GET',
-            headers: {
-                "Authorization": "Bearer " + jwt
-            }
-        })
+    window.location.href = "login.html";
+  }
+  $(document).ready(function () {
+    var jwt = document.cookie.split(";").find(row => row.startsWith('token=')).split('=')[1];
+  //  const objectUser = getInfoFromToken(jwt);
+    console.log(userId);
+    getinfoUser();
+    async function getinfoUser()
+    {
+      await  fetch("http://localhost:8765/api/users/" + decoded.userId, {
+      method: 'GET',
+      headers: {
+        "Authorization": "Bearer " + jwt
+      }
+    })
       .then((response) => {
         return response.json();
       })
@@ -97,6 +99,7 @@
       .catch((error) => {
         console.error(error);
       });
+    }
     // var jwt = document.cookie.split(";").find(row => row.startsWith('token=')).split('=')[1];
     // const objectUser = getInfoFromToken(jwt);
     // fetch("http://localhost:8080/users/" + objectUser.userId, {
@@ -148,7 +151,12 @@
   };
   async function loadOrderDetails() {
     try {
-      const response = await fetch(baseUrl + "/api/" + "bills/customerid/" + userId);
+      const response = await fetch(baseUrl + "/api/" + "bills/customerid/" + userId, {
+        method: 'GET',
+        headers: {
+          "Authorization": "Bearer " + jwt
+        }
+      });
       const data = await response.json();
       var orderdetail = "";
 
@@ -196,22 +204,22 @@
   loadOrderDetails();
 
 
-        async function loadOrderDetailIteam(bilId) {
-          var orderdetailChild = "";
-          var urldetailitem = "http://localhost:8765/api/historyOrder/?id=" + bilId;
-          try {
-            const response = await fetch(urldetailitem);
-            const data = await response.json();
+  async function loadOrderDetailIteam(bilId) {
+    var orderdetailChild = "";
+    var urldetailitem = "http://localhost:8765/api/historyOrder/?id=" + bilId;
+    try {
+      const response = await fetch(urldetailitem);
+      const data = await response.json();
 
-            var orderdetailItem = "";
-            console.log(orderdetailItem);
-            console.log(data);
+      var orderdetailItem = "";
+      console.log(orderdetailItem);
+      console.log(data);
 
-            // create table rows
-            data.forEach((rowDatadetail) => {
-              console.log(rowDatadetail);
+      // create table rows
+      data.forEach((rowDatadetail) => {
+        console.log(rowDatadetail);
 
-              orderdetailItem += `
+        orderdetailItem += `
         <div class="d-flex flex-row mb-4 pb-2">
           <div class="flex-fill">
             <h4 class="bold">${rowDatadetail.productName}</h4>
@@ -226,14 +234,14 @@
         </div> 
         <hr>
         `;
-            });
+      });
 
-            orderdetailChild += orderdetailItem;
-            console.log(orderdetailChild);
-            return orderdetailChild;
-          } catch (error) {
-            console.error(error);
-          }
-        }
+      orderdetailChild += orderdetailItem;
+      console.log(orderdetailChild);
+      return orderdetailChild;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-    })(jQuery)
+})(jQuery)
