@@ -7,6 +7,7 @@
         var maxMin=0;
         var jwt;
         let myJsonCopy;
+        var decode = "";
         $("#form-buy").hide();
         // Dropdown on mouse hover
         $(document).ready(function () {
@@ -25,9 +26,9 @@
             $.ajax({
                 type:"GET",
                 url:"http://localhost:8765/api/carts/userid/"+ decoded.userId,
-                // headers: {
-                //     "Authorization": "Bearer "+jwt
-                // },
+                headers: {
+                    "Authorization": "Bearer "+jwt
+                },
                 success:function (data){
                     console.log(data);
                     localStorage.setItem("cardId",data.id);
