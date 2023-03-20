@@ -4,8 +4,8 @@
   //     const decoded = jwt_decode(jwt);
   //     return decoded;
   // }
-  var userId = 1;
-  var cartId = 1;
+  var userId = "";
+  var cartId = "";
   var jwt = "";
   var decoded = "";
   if (document.cookie.indexOf("token") != -1) {
@@ -15,6 +15,7 @@
     userId = decoded.userId;
     cartId = decoded.userId;
     console.log(decoded);
+    console.log(cartId);
     console.log(decoded.userId);
   } else {
     window.location.href = "login.html";
@@ -138,7 +139,6 @@
     });
   });
   //const url = "http://localhost:8765/api/historyOrder/?id="+;
-  var userId = 1;
   const baseUrl = "http://localhost:8765";
   const statusMap = {
     1: "Đang xử lý",
@@ -196,6 +196,7 @@
       }
 
       // add table to document
+     // document.getElementById("order-detail").appendChild(para);
       document.getElementById("order-detail").innerHTML = orderdetail;
     } catch (error) {
       console.log(error);
