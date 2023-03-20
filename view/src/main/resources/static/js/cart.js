@@ -81,9 +81,9 @@
             $.ajax({
                 type:"GET",
                 url:"http://localhost:8765/api/users/"+decoded.userId,
-                // headers: {
-                //     "Authorization": "Bearer "+jwt
-                // },
+                headers: {
+                    "Authorization": "Bearer "+jwt
+                },
                 success:function (data){
                     console.log(data);
                     $("#nameUser").val(data.userName);
@@ -152,8 +152,8 @@
                             "method": "PUT",
                             "timeout": 0,
                             "headers": {
-                                "Content-Type": "application/json"
-                                // "Authorization": "Bearer "+jwt
+                                "Content-Type": "application/json",
+                                 "Authorization": "Bearer "+jwt
                             },
                             "data": JSON.stringify({
                                 "quantity": newVal
@@ -186,9 +186,9 @@
                         "url": "http://localhost:8765/api/cartproducts/" +value.id,
                         "method": "DELETE",
                         "timeout": 0,
-                        // "headers": {
-                        //     "Authorization": "Bearer "+jwt
-                        // },
+                        "headers": {
+                            "Authorization": "Bearer "+jwt
+                        },
                     };
 
                     $.ajax(settings).done(function (response) {
@@ -203,9 +203,9 @@
             $.ajax({
                 type:"GET",
                 url: url1,
-                // headers: {
-                //     "Authorization": "Bearer "+jwt
-                // },
+                headers: {
+                    "Authorization": "Bearer "+jwt
+                },
                 success:function (data){
                     console.log(data);
                     if (data!=null && data !=""){
@@ -252,9 +252,9 @@
                     "timeout": 0,
                     "headers": {
                         "Content-Type": "application/json",
-                        // "headers": {
-                        //     "Authorization": "Bearer "+jwt
-                        // },
+                        "headers": {
+                            "Authorization": "Bearer "+jwt
+                        },
                     },
                     "data": JSON.stringify({
                         "total": $("#total-bill").text(),
@@ -284,9 +284,9 @@
             $.ajax({
                 type:"GET",
                 url: url1,
-                // headers: {
-                //     "Authorization": "Bearer "+jwt
-                // },
+                headers: {
+                    "Authorization": "Bearer "+jwt
+                },
                 success:function (data){
                     console.log(data);
 

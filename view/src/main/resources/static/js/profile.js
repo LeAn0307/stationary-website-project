@@ -1,19 +1,30 @@
 (function ($) {
-  "use strict";
+  //"use strict";
   // function getInfoFromToken(jwt) {
   //     const decoded = jwt_decode(jwt);
   //     return decoded;
   // }
   var userId = 1;
-  var carId = 1;
-    function getInfoFromToken(jwt) {
-        const decoded = jwt_decode(jwt);
-        return decoded;
-    }
+  var cartId = 1;
+  var jwt="";
+  var decoded="";
+  if (document.cookie.indexOf("token") != -1) 
+  {
+      jwt = document.cookie.split(";").find(row => row.startsWith('token='))?.split('=')[1];
+      console.log(jwt);
+      decoded = jwt_decode(jwt);
+      userId=decoded.userId;
+      cartId=decoded.userId;
+      console.log(decoded);
+      console.log(decoded.userId);
+  } else {
+      window.location.href = "login.html";
+  }   
     $(document).ready(function () {
         var jwt = document.cookie.split(";").find(row => row.startsWith('token=')).split('=')[1];
         const objectUser = getInfoFromToken(jwt);
-        fetch("http://localhost:8080/users/" + objectUser.userId, {
+        console.log(userId);
+        fetch("http://localhost:8765/users/" + decoded.userId, {
             method: 'GET',
             headers: {
                 "Authorization": "Bearer " + jwt
@@ -123,7 +134,7 @@
       this.classList.add('active');
     });
   });
-  const url = "http://localhost:8765/api/historyOrder/?id=1";
+  //const url = "http://localhost:8765/api/historyOrder/?id="+;
   var userId = 1;
   const baseUrl = "http://localhost:8765";
   const statusMap = {

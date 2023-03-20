@@ -1,4 +1,4 @@
-(function ($) {
+    (function ($) {
     "use strict";
     var discount=1;
     // Dropdown on mouse hover

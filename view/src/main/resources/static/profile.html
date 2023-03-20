@@ -21,6 +21,7 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -51,7 +52,7 @@
                 </form>
             </div>
             <div class="col-lg-4 col-6 text-right">
-                <button type="button" class="btn btn-warning btn-sm rounded" onclick="Login()">Đăng nhập</button>
+                <button type="button" id="loginBtn" class="btn btn-warning btn-sm rounded" onclick="Login()">Đăng nhập</button>
             </div>
             <div class="collapse" id="collapseExample">
                 <button type="button" class="btn btn-sm rounded" onclick="LogOut()">Log Out</button>
@@ -123,7 +124,7 @@
             </div>
             <div class="col-lg-8" id="user-info">
 
-                <div class="card-body">
+               
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Full Name</p>
@@ -286,8 +287,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/jwt-decode.js"></script>
     <script src="js/shop.js"></script>
     <script src="js/profile.js"></script>
+    <script src="js/checkLogin.js"></script>
+   
+
 </body>
 
 </html>

@@ -27,6 +27,7 @@
         },
         success:function (data){
             cardId=data.id;
+            console.log(cardId);
         },
         error: function (xhr, status, error){
             console.error(error);
@@ -67,7 +68,7 @@
                 document.getElementById('avgratingproduct').innerHTML= reviewstarproduct(data["avgrating"]);
             }
             else{
-                document.getElementById('avgratingproduct').innerHTML= reviewstarproduct(0);
+                //document.getElementById('avgratingproduct').innerHTML= reviewstarproduct(1);
             }
             document.getElementById('imageproduct').setAttribute("src", baseURL+"/images/product/"+data["image"]);
             getCountProductOfCart(cardId)
@@ -86,6 +87,9 @@
         type: 'get',
         dataType: "json",
         contentType : "application/json",
+        headers: {
+            "Authorization": "Bearer "+jwt
+        },
         success: function(data) {
 
             document.getElementById('countproduct').innerText =(data);
@@ -377,7 +381,7 @@ document.getElementById("product-list").innerHTML = productList;
             const xhr = new XMLHttpRequest();
             xhr.open('POST', baseURL+'/api/cartproducts');
             xhr.setRequestHeader('Content-Type', 'application/json');
-            //xhr.setRequestHeader("Authorization", "Bearer "+jwt);
+            xhr.setRequestHeader("Authorization", "Bearer "+jwt);
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     alert('Thêm sản phẩm thành công');

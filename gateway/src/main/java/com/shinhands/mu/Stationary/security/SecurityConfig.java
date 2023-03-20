@@ -43,11 +43,12 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
         .authorizeExchange()
+                .pathMatchers("/images/**","/js/**","/css/**","/vendors/**").permitAll()
                 .pathMatchers("/admin/login/**","/auth/**").permitAll()
                 .pathMatchers("/admin/**").hasAuthority("ADMIN")
                 .pathMatchers("/api/users/**","/api/carts/**","/api/bills/**","/api/cartproducts/**").hasAnyAuthority("USER","ADMIN")
                 .pathMatchers("/api/hello").hasAuthority("USER")
-                .pathMatchers("/**").permitAll()
+                .pathMatchers("/api/**").permitAll()
                 .anyExchange()
                 .authenticated()
                 .and()
@@ -56,10 +57,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors()
                 .and()
-                .httpBasic()
-                .and()
+                .httpBasic().and()
                 .formLogin().disable()
-
                 .logout().disable()
         ;
 
@@ -81,9 +80,9 @@ public class SecurityConfig {
     public RouteLocator routes(RouteLocatorBuilder builder, LoadBalancerClient loadBalancerClient) {
         return builder.routes()
                 .route("products", r -> r.path("/api/ratings","/api/products/**","/admin/category/**","/admin/product/**","/admin/product_detail/**").uri("lb://PRODUCT-SERVICE/"))
-                .route("bill", r -> r.path("/api/bills/**","/admin/bill/**").uri("lb://ORDER-SERVICE/"))
+                .route("bill", r -> r.path("/api/bills/**","/admin/bill/**","/api/historyOrder/**").uri("lb://ORDER-SERVICE/"))
                 .route("cart", r -> r.path("/api/carts/**","/api/cartcoupon/**","/api/cartproducts/**","/api/coupons/**","/admin/coupon/**").uri("lb://CART-SERVICE/"))
-                .route("user", r -> r.path("/api/accounts/**","/api/users/**","/admin/user/**","/admin/delete-user/**", "/admin/dashboard/**").uri("lb://USER-SERVICE/"))
+                .route("user", r -> r.path("/api/accounts/**","/api/users/**","/admin/user/**","/admin/delete-user/**").uri("lb://USER-SERVICE/"))
                 .build();
     }
 }
