@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController("")
 @RequestMapping(value="/api/users")
 public class UserController {
@@ -37,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    public ResponseEntity<UserDTO> loginUser(@RequestBody AccountDTO accountDTO) {
+    public ResponseEntity<UserDTO> loginUser(@RequestBody @Valid AccountDTO accountDTO) {
         try {
             UserDTO userDTO = userWebService.getUserByAccount(accountDTO.getEmail(), accountDTO.getAccountPassword());
             if(userDTO != null) {

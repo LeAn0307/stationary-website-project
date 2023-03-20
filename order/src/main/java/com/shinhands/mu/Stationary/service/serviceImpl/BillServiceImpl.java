@@ -7,6 +7,7 @@ import com.shinhands.mu.Stationary.repository.BillRepository;
 import com.shinhands.mu.Stationary.repository.BillRepositoryMybatis;
 import com.shinhands.mu.Stationary.service.BillService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +54,15 @@ public class BillServiceImpl implements BillService {
 //        }
 //    }
 //
+    @Override
+    public List<BillDTO> getBillsCustomerId(Long customerId) {
+        List<Bill> billList = billRepository.findByDeletedAndCustomerId(0L, customerId);
+        if(billList.isEmpty()) {
+            return null;
+        } else {
+            return modelMapper.map(billList, new TypeToken<List<BillDTO>>(){}.getType());
+        }
+    }
     @Override
     public BillDTO addBill(BillDTO billDTO) {
         Bill bill = new Bill();

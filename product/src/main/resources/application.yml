@@ -8,7 +8,7 @@ spring:
   application:
     name: product-service
   profiles:
-    active: hau
+    active: dev
 
 server:
   port: 8088

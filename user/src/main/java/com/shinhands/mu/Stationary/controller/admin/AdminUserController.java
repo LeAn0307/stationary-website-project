@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
 
@@ -39,13 +40,13 @@ public class AdminUserController {
         return "admin/edit-user";
     }
     @RequestMapping(path = "/user/add", method = RequestMethod.POST)
-    public String addUser(@RequestParam("photo") MultipartFile photo, UserDTO userDTO, Model model) {
+    public String addUser(@RequestParam("photo") MultipartFile photo, @Valid UserDTO userDTO, Model model) {
 
         userService.addUser(userDTO);
         return "redirect:/admin/user";
     }
     @RequestMapping(path = "/user/update", method = RequestMethod.POST)
-    public String updateProduct( UserDTO userDTO, Model model) {
+    public String updateProduct( @Valid UserDTO userDTO, Model model) {
         userService.updateUser(userDTO.getId(), userDTO);
         return "redirect:/admin/user";
     }
