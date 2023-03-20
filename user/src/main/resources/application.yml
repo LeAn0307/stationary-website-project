@@ -9,7 +9,9 @@ spring:
     name: user-service
   profiles:
     active: dev
-
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 server:
   port: 8099
 # dang ky voi eureka

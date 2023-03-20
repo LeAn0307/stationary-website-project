@@ -18,6 +18,13 @@ public class AdminUserController {
     @Autowired
     private UserWebService userService;
 
+
+
+    @GetMapping("/dashboard")
+    public String dashboardPage(Model model) {
+        return "admin/dashboard";
+    }
+
     @GetMapping(value = "user")
     public ModelMap getAllUser(ModelMap model) {
         List<UserDTO> users= userService.getAllUsers();

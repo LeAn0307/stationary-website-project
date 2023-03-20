@@ -5,14 +5,14 @@
     <title>Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
-    <link rel="stylesheet" th:href="@{/css/login.css}" type="text/css">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+    <link rel="stylesheet" type="text/css" href="css/login_admin.css">
+
     <!-- Font Awesome -->
     <link
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
             rel="stylesheet"
     />
-
 
     <!-- MDB -->
     <link
@@ -59,14 +59,14 @@
 
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="email" id="form3Example3" name="email" class="form-control form-control-lg border"
+                        <input type="email" id="email" name="email" class="form-control form-control-lg border"
                                placeholder="Enter a valid email address" />
                         <label class="form-label" for="form3Example3">Email address</label>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-3">
-                        <input type="password" id="form3Example4" name="password" class="form-control form-control-lg border"
+                        <input type="password" id="password" name="password" class="form-control form-control-lg border"
                                placeholder="Enter password" />
                         <label class="form-label" for="form3Example4">Password</label>
                     </div>
@@ -83,13 +83,10 @@
                     </div>
 
                     <div class="text-center text-lg-start mt-4 pt-2" style="display: flex;    justify-content: center;    align-items: center;    height: 100px;">
-                        <button type="submit" class="btn btn-primary btn-lg"
+                        <button id="btn-login-admin" class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem; margin: auto;">Login</button>
-<!--                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"-->
-<!--                                                                                          class="link-danger">Register</a></p>-->
-                    </div>
-                    <div th:if="${loginFailed}" class="alert alert-danger">
-                        Your username or password is incorrect. Please try again.
+                        <!--                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"-->
+                        <!--                                                                                          class="link-danger">Register</a></p>-->
                     </div>
                 </form>
             </div>
@@ -120,9 +117,8 @@
         </div>
         <!-- Right -->
     </div>
-</section>
-<script>
+    <script src="js/login_admin.js"></script>
 
-</script>
+</section>
 </body>
 </html>
