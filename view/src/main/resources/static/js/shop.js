@@ -4,6 +4,20 @@
                         <nav>
                           <ul class="pagination justify-content-center">`;
     // Dropdown on mouse hover
+    function reviewstarproduct(rating){
+      let stars = "";
+
+      for (let i = 1; i <= 5; i++) {
+          if (i <= rating) {
+              stars += '<i class="fas fa-star active "></i>';
+          } else if (i - rating <= 0.5) {
+              stars += '<i class="fas fa-star-half-alt active"></i>';
+          } else {
+              stars += '<i class="far fa-star"></i>';
+          }
+      }
+      return stars;
+  }
     $(document).ready(function () {
 
 
@@ -35,7 +49,16 @@
             .then((response) => response.json())
             .then((data) => {
                 let productList = "";
+                console.log(data);
+                data = JSON.parse(JSON.stringify(data));
+                 data = Array.from(data);
                 data.forEach((product) => {
+                  var avgratingproducthtml="";
+                  if(product.avgrating!=null) {
+                      avgratingproducthtml+= reviewstarproduct(product.avgrating);
+                  }
+                  else
+                      avgratingproducthtml+=reviewstarproduct(0);
                     productList += `
     <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
         <div class="product-item bg-light mb-4">
@@ -54,11 +77,7 @@
               <h5>${product.price}</h5><h6 class="text-muted ml-2"><del>Discount: ${product.discount}</del></h6>
             </div>
             <div class="d-flex align-items-center justify-content-center mb-1">
-              <small class="fa fa-star text-primary mr-1"></small>
-              <small class="fa fa-star text-primary mr-1"></small>
-              <small class="fa fa-star text-primary mr-1"></small>
-              <small class="fa fa-star text-primary mr-1"></small>
-              <small class="fa fa-star text-primary mr-1"></small>
+               ${avgratingproducthtml} 
               <small>(${product.avgrating})</small>
             </div>
           </div>

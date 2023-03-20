@@ -70,6 +70,19 @@ public class BillController {
 //        }
 //    }
 //
+@GetMapping("/customerid/{id}")
+public ResponseEntity<List<BillDTO>> getBillByCustomerId(@PathVariable("id") long id) {
+    try {
+        List<BillDTO> billDTO = billService.getBillsCustomerId(id);
+        if(billDTO.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(billDTO ,HttpStatus.OK);
+        }
+    } catch (Exception e) {
+        return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
     @PostMapping("")
     public ResponseEntity createBill(@RequestBody BillDTO billDTO) {
         try {

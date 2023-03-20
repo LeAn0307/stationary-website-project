@@ -43,6 +43,7 @@
                   $.ajax(settings).done(function (response) {
                     console.log(response);
                     alert('Đăng ký thành công');
+                    document.cookie = "token=" + result + ";path=/;"
                     window.location.href = "index.html";
                   }).fail(function (jqXHR, textStatus, errorThrown) {
                       alert("Đã có lỗi xảy ra");
