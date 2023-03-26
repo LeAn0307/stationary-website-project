@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+  <title>user</title>
+  <style>
+    .table-container {
+      overflow-y: auto!important;
+      height: 500px!important;
+    }
+    .fixed-header {
+      position: sticky;
+      top: 0;
+    }
+    .fixed-header th {
+      position: relative;
+      background-color: white;
+    }
+    table {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<section layout:fragment="content" class="container-fluid!important mt-5">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class=" text-left">Quản lý người dùng</h4>
+        <div class="table-responsive" style="max-height: 713px!important;overflow-y: auto!important;">
+          <table class="table table-bordered ">
+            <thead class="thead-light fixed-header!important">
+            <tr>
+              <th class="col text-center" style="width: 200px">
+                ID
+              </th>
+              <th>
+                Tên người dùng
+              </th>
+              <th class="col text-center">
+                Địa chỉ
+              </th>
+              <th class="col text-center">
+                Số điện thoại
+              </th>
+              <th>Tùy chọn</th>
+            </thead>
+            <tbody>
+            <tr th:each="state:${users}">
+              <td th:utext="${state.id}"></td>
+              <td th:utext="${state.userName}"></td>
+              <td th:utext="${state.address}"></td>
+              <td th:utext="${state.phone}"></td>
+              <td> <div class="ticket-actions col-md-2">
+                <div class="btn-group dropdown">
+                  <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tùy chọn
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/pages/user/{id}(id=${state.id})}">
+                      <i class="fa fa-reply fa-fw"></i>Sửa</a>
+
+<!--                    <a class="dropdown-item" href="#">-->
+<!--                      <i class="fa fa-history fa-fw"></i>Xóa</a>-->
+
+
+                  </div>
+                </div>
+              </div></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
