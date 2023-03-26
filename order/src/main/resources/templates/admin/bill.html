@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title> Bill manage</title>
+
+</head>
+<body>
+<section layout:fragment="content" class ="container-fluid!important">
+<!--    <div class="m-2 p-2" style="background-color: white">-->
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body" >
+<!--                    <h2 class="card-title text-left">Danh sách đơn hàng</h2>-->
+                    <h4 class="px-2">Quản lý đơn hàng</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" style="background-color: white">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Khách hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Phương thức thanh toán</th>
+                                <th>Tình trạng</th>
+                                <th>Tổng tiền</th>
+                                <th>Tùy chọn</th>
+                            </thead>
+                            <tbody>
+                            <tr th:each="state:${billList}">
+                                <td th:id="${state.id}" th:utext="${state.id}"></td>
+                                <td th:utext="${state.customerName}"></td>
+                                <td th:utext="${state.dateOrder}"></td>
+                                <td th:utext="${state.payment}"></td>
+                                <td th:utext="${state.status}"></td>
+                                <td th:utext="${state.total}"></td>
+                                <td>
+                                    <div class="ticket-actions col-md-2">
+                                        <div class="btn-group dropdown">
+                                            <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Tùy chọn
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" th:href="@{/admin/bill/updateStatus(id=${state.id}, statusId=${2})}">
+                                                    <i class="fa fa-reply fa-fw"></i>Đã tiếp nhận</a>
+                                                <a class="dropdown-item" th:href="@{/admin/bill/updateStatus(id=${state.id}, statusId=${3})}">
+                                                    <i class="fa fa-reply fa-fw"></i>Đã gửi hàng</a>
+                                                <a class="dropdown-item" th:href="@{/admin/bill/updateStatus(id=${state.id}, statusId=${4})}">
+                                                    <i class="fa fa-reply fa-fw"></i>Đã giao hàng</a>
+                                                <a class="dropdown-item" th:href="@{/admin/bill/updateStatus(id=${state.id}, statusId=${6})}">
+                                                    <i class="fa fa-reply fa-fw"></i>Đã thanh toán</a>
+                                                <a class="dropdown-item" th:href="@{/admin/bill/delete/{id}(id = ${state.id})}">
+                                                    <i class="fa fa-reply fa-fw"></i>Hủy</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+<!--        </div>-->
+<!--        <div class="modal fade col-lg-12" id="editModal" tabindex="-1" role="dialog" >-->
+<!--            <form action="#" method="post">-->
+<!--                <div class="modal-dialog" role="document">-->
+<!--                    <div class="modal-content">-->
+<!--                        <div class="modal-header">-->
+<!--                            <h5 class="modal-title">Cập nhật tình trạng đơn hàng</h5>-->
+<!--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                <span aria-hidden="true">&times;</span>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div class="modal-body">-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="col-form-label">Loại sản phẩm</label>-->
+<!--                                <select class="form-control">-->
+<!--                                    <option th:each="i : ${billStatusList}" th:value="${i.id}" th:text="${i.status}"></option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+<!--                            <button type="submit" class="btn btn-primary">Lưu</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
+</section>
+
+</body>
+</html>

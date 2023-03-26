@@ -1,0 +1,150 @@
+version: '3.7'
+services:
+  eureka-server:
+    container_name: eureka-server
+    build:
+      context: /eureka-server
+      dockerfile: Dockerfile
+    hostname: eureka-server
+    ports:
+      - "8761:8761"
+  config-server:
+    container_name: config-server
+    build:
+      context: /configserver
+      dockerfile: Dockerfile
+    links:
+      - eureka-server
+    volumes:
+      - ./config-data:/var/config-data
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - JAVA_OPTS=
+        -Dspring.cloud.config.server.native.searchLocations=/var/config-data
+        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    ports:
+      - "8888:8888"
+
+  product-service:
+#    container_name: product-service
+    build:
+      context: /product
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - "SPRING_PROFILES_ACTIVE=hau"
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+#        -Dlogging.level.org.springframework=DEBUG
+#        -Dspring.cloud.config.discovery.enabled=true
+#        -Dspring.cloud.config.failFast=false
+    restart: on-failure
+    links:
+      - config-server
+    depends_on:
+      - eureka-server
+      - config-server
+    deploy:
+      mode: replicated
+      replicas: 2
+#    ports:
+#      - "8088:8088"
+#  cart-service:
+#    #    container_name: product-service
+#    build:
+#      context: /cart
+#      dockerfile: Dockerfile
+#    environment:
+#      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+#      - "SPRING_PROFILES_ACTIVE=dev"
+#      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+#      - JAVA_OPTS=
+#        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+#    #        -Dlogging.level.org.springframework=DEBUG
+#    #        -Dspring.cloud.config.discovery.enabled=true
+#    #        -Dspring.cloud.config.failFast=false
+#    restart: on-failure
+#    links:
+#      - config-server
+#    depends_on:
+#      - eureka-server
+#      - config-server
+#    deploy:
+#      mode: replicated
+#      replicas: 2
+#  #    ports:
+#  #      - "8066:8066"
+#  order-service:
+#    #    container_name: product-service
+#    build:
+#      context: /order
+#      dockerfile: Dockerfile
+#    environment:
+#      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+#      - "SPRING_PROFILES_ACTIVE=dev"
+#      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+#      - JAVA_OPTS=
+#        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+#    #        -Dlogging.level.org.springframework=DEBUG
+#    #        -Dspring.cloud.config.discovery.enabled=true
+#    #        -Dspring.cloud.config.failFast=false
+#    restart: on-failure
+#    links:
+#      - config-server
+#    depends_on:
+#      - eureka-server
+#      - config-server
+#    deploy:
+#      mode: replicated
+#      replicas: 2
+#  #    ports:
+#  #      - "8077:8077"
+#  user-service:
+#    #    container_name: product-service
+#    build:
+#      context: /user
+#      dockerfile: Dockerfile
+#    environment:
+#      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+#      - "SPRING_PROFILES_ACTIVE=dev"
+#      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+#      - JAVA_OPTS=
+#        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+#    #        -Dlogging.level.org.springframework=DEBUG
+#    #        -Dspring.cloud.config.discovery.enabled=true
+#    #        -Dspring.cloud.config.failFast=false
+#    restart: on-failure
+#    links:
+#      - config-server
+#    depends_on:
+#      - eureka-server
+#      - config-server
+#    deploy:
+#      mode: replicated
+#      replicas: 2
+  #    ports:
+  #      - "8099:8099"
+  gateway:
+    container_name: gateway
+    build:
+      context: gateway
+      dockerfile: Dockerfile
+    environment:
+      - eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    ports:
+      - "8765:8765"
+  view-service:
+    build:
+      context: /view
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8090:8090"
+
