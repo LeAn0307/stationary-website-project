@@ -42,7 +42,10 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
+                .headers()
+                .contentTypeOptions().disable().and()
         .authorizeExchange()
+
                 .pathMatchers("/images/**","/js/**","/css/**","/vendors/**").permitAll()
                 .pathMatchers("/admin/login/**","/auth/**").permitAll()
                 .pathMatchers("/admin/**").hasAuthority("ADMIN")
@@ -79,7 +82,7 @@ public class SecurityConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder, LoadBalancerClient loadBalancerClient) {
         return builder.routes()
-                .route("products", r -> r.path("/api/ratings","/api/products/**","/admin/category/**","/admin/product/**","/admin/product_detail/**").uri("lb://PRODUCT-SERVICE/"))
+                .route("products", r -> r.path("/api/ratings","/api/products/**","/admin/category/**","/admin/product/**","/admin/product_detail/**", "/js/**", "/css/**", "/vendors/**", "/images/**", "/favicon.ico").uri("lb://PRODUCT-SERVICE/"))
                 .route("bill", r -> r.path("/api/bills/**","/admin/bill/**","/api/historyOrder/**").uri("lb://ORDER-SERVICE/"))
                 .route("cart", r -> r.path("/api/carts/**","/api/cartcoupon/**","/api/cartproducts/**","/api/coupons/**","/admin/coupon/**").uri("lb://CART-SERVICE/"))
                 .route("user", r -> r.path("/api/accounts/**","/api/users/**","/admin/user/**","/admin/delete-user/**").uri("lb://USER-SERVICE/"))
