@@ -1,65 +1,65 @@
 (function ($) {
-    "use strict";
-    let ft =`<div class="col-12">
+  "use strict";
+  let ft = `<div class="col-12">
                         <nav>
                           <ul class="pagination justify-content-center">`;
-    // Dropdown on mouse hover
-    function reviewstarproduct(rating){
-      let stars = "";
+  // Dropdown on mouse hover
+  function reviewstarproduct(rating) {
+    let stars = "";
 
-      for (let i = 1; i <= 5; i++) {
-          if (i <= rating) {
-              stars += '<i class="fas fa-star active "></i>';
-          } else if (i - rating <= 0.5) {
-              stars += '<i class="fas fa-star-half-alt active"></i>';
-          } else {
-              stars += '<i class="far fa-star"></i>';
-          }
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars += '<i class="fas fa-star active "></i>';
+      } else if (i - rating <= 0.5) {
+        stars += '<i class="fas fa-star-half-alt active"></i>';
+      } else {
+        stars += '<i class="far fa-star"></i>';
       }
-      return stars;
+    }
+    return stars;
   }
-    $(document).ready(function () {
+  $(document).ready(function () {
 
 
 
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8765/api/products/count",
-            success: function (data) {
-                //alert(data.valueOf())
-                let offset =data.valueOf()/3;
-                if(data.valueOf()%3!=0){
-                    offset++;
-                }
-                for (let i = 1; i < offset; i++) {
-                    ft+=`<button class="btn btn-primary btn-ft">
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:8765/api/products/count",
+      success: function (data) {
+        //alert(data.valueOf())
+        let offset = data.valueOf() / 3;
+        if (data.valueOf() % 3 != 0) {
+          offset++;
+        }
+        for (let i = 1; i < offset; i++) {
+          ft += `<button class="btn btn-primary btn-ft">
                                 ${i}
                                 </button>`
-                }
-                ft+=`</ul>
+        }
+        ft += `</ul>
                         </nav>
                     </div>`;
-            },
-            error: function (xhr, status, error) {
-                console.error(error);
-                alert(error);
-            }
-        })
-        fetch("http://localhost:8765/api/products/offset/0")
-            .then((response) => response.json())
-            .then((data) => {
-                let productList = "";
-                console.log(data);
-                data = JSON.parse(JSON.stringify(data));
-                 data = Array.from(data);
-                data.forEach((product) => {
-                  var avgratingproducthtml="";
-                  if(product.avgrating!=null) {
-                      avgratingproducthtml+= reviewstarproduct(product.avgrating);
-                  }
-                  else
-                      avgratingproducthtml+=reviewstarproduct(0);
-                    productList += `
+      },
+      error: function (xhr, status, error) {
+        console.error(error);
+        alert(error);
+      }
+    })
+    fetch("http://localhost:8765/api/products/offset/0")
+      .then((response) => response.json())
+      .then((data) => {
+        let productList = "";
+        console.log(data);
+        data = JSON.parse(JSON.stringify(data));
+        data = Array.from(data);
+        data.forEach((product) => {
+          var avgratingproducthtml = "";
+          if (product.avgrating != null) {
+            avgratingproducthtml += reviewstarproduct(product.avgrating);
+          }
+          else
+            avgratingproducthtml += reviewstarproduct(0);
+          productList += `
     <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
         <div class="product-item bg-light mb-4">
           <div class="product-img position-relative overflow-hidden">
@@ -84,24 +84,24 @@
         </div>
     </div>
       `;
-                });
-                productList+=ft;
-                document.getElementById("product-list").innerHTML=productList;
-            });
+        });
+        productList += ft;
+        document.getElementById("product-list").innerHTML = productList;
+      });
 
-    });
-    // Back to top button
-    $(document).on("click", '.btn-ft' , function() {
-        var button = $(this);
-        //document.getElementById("product-list").innerHTML=``;
+  });
+  // Back to top button
+  $(document).on("click", '.btn-ft', function () {
+    var button = $(this);
+    //document.getElementById("product-list").innerHTML=``;
 
-        fetch("http://127.0.0.1:8765/api/products/offset/"+button.text())
-            .then((response) => response.json())
-            .then((data) => {
-                let productList = "";
-                console.log(data)
-                data.forEach((product) => {
-                    productList += `
+    fetch("http://127.0.0.1:8765/api/products/offset/" + button.text())
+      .then((response) => response.json())
+      .then((data) => {
+        let productList = "";
+        console.log(data)
+        data.forEach((product) => {
+          productList += `
                 <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                       <div class="product-img position-relative overflow-hidden">
@@ -130,13 +130,13 @@
                     </div>
                 </div>
                   `;
-                });
-                productList+=ft;
-                document.getElementById("product-list").innerHTML=productList;
-            });
+        });
+        productList += ft;
+        document.getElementById("product-list").innerHTML = productList;
+      });
 
-        //alert(button.text());
+    //alert(button.text());
 
-    });
+  });
 })(jQuery);
 

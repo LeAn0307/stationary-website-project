@@ -22,25 +22,24 @@
   }
   $(document).ready(function () {
     var jwt = document.cookie.split(";").find(row => row.startsWith('token=')).split('=')[1];
-  //  const objectUser = getInfoFromToken(jwt);
+    //  const objectUser = getInfoFromToken(jwt);
     console.log(userId);
-    getinfoUser();
-    async function getinfoUser()
-    {
-      await  fetch("http://localhost:8765/api/users/" + decoded.userId, {
-      method: 'GET',
-      headers: {
-        "Authorization": "Bearer " + jwt
-      }
-    })
-      .then((response) => {
-        return response.json();
+    getInfoUser();
+    async function getInfoUser() {
+      await fetch("http://localhost:8765/api/users/" + decoded.userId, {
+        method: 'GET',
+        headers: {
+          "Authorization": "Bearer " + jwt
+        }
       })
-      .then((data) => {
-        console.log(data);
-        let userInfo = "";
-        let userInfoShort = "";
-        userInfo += `<div class="card mb-4">
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          let userInfo = "";
+          let userInfoShort = "";
+          userInfo += `<div class="card mb-4">
 <div class="card-body">
 <div class="row">
   <div class="col-sm-3">
@@ -79,7 +78,7 @@
 </div>
 </div>
 </div>`;
-        userInfoShort += `
+          userInfoShort += `
 <div class="card mb-4">
                 <div class="card-body text-center">
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
@@ -93,13 +92,13 @@
                   </div>
                 </div>
               </div>`;
-        document.getElementById("user-info").innerHTML = userInfo;
-        document.getElementById("user-info-short").innerHTML = userInfoShort;
+          document.getElementById("user-info").innerHTML = userInfo;
+          document.getElementById("user-info-short").innerHTML = userInfoShort;
 
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
     // var jwt = document.cookie.split(";").find(row => row.startsWith('token=')).split('=')[1];
     // const objectUser = getInfoFromToken(jwt);
@@ -196,7 +195,7 @@
       }
 
       // add table to document
-     // document.getElementById("order-detail").appendChild(para);
+      // document.getElementById("order-detail").appendChild(para);
       document.getElementById("order-detail").innerHTML = orderdetail;
     } catch (error) {
       console.log(error);
@@ -244,5 +243,4 @@
       console.error(error);
     }
   }
-
 })(jQuery)
